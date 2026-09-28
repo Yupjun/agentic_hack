@@ -1,0 +1,40 @@
+{
+ "id": "s1-v2-tight-budget",
+ "version": 1,
+ "by": "claude-opus-5.5 (unattended session 2026-09-28)",
+ "ts": "2026-09-28T11:06:30Z",
+ "status": "provisional",
+ "family": "S1",
+ "base": "s1_base.json",
+ "seed": 0,
+ "generator_params": {
+  "budget_usd": 15000
+ },
+ "rationale": "Budget cut to 15,000 USD: only the ocean plan (8,900) fits; sea-air (21,400) and air (25,100) are out. Every named plan collapses to the same risky ocean plan; the budget forbids the safe plan. This is the case an agent must escalate instead of silently accepting.",
+ "falsifier": "Refuted if any named plan uses air or sea-air, or if the time-optimal plan is on time with probability 0.5 or higher.",
+ "expected": [
+  {
+   "metric": "status",
+   "op": "==",
+   "value": "ok"
+  },
+  {
+   "metric": "derived.time_optimal.route_classes",
+   "op": "==",
+   "value": [
+    "ocean"
+   ]
+  },
+  {
+   "metric": "plans.time_optimal.cost_usd",
+   "op": "<=",
+   "value": 15000
+  },
+  {
+   "metric": "plans.time_optimal.mc.p_all_on_time",
+   "op": "<",
+   "value": 0.5
+  }
+ ],
+ "prediction_registered": "before_run"
+}

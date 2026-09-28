@@ -1,0 +1,37 @@
+{
+ "id": "s1-v5-ocean-delay-2026",
+ "version": 1,
+ "by": "claude-opus-5.5 (unattended session 2026-09-28)",
+ "ts": "2026-09-28T11:06:30Z",
+ "status": "provisional",
+ "family": "S1",
+ "base": "s1_base.json",
+ "seed": 0,
+ "generator_params": {
+  "delay_mean_days": {
+   "ocean": 6.06
+  }
+ },
+ "rationale": "Ocean delay mean set to 6.06 days, the average delay of late vessel arrivals reported by Sea-Intelligence for July 2026 (GLP). Deterministic plans do not change, but the on-time probability of the ocean plan should drop below 0.2 (base: 0.306).",
+ "falsifier": "Refuted if the cost-optimal plan changes, or if its on-time probability is 0.2 or higher.",
+ "expected": [
+  {
+   "metric": "status",
+   "op": "==",
+   "value": "ok"
+  },
+  {
+   "metric": "derived.cost_optimal.route_classes",
+   "op": "==",
+   "value": [
+    "ocean"
+   ]
+  },
+  {
+   "metric": "plans.cost_optimal.mc.p_all_on_time",
+   "op": "<",
+   "value": 0.2
+  }
+ ],
+ "prediction_registered": "before_run"
+}

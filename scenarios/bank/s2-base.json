@@ -1,0 +1,36 @@
+{
+ "id": "s2-base",
+ "version": 1,
+ "by": "claude-opus-5.5 (unattended session 2026-09-28)",
+ "ts": "2026-09-28T11:06:30Z",
+ "status": "provisional",
+ "family": "S2",
+ "base": "s2_base.json",
+ "seed": 0,
+ "generator_params": {},
+ "rationale": "Base multi-site sourcing: materials a, b, c, d from approved sites A1, A2, A3 for three batches at AA four weeks apart. Standard lead times reach batch B1 with only about two days of slack; buying more slack needs expedite orders.",
+ "falsifier": "Refuted if the cost-optimal plan uses an expedite order, or if the time-optimal plan uses none.",
+ "expected": [
+  {
+   "metric": "status",
+   "op": "==",
+   "value": "ok"
+  },
+  {
+   "metric": "derived.cost_optimal.expedite_items",
+   "op": "==",
+   "value": []
+  },
+  {
+   "metric": "derived.time_optimal.expedite_items",
+   "op": "!=",
+   "value": []
+  },
+  {
+   "metric": "derived.cost_optimal.orders_by_item.b",
+   "op": "==",
+   "value": 3
+  }
+ ],
+ "prediction_registered": "after_observation"
+}

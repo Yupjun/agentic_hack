@@ -1,0 +1,35 @@
+{
+ "id": "s2-v3-short-shelf-d",
+ "version": 1,
+ "by": "claude-opus-5.5 (unattended session 2026-09-28)",
+ "ts": "2026-09-28T11:06:30Z",
+ "status": "provisional",
+ "family": "S2",
+ "base": "s2_base.json",
+ "seed": 0,
+ "generator_params": {
+  "shelf_life_days": {
+   "d": 60
+  }
+ },
+ "rationale": "Material d shelf life cut from 120 to 60 days with 50% required at use: a d order is usable for 30 days, less than the 28-day batch spacing plus transit, so d needs one order per batch (MOQ 6 vs need 5): at least three d orders and at least 3 units left over.",
+ "falsifier": "Refuted if the cost-optimal plan has fewer than three d orders or fewer than 3 units left over.",
+ "expected": [
+  {
+   "metric": "status",
+   "op": "==",
+   "value": "ok"
+  },
+  {
+   "metric": "derived.cost_optimal.orders_by_item.d",
+   "op": ">=",
+   "value": 3
+  },
+  {
+   "metric": "plans.cost_optimal.metrics.units_left_over",
+   "op": ">=",
+   "value": 3
+  }
+ ],
+ "prediction_registered": "before_run"
+}

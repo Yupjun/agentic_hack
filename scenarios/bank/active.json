@@ -1,0 +1,17 @@
+{
+ "active": [
+  "s1-base",
+  "s1-v1-tight-deadline",
+  "s1-v2-tight-budget",
+  "s1-v3-short-shelf-life",
+  "s1-v4-low-exposure",
+  "s1-v5-ocean-delay-2026",
+  "s2-base",
+  "s2-v1-site-delay",
+  "s2-v2-moq-above-need",
+  "s2-v3-short-shelf-d",
+  "s2-v4-budget-cut"
+ ],
+ "since": "2026-09-28T11:06:30Z",
+ "note": "all provisional until the user approves"
+}

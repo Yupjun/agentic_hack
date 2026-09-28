@@ -1,0 +1,43 @@
+{
+ "id": "s1-v1-tight-deadline",
+ "version": 1,
+ "by": "claude-opus-5.5 (unattended session 2026-09-28)",
+ "ts": "2026-09-28T11:06:30Z",
+ "status": "provisional",
+ "family": "S1",
+ "base": "s1_base.json",
+ "seed": 0,
+ "generator_params": {
+  "due_days": 11
+ },
+ "rationale": "Deadline cut to 11 days: the ocean sailing (34 days) and sea-air (16-day ocean leg to DXB) cannot make it, so every plan must be air. The cheapest air plan should cost 22,000-32,000 USD and, with days of slack, be on time with probability above 0.9.",
+ "falsifier": "Refuted if any named plan uses an ocean leg, if the cost-optimal cost falls outside 22,000-32,000 USD, or if its on-time probability is 0.9 or lower.",
+ "expected": [
+  {
+   "metric": "status",
+   "op": "==",
+   "value": "ok"
+  },
+  {
+   "metric": "derived.cost_optimal.route_classes",
+   "op": "==",
+   "value": [
+    "air"
+   ]
+  },
+  {
+   "metric": "plans.cost_optimal.cost_usd",
+   "op": "between",
+   "value": [
+    22000,
+    32000
+   ]
+  },
+  {
+   "metric": "plans.cost_optimal.mc.p_all_on_time",
+   "op": ">",
+   "value": 0.9
+  }
+ ],
+ "prediction_registered": "before_run"
+}

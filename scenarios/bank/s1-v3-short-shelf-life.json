@@ -1,0 +1,40 @@
+{
+ "id": "s1-v3-short-shelf-life",
+ "version": 1,
+ "by": "claude-opus-5.5 (unattended session 2026-09-28)",
+ "ts": "2026-09-28T11:06:30Z",
+ "status": "provisional",
+ "family": "S1",
+ "base": "s1_base.json",
+ "seed": 0,
+ "generator_params": {
+  "shelf_life_days": {
+   "C": 120
+  }
+ },
+ "rationale": "Shelf life cut to 120 days with 60% required at receipt: goods made 2026-09-10 must arrive by 2026-10-28. The ocean arrival (2026-11-09) is out; the first sea-air sailing (arrives about 2026-10-24) is in. So the cost-optimal plan becomes sea-air at about 21,400 USD.",
+ "falsifier": "Refuted if the cost-optimal plan is not sea-air only, or if its cost falls outside 20,000-23,000 USD.",
+ "expected": [
+  {
+   "metric": "status",
+   "op": "==",
+   "value": "ok"
+  },
+  {
+   "metric": "derived.cost_optimal.route_classes",
+   "op": "==",
+   "value": [
+    "sea-air"
+   ]
+  },
+  {
+   "metric": "plans.cost_optimal.cost_usd",
+   "op": "between",
+   "value": [
+    20000,
+    23000
+   ]
+  }
+ ],
+ "prediction_registered": "before_run"
+}

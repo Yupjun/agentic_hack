@@ -1,0 +1,38 @@
+{
+ "id": "s2-v4-budget-cut",
+ "version": 1,
+ "by": "claude-opus-5.5 (unattended session 2026-09-28)",
+ "ts": "2026-09-28T11:06:30Z",
+ "status": "provisional",
+ "family": "S2",
+ "base": "s2_base.json",
+ "seed": 0,
+ "generator_params": {
+  "budget_usd": 205000
+ },
+ "rationale": "Budget cut to 205,000 USD: the expedite plans (209,731 USD and up) are out. The time-optimal plan must stay within budget and so has at most 8 days of minimum slack (base: 15.05), but the cheap one-departure-earlier plan (about 200,331 USD) still reaches an on-time probability above 0.99.",
+ "falsifier": "Refuted if the time-optimal plan exceeds 205,000 USD, has more than 8 days of slack, or if the risk-adjusted plan is on time with probability 0.99 or lower.",
+ "expected": [
+  {
+   "metric": "status",
+   "op": "==",
+   "value": "ok"
+  },
+  {
+   "metric": "plans.time_optimal.cost_usd",
+   "op": "<=",
+   "value": 205000
+  },
+  {
+   "metric": "plans.time_optimal.metrics.min_slack_days",
+   "op": "<=",
+   "value": 8
+  },
+  {
+   "metric": "plans.risk_adjusted.mc.p_all_on_time",
+   "op": ">",
+   "value": 0.99
+  }
+ ],
+ "prediction_registered": "before_run"
+}

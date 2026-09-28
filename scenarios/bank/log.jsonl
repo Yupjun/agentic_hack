@@ -1,0 +1,11 @@
+{"ts": "2026-09-28T11:06:30Z", "event": "propose", "id": "s1-base", "by": "claude-opus-5.5 (unattended session 2026-09-28)", "prediction_registered": "after_observation"}
+{"ts": "2026-09-28T11:06:30Z", "event": "propose", "id": "s1-v1-tight-deadline", "by": "claude-opus-5.5 (unattended session 2026-09-28)", "prediction_registered": "before_run"}
+{"ts": "2026-09-28T11:06:30Z", "event": "propose", "id": "s1-v2-tight-budget", "by": "claude-opus-5.5 (unattended session 2026-09-28)", "prediction_registered": "before_run"}
+{"ts": "2026-09-28T11:06:30Z", "event": "propose", "id": "s1-v3-short-shelf-life", "by": "claude-opus-5.5 (unattended session 2026-09-28)", "prediction_registered": "before_run"}
+{"ts": "2026-09-28T11:06:30Z", "event": "propose", "id": "s1-v4-low-exposure", "by": "claude-opus-5.5 (unattended session 2026-09-28)", "prediction_registered": "before_run"}
+{"ts": "2026-09-28T11:06:30Z", "event": "propose", "id": "s1-v5-ocean-delay-2026", "by": "claude-opus-5.5 (unattended session 2026-09-28)", "prediction_registered": "before_run"}
+{"ts": "2026-09-28T11:06:30Z", "event": "propose", "id": "s2-base", "by": "claude-opus-5.5 (unattended session 2026-09-28)", "prediction_registered": "after_observation"}
+{"ts": "2026-09-28T11:06:30Z", "event": "propose", "id": "s2-v1-site-delay", "by": "claude-opus-5.5 (unattended session 2026-09-28)", "prediction_registered": "before_run"}
+{"ts": "2026-09-28T11:06:30Z", "event": "propose", "id": "s2-v2-moq-above-need", "by": "claude-opus-5.5 (unattended session 2026-09-28)", "prediction_registered": "before_run"}
+{"ts": "2026-09-28T11:06:30Z", "event": "propose", "id": "s2-v3-short-shelf-d", "by": "claude-opus-5.5 (unattended session 2026-09-28)", "prediction_registered": "before_run"}
+{"ts": "2026-09-28T11:06:30Z", "event": "propose", "id": "s2-v4-budget-cut", "by": "claude-opus-5.5 (unattended session 2026-09-28)", "prediction_registered": "before_run"}

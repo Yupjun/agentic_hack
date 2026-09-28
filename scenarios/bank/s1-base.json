@@ -1,0 +1,47 @@
+{
+ "id": "s1-base",
+ "version": 1,
+ "by": "claude-opus-5.5 (unattended session 2026-09-28)",
+ "ts": "2026-09-28T11:06:30Z",
+ "status": "provisional",
+ "family": "S1",
+ "base": "s1_base.json",
+ "seed": 0,
+ "generator_params": {},
+ "rationale": "Base mode choice: 100 units of a 2-8C product from A to B in 40 days on a 60,000 USD budget. Ocean is cheapest but its only feasible sailing leaves 1.7 days of slack, so under realistic ocean delays it is late most of the time; sea-air via DXB costs more and is almost always on time.",
+ "falsifier": "Refuted if the cost-optimal plan is not ocean-only, or if its on-time probability is 0.5 or higher, or if the risk-adjusted plan is the cost-optimal plan.",
+ "expected": [
+  {
+   "metric": "status",
+   "op": "==",
+   "value": "ok"
+  },
+  {
+   "metric": "derived.cost_optimal.route_classes",
+   "op": "==",
+   "value": [
+    "ocean"
+   ]
+  },
+  {
+   "metric": "plans.cost_optimal.mc.p_all_on_time",
+   "op": "<",
+   "value": 0.5
+  },
+  {
+   "metric": "derived.risk_adjusted.route_classes",
+   "op": "==",
+   "value": [
+    "sea-air"
+   ]
+  },
+  {
+   "metric": "derived.time_optimal.route_classes",
+   "op": "==",
+   "value": [
+    "air"
+   ]
+  }
+ ],
+ "prediction_registered": "after_observation"
+}

@@ -1,0 +1,39 @@
+{
+ "id": "s2-v1-site-delay",
+ "version": 1,
+ "by": "claude-opus-5.5 (unattended session 2026-09-28)",
+ "ts": "2026-09-28T11:06:30Z",
+ "status": "provisional",
+ "family": "S2",
+ "base": "s2_base.json",
+ "seed": 0,
+ "generator_params": {
+  "lead_time_add_days": {
+   "c": 10,
+   "d": 10
+  }
+ },
+ "rationale": "Site A3 runs 10 days late on every option: material c standard lead time becomes 38 days, longer than the 33 days to batch B1, so c for B1 must be expedited. Cost rises by at least the 30% premium on c, to 202,000-215,000 USD.",
+ "falsifier": "Refuted if the cost-optimal plan does not expedite c, or its cost falls outside 202,000-215,000 USD.",
+ "expected": [
+  {
+   "metric": "status",
+   "op": "==",
+   "value": "ok"
+  },
+  {
+   "metric": "derived.cost_optimal.expedite_items",
+   "op": "contains",
+   "value": "c"
+  },
+  {
+   "metric": "plans.cost_optimal.cost_usd",
+   "op": "between",
+   "value": [
+    202000,
+    215000
+   ]
+  }
+ ],
+ "prediction_registered": "before_run"
+}
