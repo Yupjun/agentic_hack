@@ -324,3 +324,9 @@
 {"ts": "2026-09-28T12:20:10Z", "event": "scenario_run", "id": "s1-v3-short-shelf-life", "verdict": "supported", "passed": 3, "total": 3, "seconds": 30.2, "status": "ok"}
 {"ts": "2026-09-28T12:20:19Z", "event": "scenario_run", "id": "s1-v4-low-exposure", "verdict": "supported", "passed": 5, "total": 5, "seconds": 9.6, "status": "ok"}
 {"ts": "2026-09-28T12:20:51Z", "event": "scenario_run", "id": "s1-v5-ocean-delay-2026", "verdict": "supported", "passed": 3, "total": 3, "seconds": 31.4, "status": "ok"}
+{"ts": "2026-09-28T12:26:50Z", "event": "tool_call", "tool": "make_spec", "args": ["s1_base", "{not json"], "kwargs": {}, "seconds": 0.0, "result_chars": 113, "error": "params_json is not JSON: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)", "session": ""}
+{"ts": "2026-09-28T12:26:50Z", "event": "agent_make_spec", "spec_id": "test-impossible", "base": "s1_base", "params": {"due_days": 1}, "problems": ["reach: demand B-C-100 due day 1.0 but earliest possible arrival is day 2.7"]}
+{"ts": "2026-09-28T12:26:50Z", "event": "tool_call", "tool": "make_spec", "args": ["s1_base", "{\"due_days\": 1}", "test-impossible"], "kwargs": {}, "seconds": 0.001, "result_chars": 416, "error": null, "session": ""}
+{"ts": "2026-09-28T12:26:50Z", "event": "tool_call", "tool": "make_spec", "args": ["nope", "{}"], "kwargs": {}, "seconds": 0.0, "result_chars": 65, "error": "unknown base 'nope'", "session": ""}
+{"ts": "2026-09-28T12:26:50Z", "event": "tool_call", "tool": "solve_plan", "args": ["does-not-exist"], "kwargs": {}, "seconds": 0.0, "result_chars": 64, "error": "no spec 'does-not-exist'; create one with make_spec", "session": ""}
+{"ts": "2026-09-28T12:26:50Z", "event": "tool_call", "tool": "plan_details", "args": ["does-not-exist", "balanced"], "kwargs": {}, "seconds": 0.0, "result_chars": 36, "error": "no run 'does-not-exist'", "session": ""}

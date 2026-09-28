@@ -1,0 +1,15 @@
+{
+ "model": "nvidia/nemotron-3-super-120b-a12b",
+ "scored": 40,
+ "answered": 29,
+ "correct": 28,
+ "valid_json": 29,
+ "applicable": 29,
+ "wrong_examples": [
+  {
+   "idx": 253,
+   "response": "{\"base\":\"s1_base\",\"params\":{\"due_days\":40,\"budget_usd\":60000,\"shelf_life_days\":{\"C\":100},\"allowed_modes\":[\"truck\",\"air\",\"ocean\"]}}"
+  }
+ ],
+ "note": "run stopped at 40/281 problems because build.nvidia.com rate limits (429/503) made it take ~2 h; answered-only accuracy"
+}

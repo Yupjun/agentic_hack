@@ -24,7 +24,7 @@ SYSTEM = ("You translate an order-and-transport planning request into JSON {\"ba
           "allowed_modes: [truck|parcel|air|ocean] (the modes still allowed); delay_mean_days: {mode: days}; "
           "lead_time_add_days: {material: days} (a late site delays every material it makes); moq: {material: n}; "
           "capacity_per_week: {material: n}; batch_shift_days: int (S2, negative = earlier). "
-          "s1_base: move 100 units of product C from site A to warehouse B (default 40 days, 60,000 USD). "
+          "s1_base: move 100 units of product C from site A to warehouse B (defaults: due 2026-11-10T18:00Z = 40.75 days, budget 60,000 USD; restating a default changes nothing only if exact). "
           "s2_base: materials a (made only at site A1), b (A2), c and d (A3) for three batches at site AA (default 250,000 USD).")
 SITE_ITEMS = {"A1": ["a"], "A2": ["b"], "A3": ["c", "d"]}
 MODES_KO = {"ocean": "해상", "air": "항공", "parcel": "택배", "truck": "트럭"}

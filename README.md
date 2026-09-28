@@ -39,7 +39,7 @@ NVIDIA key in `~/.config/nvidia/env` (`export NVIDIA_API_KEY=...`; never committ
 .venv/bin/python -m eval.agent_eval                                        # six goals, checked against the bank
 .venv/bin/nel eval run nemo/eval_super.yaml                               # NeMo Evaluator spec-writer benchmark
 CUDA_VISIBLE_DEVICES= .venv/bin/python -m nemo.curate                      # NeMo Curator pipeline (CPU)
-.venv/bin/python -m unittest discover -s tests                             # grammar, verify, engine, guardrails, tools
+.venv/bin/python -m unittest discover -s tests -t .                        # 18 tests: grammar, verify, engine, guardrails, tools
 ```
 
 ## Layout
