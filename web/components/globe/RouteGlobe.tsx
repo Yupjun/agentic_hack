@@ -3,7 +3,8 @@
 // Globe rendering adapted from the earlier cold-chain globe (deck.gl _GlobeView, paper globe, night
 // hemisphere from the sun position, great-circle legs split at the antimeridian). New here: multi-leg
 // routes per order, a time cursor that can be played, and per-shipment state at that time.
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import NodeLabels, { nodeEvents } from "./NodeLabels";
 import DeckGL from "@deck.gl/react";
 import { _GlobeView as GlobeMapView, COORDINATE_SYSTEM } from "@deck.gl/core";
 import { GeoJsonLayer, PathLayer, ScatterplotLayer } from "@deck.gl/layers";
@@ -148,17 +149,28 @@ export default function RouteGlobe({ ships, nodes, dues }: { ships: Ship[]; node
   const counts = states.reduce((m: Record<string, number>, s) => ((m[s.phase] = (m[s.phase] ?? 0) + 1), m), {});
   const upcoming = states.filter((s) => s.next).sort((x, y) => x.next!.t - y.next!.t).slice(0, 5);
   const shipsById = new Map(ships.map((s) => [s.id, s]));
+  const events = useMemo(() => nodeEvents(ships), [ships]);
+  const firstDue = dues.length ? Math.min(...dues.map((d) => new Date(d.due).getTime())) : null;
+  const boxRef = useRef<HTMLDivElement>(null);
+  const [size, setSize] = useState({ w: 0, h: 0 });
+  useEffect(() => {
+    const el = boxRef.current; if (!el) return;
+    const ro = new ResizeObserver(() => setSize({ w: el.clientWidth, h: el.clientHeight }));
+    ro.observe(el); setSize({ w: el.clientWidth, h: el.clientHeight });
+    return () => ro.disconnect();
+  }, []);
 
   return (
     <div className="grid grid-cols-1 gap-4 xl:grid-cols-[1fr_420px]">
       <div>
-        <div className="sheet relative h-[560px] overflow-hidden">
+        <div ref={boxRef} className="sheet relative h-[560px] overflow-hidden">
           <DeckGL views={new GlobeMapView()} viewState={view} controller={true} onViewStateChange={(e: Any) => setView(e.viewState)} layers={layers}
             onError={(e: Any, layer: Any) => console.error("deck layer error", layer?.id, String(e))}
             getTooltip={(info: Any) => { const o = info.object; if (!o) return null;
               if (o.name) return { text: `${o.id} — ${o.name}` };
               if (o.text) { const sh = shipsById.get(o.id); return { text: `${sh?.item} × ${sh?.qty}: ${o.text}${o.next ? `\nnext: ${o.next.label} ${fmt(o.next.t)}` : ""}` }; }
               return null; }} />
+          <NodeLabels width={size.w} height={size.h} view={view} nodes={nodes} events={events} ships={ships} t={t} sel={sel} due={firstDue} />
           <div className="pointer-events-none absolute left-4 top-3 bg-sheet px-2 py-1 font-mono text-body">{fmt(t)}</div>
         </div>
         <div className="mt-3 flex flex-wrap items-center gap-3">

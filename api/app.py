@@ -31,6 +31,9 @@ try:
 except ImportError:
     pass
 
+from api.dag import router as dag  # noqa: E402
+app.include_router(dag)
+
 
 @app.get("/api/health")
 def health():

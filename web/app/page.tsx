@@ -23,7 +23,7 @@ export default async function Page() {
     <div className="space-y-6">
       <div>
         <div className="kicker">order &amp; transport planning agent</div>
-        <h1 className="text-h1 font-semibold">목표를 받으면 계획을 스펙으로 만들고, 풀고, 검증된 안만 제안한다<span className="text-cobalt">.</span></h1>
+        <h1 className="text-h1 font-semibold">저희 서비스는 파라미터화할 수 있는 스펙으로 가설을 재정의한 후 실행하고 결과를 공유합니다<span className="text-cobalt">.</span></h1>
       </div>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
         <BigStat label="scenarios supported" value={`${o.supported}/${o.judged}`} sub={`${o.pre_registered} pre-registered before run`} tone="green" />

@@ -1,0 +1,163 @@
+{
+ "spec": "dag/v1",
+ "id": "p1-transport",
+ "title": "P1 · 완제품 C 100개를 A에서 B로",
+ "hypothesis": "가장 싼 해상 운송은 기한(40일) 안에 도착하지만 리드타임 분포 꼬리 때문에 정시 확률이 낮고, sea-air가 비용과 정시 확률의 절충점이다.",
+ "objective": "balanced",
+ "demand": {
+  "qty": 100,
+  "unit": "units",
+  "deadline_days": 40,
+  "budget_usd": 60000,
+  "product_age_at_start_days": 21,
+  "shelf_life_days": 180,
+  "min_remaining_pct_at_delivery": 60
+ },
+ "inventory": {
+  "mos_target_months": 0,
+  "monthly_usage": 0,
+  "on_hand": 0
+ },
+ "uncertainty": {
+  "n_samples": 3000,
+  "seed": 7,
+  "late_penalty_usd_per_day": 6000
+ },
+ "steps": [
+  {
+   "id": "st1",
+   "name": "출고 준비",
+   "nodes": [
+    {
+     "id": "pack",
+     "task": "콜드체인 포장·출고 (Plant A)",
+     "qty_per_unit": 1,
+     "after": [],
+     "options": [
+      {
+       "id": "pack-A",
+       "supplier": "Plant A 출하장",
+       "site": "A",
+       "lat": 37.46,
+       "lon": 126.44,
+       "capacity_per_day": 200,
+       "lead_time_days": {
+        "min": 0.5,
+        "likely": 1,
+        "max": 2
+       },
+       "unit_cost_usd": 4,
+       "fixed_cost_usd": 300,
+       "moq": 0,
+       "lot_size": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "st2",
+   "name": "간선 운송",
+   "nodes": [
+    {
+     "id": "line",
+     "task": "A → 유럽 간선",
+     "qty_per_unit": 1,
+     "after": [
+      "pack"
+     ],
+     "options": [
+      {
+       "id": "ocean-RTM",
+       "supplier": "Reefer ocean via Cape (Busan→Rotterdam)",
+       "site": "PUS→RTM",
+       "lat": 35.08,
+       "lon": 128.83,
+       "capacity_per_day": 400,
+       "lead_time_days": {
+        "min": 33,
+        "likely": 35,
+        "max": 45
+       },
+       "unit_cost_usd": 11,
+       "fixed_cost_usd": 7800,
+       "moq": 0,
+       "lot_size": 1
+      },
+      {
+       "id": "seaair-DXB",
+       "supplier": "Sea-air via Dubai",
+       "site": "PUS→DXB→FRA",
+       "lat": 24.98,
+       "lon": 55.06,
+       "capacity_per_day": 400,
+       "lead_time_days": {
+        "min": 16,
+        "likely": 18,
+        "max": 24
+       },
+       "unit_cost_usd": 121,
+       "fixed_cost_usd": 9300,
+       "moq": 0,
+       "lot_size": 1
+      },
+      {
+       "id": "air-ICN",
+       "supplier": "Air, active container (ICN→FRA)",
+       "site": "ICN→FRA",
+       "lat": 37.46,
+       "lon": 126.44,
+       "capacity_per_day": 60,
+       "lead_time_days": {
+        "min": 1,
+        "likely": 2,
+        "max": 4
+       },
+       "unit_cost_usd": 265,
+       "fixed_cost_usd": 5000,
+       "moq": 0,
+       "lot_size": 1,
+       "expedite": {
+        "lead_time_cut_days": 1,
+        "premium_pct": 25
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "st3",
+   "name": "통관·배송",
+   "nodes": [
+    {
+     "id": "last",
+     "task": "통관·B 창고 배송",
+     "qty_per_unit": 1,
+     "after": [
+      "line"
+     ],
+     "options": [
+      {
+       "id": "truck-B",
+       "supplier": "Reefer truck to DC B",
+       "site": "B",
+       "lat": 50.1,
+       "lon": 8.7,
+       "capacity_per_day": 300,
+       "lead_time_days": {
+        "min": 0.5,
+        "likely": 1,
+        "max": 3
+       },
+       "unit_cost_usd": 4,
+       "fixed_cost_usd": 700,
+       "moq": 0,
+       "lot_size": 1
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

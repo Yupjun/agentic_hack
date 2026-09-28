@@ -1,0 +1,267 @@
+{
+ "spec": "dag/v1",
+ "id": "p2-production",
+ "title": "P2 · 원료 3종 → 중간체 → 완제 충전 → 포장·출하",
+ "hypothesis": "중간체 CMO 선택이 주공정을 결정한다. 원료 b는 유통기한이 짧아 너무 일찍 만들면 완제 충전 시점에 잔여 유통기한 조건을 못 지킨다. 급행은 주공정 노드에만 효과가 있다.",
+ "objective": "balanced",
+ "demand": {
+  "qty": 300,
+  "unit": "vials(kits)",
+  "deadline_days": 75,
+  "budget_usd": 420000,
+  "product_age_at_start_days": 0,
+  "min_remaining_pct_at_delivery": 0
+ },
+ "inventory": {
+  "mos_target_months": 1,
+  "monthly_usage": 120,
+  "on_hand": 40
+ },
+ "uncertainty": {
+  "n_samples": 3000,
+  "seed": 7,
+  "late_penalty_usd_per_day": 4000
+ },
+ "steps": [
+  {
+   "id": "st1",
+   "name": "원료 조달",
+   "nodes": [
+    {
+     "id": "a",
+     "task": "원료 a",
+     "qty_per_unit": 0.05,
+     "after": [],
+     "options": [
+      {
+       "id": "a-A1",
+       "supplier": "Site A1 (approved)",
+       "site": "A1",
+       "lat": 47.56,
+       "lon": 7.59,
+       "capacity_per_day": 4,
+       "lead_time_days": {
+        "min": 18,
+        "likely": 21,
+        "max": 30
+       },
+       "unit_cost_usd": 1200,
+       "fixed_cost_usd": 300,
+       "moq": 8,
+       "lot_size": 1,
+       "expedite": {
+        "lead_time_cut_days": 10,
+        "premium_pct": 35
+       }
+      }
+     ]
+    },
+    {
+     "id": "b",
+     "task": "원료 b (냉장, 유통기한 90일, 사용 시 50% 이상)",
+     "qty_per_unit": 0.1,
+     "after": [],
+     "options": [
+      {
+       "id": "b-A2",
+       "supplier": "Site A2 (approved)",
+       "site": "A2",
+       "lat": 51.9,
+       "lon": -8.47,
+       "capacity_per_day": 6,
+       "lead_time_days": {
+        "min": 10,
+        "likely": 14,
+        "max": 20
+       },
+       "unit_cost_usd": 2600,
+       "fixed_cost_usd": 250,
+       "moq": 10,
+       "lot_size": 1,
+       "shelf_life_days": 90,
+       "min_remaining_pct": 50,
+       "expedite": {
+        "lead_time_cut_days": 7,
+        "premium_pct": 40
+       }
+      }
+     ]
+    },
+    {
+     "id": "c",
+     "task": "원료 c",
+     "qty_per_unit": 0.02,
+     "after": [],
+     "options": [
+      {
+       "id": "c-A3",
+       "supplier": "Site A3 (approved)",
+       "site": "A3",
+       "lat": 1.35,
+       "lon": 103.82,
+       "capacity_per_day": 2,
+       "lead_time_days": {
+        "min": 24,
+        "likely": 28,
+        "max": 40
+       },
+       "unit_cost_usd": 4000,
+       "fixed_cost_usd": 200,
+       "moq": 5,
+       "lot_size": 1,
+       "expedite": {
+        "lead_time_cut_days": 14,
+        "premium_pct": 30
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "st2",
+   "name": "중간체 제조",
+   "nodes": [
+    {
+     "id": "mid",
+     "task": "중간체 합성",
+     "qty_per_unit": 1,
+     "after": [
+      "a",
+      "b",
+      "c"
+     ],
+     "options": [
+      {
+       "id": "mid-X",
+       "supplier": "CMO X (approved)",
+       "site": "X",
+       "lat": 35.1,
+       "lon": 129.0,
+       "capacity_per_day": 30,
+       "lead_time_days": {
+        "min": 8,
+        "likely": 10,
+        "max": 16
+       },
+       "unit_cost_usd": 90,
+       "fixed_cost_usd": 15000,
+       "moq": 0,
+       "lot_size": 50,
+       "expedite": {
+        "lead_time_cut_days": 4,
+        "premium_pct": 30
+       }
+      },
+      {
+       "id": "mid-Y",
+       "supplier": "CMO Y (approved)",
+       "site": "Y",
+       "lat": 31.2,
+       "lon": 121.5,
+       "capacity_per_day": 15,
+       "lead_time_days": {
+        "min": 5,
+        "likely": 7,
+        "max": 9
+       },
+       "unit_cost_usd": 120,
+       "fixed_cost_usd": 12000,
+       "moq": 0,
+       "lot_size": 50
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "st3",
+   "name": "완제 충전",
+   "nodes": [
+    {
+     "id": "fill",
+     "task": "충전·검사 (Site AA)",
+     "qty_per_unit": 1,
+     "after": [
+      "mid"
+     ],
+     "options": [
+      {
+       "id": "fill-AA",
+       "supplier": "Site AA",
+       "site": "AA",
+       "lat": 37.39,
+       "lon": 126.64,
+       "capacity_per_day": 40,
+       "lead_time_days": {
+        "min": 5,
+        "likely": 6,
+        "max": 10
+       },
+       "unit_cost_usd": 150,
+       "fixed_cost_usd": 20000,
+       "moq": 0,
+       "lot_size": 100,
+       "expedite": {
+        "lead_time_cut_days": 2,
+        "premium_pct": 20
+       },
+       "shelf_life_days": 365,
+       "min_remaining_pct": 70
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "st4",
+   "name": "포장·출하",
+   "nodes": [
+    {
+     "id": "pkg",
+     "task": "포장·출하",
+     "qty_per_unit": 1,
+     "after": [
+      "fill"
+     ],
+     "options": [
+      {
+       "id": "pkg-P1",
+       "supplier": "Packager P1 (approved)",
+       "site": "P1",
+       "lat": 37.5,
+       "lon": 127.0,
+       "capacity_per_day": 60,
+       "lead_time_days": {
+        "min": 2,
+        "likely": 3,
+        "max": 5
+       },
+       "unit_cost_usd": 12,
+       "fixed_cost_usd": 3000,
+       "moq": 0,
+       "lot_size": 1
+      },
+      {
+       "id": "pkg-P2",
+       "supplier": "Packager P2 (approved)",
+       "site": "P2",
+       "lat": 35.2,
+       "lon": 129.1,
+       "capacity_per_day": 120,
+       "lead_time_days": {
+        "min": 3,
+        "likely": 4,
+        "max": 6
+       },
+       "unit_cost_usd": 9,
+       "fixed_cost_usd": 4500,
+       "moq": 0,
+       "lot_size": 1
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
