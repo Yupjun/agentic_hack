@@ -1,0 +1,13 @@
+{
+ "default_rate_per_kg_usd": {
+  "air": 2.5,
+  "truck": 0.3,
+  "ocean": 0.12
+ },
+ "handling_per_awb_usd": {
+  "air": 45,
+  "truck": 25,
+  "ocean": 60
+ },
+ "note": "synthetic hackathon rates; not any carrier's tariff"
+}

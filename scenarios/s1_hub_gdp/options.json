@@ -1,0 +1,132 @@
+[
+ {
+  "id": "KAL251-0929",
+  "mode": "air",
+  "origin": "JFK",
+  "dest": "LHR",
+  "depart": "2026-09-29T22:50:00",
+  "arrive": "2026-09-30T05:50:00",
+  "capacity_kg": 4200,
+  "rate_per_kg_usd": 2.1
+ },
+ {
+  "id": "BAW174-0929",
+  "mode": "air",
+  "origin": "JFK",
+  "dest": "LHR",
+  "depart": "2026-09-30T01:05:00",
+  "arrive": "2026-09-30T08:05:00",
+  "capacity_kg": 3800,
+  "rate_per_kg_usd": 2.25
+ },
+ {
+  "id": "DLH405-0929",
+  "mode": "air",
+  "origin": "JFK",
+  "dest": "FRA",
+  "depart": "2026-09-30T01:40:00",
+  "arrive": "2026-09-30T09:40:00",
+  "capacity_kg": 5000,
+  "rate_per_kg_usd": 1.95
+ },
+ {
+  "id": "BAW112-0929",
+  "mode": "air",
+  "origin": "JFK",
+  "dest": "LHR",
+  "depart": "2026-09-30T02:00:00",
+  "arrive": "2026-09-30T09:00:00",
+  "capacity_kg": 1500,
+  "rate_per_kg_usd": 3.4
+ },
+ {
+  "id": "VIR004-0930",
+  "mode": "air",
+  "origin": "JFK",
+  "dest": "LHR",
+  "depart": "2026-09-30T08:00:00",
+  "arrive": "2026-09-30T15:00:00",
+  "capacity_kg": 6000,
+  "rate_per_kg_usd": 2.6
+ },
+ {
+  "id": "UAE202-0929",
+  "mode": "air",
+  "origin": "JFK",
+  "dest": "DXB",
+  "depart": "2026-09-30T00:00:00",
+  "arrive": "2026-09-30T13:00:00",
+  "capacity_kg": 9000,
+  "rate_per_kg_usd": 1.8
+ },
+ {
+  "id": "TRK-JFK-EWR",
+  "mode": "truck",
+  "origin": "JFK",
+  "dest": "EWR",
+  "depart": "2026-09-29T14:00:00",
+  "arrive": "2026-09-29T16:00:00",
+  "capacity_kg": 20000,
+  "rate_per_kg_usd": 0.08
+ },
+ {
+  "id": "UAL16-0929",
+  "mode": "air",
+  "origin": "EWR",
+  "dest": "LHR",
+  "depart": "2026-09-29T21:00:00",
+  "arrive": "2026-09-30T04:00:00",
+  "capacity_kg": 2600,
+  "rate_per_kg_usd": 2.35
+ },
+ {
+  "id": "BAW188-0929",
+  "mode": "air",
+  "origin": "EWR",
+  "dest": "LHR",
+  "depart": "2026-09-30T01:00:00",
+  "arrive": "2026-09-30T08:00:00",
+  "capacity_kg": 2200,
+  "rate_per_kg_usd": 2.55
+ },
+ {
+  "id": "TRK-JFK-BOS",
+  "mode": "truck",
+  "origin": "JFK",
+  "dest": "BOS",
+  "depart": "2026-09-29T14:00:00",
+  "arrive": "2026-09-29T19:00:00",
+  "capacity_kg": 20000,
+  "rate_per_kg_usd": 0.22
+ },
+ {
+  "id": "BAW214-0929",
+  "mode": "air",
+  "origin": "BOS",
+  "dest": "LHR",
+  "depart": "2026-09-29T23:00:00",
+  "arrive": "2026-09-30T06:00:00",
+  "capacity_kg": 3000,
+  "rate_per_kg_usd": 2.4
+ },
+ {
+  "id": "TRK-FRA-LHR",
+  "mode": "truck",
+  "origin": "FRA",
+  "dest": "LHR",
+  "depart": "2026-09-30T10:00:00",
+  "arrive": "2026-09-30T22:00:00",
+  "capacity_kg": 20000,
+  "rate_per_kg_usd": 0.35
+ },
+ {
+  "id": "BAW903-0930",
+  "mode": "air",
+  "origin": "FRA",
+  "dest": "LHR",
+  "depart": "2026-09-30T12:00:00",
+  "arrive": "2026-09-30T14:00:00",
+  "capacity_kg": 1200,
+  "rate_per_kg_usd": 1.6
+ }
+]

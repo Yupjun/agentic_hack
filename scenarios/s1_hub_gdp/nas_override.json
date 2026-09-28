@@ -1,0 +1,20 @@
+{
+ "gdp": [
+  {
+   "airport": "JFK",
+   "reason": "!FLOW JFK GDP: LOW CEILINGS / WIND \u2014 PROGRAM RATE 30 (synthetic demo entry)",
+   "avg_delay": "2 hours and 50 minutes",
+   "max_delay": "4 hours and 10 minutes"
+  }
+ ],
+ "delays": [
+  {
+   "airport": "JFK",
+   "kind": "General Departure Delays",
+   "reason": "WX:LOW CIGS (synthetic demo entry)",
+   "min_delay": "1 hour",
+   "max_delay": "3 hours",
+   "trend": "Increasing"
+  }
+ ]
+}

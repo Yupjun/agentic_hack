@@ -1,0 +1,46 @@
+INFO:     Started server process [1317496]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8090 (Press CTRL+C to quit)
+INFO:     127.0.0.1:48300 - "POST /allocate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48304 - "POST /allocate HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:52624 - "GET /nas?airport=KJFK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52636 - "GET /nas?airport=KJFK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41846 - "GET /schedule?dest=LHR&origin=JFK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52640 - "GET /wx?icao=KJFK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41852 - "GET /wx?icao=KJFK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40078 - "GET /schedule?origin=JFK&dest=EWR HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40086 - "GET /schedule?dest=EGLL&mode=air&origin=KJFK HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40098 - "GET /schedule?origin=EWR&dest=LHR HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40102 - "GET /schedule?dest=PHL&origin=JFK HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40104 - "GET /schedule?dest=FRA&origin=JFK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40114 - "GET /schedule?dest=LHR&mode=air&origin=KJFK HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40128 - "GET /schedule?dest=LHR&origin=FRA HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50552 - "GET /schedule?origin=KJFK HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46232 - "GET /schedule?mode=air&dest=EWR&origin=KJFK HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46244 - "GET /schedule?origin=KJFK HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53362 - "POST /cost HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53364 - "GET /nas?airport=JFK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53378 - "GET /wx?icao=KJFK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44806 - "GET /schedule?origin=JFK&dest=LHR&not_before=2026-09-28T00%3A00%3A00Z HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44810 - "GET /schedule?origin=JFK&dest=FRA&not_before=2026-09-28T00%3A00%3A00Z HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44812 - "GET /schedule?origin=JFK&not_before=2026-09-28T00%3A00%3A00Z HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48036 - "GET /schedule?origin=FRA&dest=LHR&not_before=2026-09-28T00%3A00%3A00Z HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48042 - "GET /schedule?origin=EWR&dest=LHR&not_before=2026-09-28T00%3A00%3A00Z HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57198 - "GET /schedule?origin=BOS&dest=LHR&not_before=2026-09-28T00%3A00%3A00Z HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57210 - "POST /allocate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57224 - "GET /flight?callsign=KAL251 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57236 - "GET /flight?callsign=BAW174 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54030 - "GET /flight?callsign=DLH405 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44434 - "POST /cost HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59344 - "POST /allocate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60382 - "POST /cost HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58462 - "POST /cost HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:34576 - "GET /wx?icao=EGLL HTTP/1.1" 502 Bad Gateway
+INFO:     127.0.0.1:33464 - "POST /cost HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44426 - "GET /schedule?mode=air&origin=KJFK&dest=LHR&not_before=2026-09-28T00%3A00%3A00Z HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44434 - "GET /schedule?dest=EWR&origin=KJFK&mode=truck HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45328 - "GET /schedule?origin=KJFK HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44974 - "POST /cost HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40676 - "POST /cost HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41022 - "POST /cost HTTP/1.1" 200 OK

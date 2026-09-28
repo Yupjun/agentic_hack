@@ -1,0 +1,99 @@
+[
+ {
+  "name": "do_nothing",
+  "total_usd": 49440.0,
+  "final_arrival": "2026-09-30T22:00:00",
+  "meets_cutoff": false,
+  "slack_hours": -4.0,
+  "plan": [
+   "KAL251-0929",
+   "BAW174-0929",
+   "DLH405-0929",
+   "TRK-FRA-LHR"
+  ]
+ },
+ {
+  "name": "rule_split_greedy",
+  "total_usd": 72938.0,
+  "final_arrival": "2026-09-30T15:00:00",
+  "meets_cutoff": true,
+  "slack_hours": 3.0,
+  "plan": [
+   [
+    "KAL251",
+    2600,
+    [
+     "TRK-JFK-EWR",
+     "UAL16-0929"
+    ]
+   ],
+   [
+    "KAL251",
+    4200,
+    [
+     "KAL251-0929"
+    ]
+   ],
+   [
+    "KAL251",
+    120,
+    [
+     "TRK-JFK-BOS",
+     "BAW214-0929"
+    ]
+   ],
+   [
+    "DLH405",
+    2880,
+    [
+     "TRK-JFK-BOS",
+     "BAW214-0929"
+    ]
+   ],
+   [
+    "DLH405",
+    2200,
+    [
+     "TRK-JFK-EWR",
+     "BAW188-0929"
+    ]
+   ],
+   [
+    "DLH405",
+    1680,
+    [
+     "BAW174-0929"
+    ]
+   ],
+   [
+    "BAW174",
+    2120,
+    [
+     "BAW174-0929"
+    ]
+   ],
+   [
+    "BAW174",
+    1500,
+    [
+     "BAW112-0929"
+    ]
+   ],
+   [
+    "BAW174",
+    1200,
+    [
+     "DLH405-0929",
+     "BAW903-0930"
+    ]
+   ],
+   [
+    "BAW174",
+    940,
+    [
+     "VIR004-0930"
+    ]
+   ]
+  ]
+ }
+]

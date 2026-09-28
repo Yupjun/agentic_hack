@@ -1,0 +1,3 @@
+logs/*.jsonl
+__pycache__/
+.env
