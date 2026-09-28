@@ -5,11 +5,11 @@ p_on_time = probability every demand is met by its due date; mean cost includes 
 
 | scenario | verdict | plan | cost USD | min slack d | verify | p_on_time | mean cost USD | left over | routes | expedite |
 |---|---|---|---|---|---|---|---|---|---|---|
-| s1-base | supported 5/5 (post-hoc) | cost_optimal | 8,900 | 1.70 | ok | 0.306 | 53,706 | 0 | ocean | - |
+| s1-base | supported 5/5 (post-hoc) | cost_optimal | 8,900 | 1.70 | ok | 0.306 | 91,866 | 0 | ocean | - |
 |  |  | risk_adjusted | 21,400 | 15.20 | ok | 0.999 | 21,411 | 0 | sea-air | - |
 |  |  | balanced | 21,400 | 15.20 | ok | 0.999 | 21,411 | 0 | sea-air | - |
 |  |  | time_optimal | 25,100 | 33.20 | ok | 1.000 | 25,100 | 0 | air | - |
-|  |  | rule_cheapest | 8,900 | 1.70 | ok | 0.306 | 53,706 | 0 | ocean | - |
+|  |  | rule_cheapest | 8,900 | 1.70 | ok | 0.306 | 91,866 | 0 | ocean | - |
 |  |  | rule_fastest | 28,700 | 36.70 | ok | 1.000 | 28,700 | 0 | air | - |
 | s1-v1-tight-deadline | supported 4/4 | cost_optimal | 25,100 | 4.95 | ok | 1.000 | 25,100 | 0 | air | - |
 |  |  | risk_adjusted | 25,100 | 4.95 | ok | 1.000 | 25,100 | 0 | air | - |
@@ -17,29 +17,29 @@ p_on_time = probability every demand is met by its due date; mean cost includes 
 |  |  | time_optimal | 28,400 | 6.95 | ok | 1.000 | 28,400 | 0 | air | - |
 |  |  | rule_cheapest | 25,100 | 4.95 | ok | 1.000 | 25,100 | 0 | air | - |
 |  |  | rule_fastest | 28,700 | 6.95 | ok | 1.000 | 28,700 | 0 | air | - |
-| s1-v2-tight-budget | supported 4/4 | cost_optimal | 8,900 | 1.70 | ok | 0.306 | 53,706 | 0 | ocean | - |
-|  |  | risk_adjusted | 8,900 | 1.70 | ok | 0.306 | 53,706 | 0 | ocean | - |
-|  |  | balanced | 8,900 | 1.70 | ok | 0.306 | 53,706 | 0 | ocean | - |
-|  |  | time_optimal | 8,900 | 1.70 | ok | 0.306 | 53,706 | 0 | ocean | - |
-|  |  | rule_cheapest | 8,900 | 1.70 | ok | 0.306 | 53,706 | 0 | ocean | - |
+| s1-v2-tight-budget | supported 4/4 | cost_optimal | 8,900 | 1.70 | ok | 0.306 | 91,866 | 0 | ocean | - |
+|  |  | risk_adjusted | 8,900 | 1.70 | ok | 0.306 | 91,866 | 0 | ocean | - |
+|  |  | balanced | 8,900 | 1.70 | ok | 0.306 | 91,866 | 0 | ocean | - |
+|  |  | time_optimal | 8,900 | 1.70 | ok | 0.306 | 91,866 | 0 | ocean | - |
+|  |  | rule_cheapest | 8,900 | 1.70 | ok | 0.306 | 91,866 | 0 | ocean | - |
 |  |  | rule_fastest | 28,700 | 36.70 | FAIL | 1.000 | 28,700 | 0 | air | - |
-| s1-v3-short-shelf-life | supported 3/3 | cost_optimal | 21,400 | 15.70 | ok | 0.999 | 21,411 | 0 | sea-air | - |
-|  |  | risk_adjusted | 21,400 | 15.70 | ok | 0.999 | 21,411 | 0 | sea-air | - |
-|  |  | balanced | 21,400 | 15.70 | ok | 0.999 | 21,411 | 0 | sea-air | - |
+| s1-v3-short-shelf-life | supported 3/3 | cost_optimal | 21,400 | 15.70 | ok | 0.999 | 514,611 | 0 | sea-air | - |
+|  |  | risk_adjusted | 25,100 | 33.20 | ok | 1.000 | 25,100 | 0 | air | - |
+|  |  | balanced | 25,100 | 33.20 | ok | 1.000 | 25,100 | 0 | air | - |
 |  |  | time_optimal | 25,100 | 33.20 | ok | 1.000 | 25,100 | 0 | air | - |
-|  |  | rule_cheapest | 21,400 | 15.70 | ok | 0.999 | 21,411 | 0 | sea-air | - |
+|  |  | rule_cheapest | 21,400 | 15.70 | ok | 0.999 | 514,611 | 0 | sea-air | - |
 |  |  | rule_fastest | 28,700 | 36.70 | ok | 1.000 | 28,700 | 0 | air | - |
-| s1-v4-low-exposure | supported 5/5 | cost_optimal | 8,900 | 1.70 | ok | 0.306 | 53,706 | 0 | ocean | - |
+| s1-v4-low-exposure | supported 5/5 | cost_optimal | 8,900 | 1.70 | ok | 0.306 | 91,866 | 0 | ocean | - |
 |  |  | risk_adjusted | 32,900 | 33.20 | ok | 1.000 | 32,900 | 0 | air | - |
 |  |  | balanced | 32,900 | 33.20 | ok | 1.000 | 32,900 | 0 | air | - |
 |  |  | time_optimal | 32,900 | 33.20 | ok | 1.000 | 32,900 | 0 | air | - |
-|  |  | rule_cheapest | 8,900 | 1.70 | ok | 0.306 | 53,706 | 0 | ocean | - |
+|  |  | rule_cheapest | 8,900 | 1.70 | ok | 0.306 | 91,866 | 0 | ocean | - |
 |  |  | rule_fastest | 32,900 | 35.20 | ok | 1.000 | 32,900 | 0 | air | - |
-| s1-v5-ocean-delay-2026 | supported 3/3 | cost_optimal | 8,900 | 1.70 | ok | 0.104 | 89,896 | 0 | ocean | - |
+| s1-v5-ocean-delay-2026 | supported 3/3 | cost_optimal | 8,900 | 1.70 | ok | 0.104 | 212,026 | 0 | ocean | - |
 |  |  | risk_adjusted | 21,400 | 15.20 | ok | 0.990 | 21,504 | 0 | sea-air | - |
 |  |  | balanced | 21,400 | 15.20 | ok | 0.990 | 21,504 | 0 | sea-air | - |
 |  |  | time_optimal | 25,100 | 33.20 | ok | 1.000 | 25,100 | 0 | air | - |
-|  |  | rule_cheapest | 8,900 | 1.70 | ok | 0.104 | 89,896 | 0 | ocean | - |
+|  |  | rule_cheapest | 8,900 | 1.70 | ok | 0.104 | 212,026 | 0 | ocean | - |
 |  |  | rule_fastest | 28,700 | 36.70 | ok | 1.000 | 28,700 | 0 | air | - |
 | s2-base | supported 4/4 (post-hoc) | cost_optimal | 200,131 | 2.05 | ok | 0.804 | 200,550 | 0 | air | - |
 |  |  | risk_adjusted | 200,331 | 3.05 | ok | 0.998 | 200,332 | 0 | air | - |

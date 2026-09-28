@@ -6,3 +6,7 @@ logs/nat/
 logs/*.out
 dev/logs/
 agent/nat_planner/*.egg-info/
+web/node_modules/
+web/.next/
+nemo/eval-out/
+nemo/data/curated/

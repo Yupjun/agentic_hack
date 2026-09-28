@@ -1,0 +1,1797 @@
+{
+ "result": "plan-result/v1",
+ "spec_id": "s2_base-agent-1790595991",
+ "family": "S2",
+ "spec_hash": "de1a2d65b12728bd",
+ "backend": "highs",
+ "structure_key": "e5aafc79a9bb96f4",
+ "n_candidates": 752,
+ "n_demands": 14,
+ "notes": [],
+ "frontier": [
+  {
+   "slack_required": 0.0,
+   "status": "optimal",
+   "backend": "highs",
+   "seconds": 6.009,
+   "gap_rel": null,
+   "cost_usd": 200131.0,
+   "verify_ok": true,
+   "verify_problems": [],
+   "metrics": {
+    "cost_usd": 200131.0,
+    "units_shipped": 73,
+    "units_required": 73,
+    "units_left_over": 0.0,
+    "min_slack_days": 2.05,
+    "latest_arrival": "2026-12-14T22:48:00Z",
+    "shipments": 7,
+    "departures_used": 18
+   },
+   "mc": {
+    "n_samples": 10000,
+    "device": "cpu",
+    "seed": 7,
+    "seconds": 0.026,
+    "p_all_on_time": 0.8184,
+    "p_on_time_by_demand": {
+     "B1:a": 0.9931,
+     "B2:a": 1.0,
+     "B3:a": 1.0,
+     "safety:a": 1.0,
+     "B1:b": 0.8624,
+     "B2:b": 0.9998,
+     "B3:b": 1.0,
+     "B1:c": 0.9775,
+     "B2:c": 1.0,
+     "B3:c": 1.0,
+     "safety:c": 1.0,
+     "B1:d": 0.9785,
+     "B2:d": 1.0,
+     "B3:d": 1.0
+    },
+    "p_shelf_ok": 1.0,
+    "p_no_excursion": 0.8807,
+    "expected_late_unit_days": 0.768,
+    "cost_mean_usd": 200515.08,
+    "cost_p50_usd": 200131.0,
+    "cost_p95_usd": 202858.11,
+    "assumptions": "delay=max(0,N(mean,sd)) per leg by mode; missed connection waits for the next departure; later departures have unlimited capacity"
+   },
+   "dominated": false
+  },
+  {
+   "slack_required": 2.15,
+   "status": "optimal",
+   "backend": "highs",
+   "seconds": 3.866,
+   "gap_rel": null,
+   "cost_usd": 200331.0,
+   "verify_ok": true,
+   "verify_problems": [],
+   "metrics": {
+    "cost_usd": 200331.0,
+    "units_shipped": 73,
+    "units_required": 73,
+    "units_left_over": 0.0,
+    "min_slack_days": 3.05,
+    "latest_arrival": "2026-12-23T22:48:00Z",
+    "shipments": 7,
+    "departures_used": 19
+   },
+   "mc": {
+    "n_samples": 10000,
+    "device": "cpu",
+    "seed": 7,
+    "seconds": 0.024,
+    "p_all_on_time": 0.9977,
+    "p_on_time_by_demand": {
+     "B1:a": 1.0,
+     "B2:a": 1.0,
+     "B3:a": 1.0,
+     "safety:a": 1.0,
+     "B1:b": 1.0,
+     "B2:b": 1.0,
+     "B3:b": 1.0,
+     "B1:c": 0.999,
+     "B2:c": 1.0,
+     "B3:c": 1.0,
+     "safety:c": 1.0,
+     "B1:d": 0.9987,
+     "B2:d": 1.0,
+     "B3:d": 1.0
+    },
+    "p_shelf_ok": 1.0,
+    "p_no_excursion": 0.8807,
+    "expected_late_unit_days": 0.002,
+    "cost_mean_usd": 200332.0,
+    "cost_p50_usd": 200331.0,
+    "cost_p95_usd": 200331.0,
+    "assumptions": "delay=max(0,N(mean,sd)) per leg by mode; missed connection waits for the next departure; later departures have unlimited capacity"
+   },
+   "dominated": false
+  },
+  {
+   "slack_required": 4.3,
+   "status": "infeasible",
+   "backend": "highs",
+   "seconds": 2.377,
+   "gap_rel": null,
+   "reason": "solver status Infeasible"
+  },
+  {
+   "slack_required": 6.45,
+   "status": "infeasible",
+   "backend": "highs",
+   "seconds": 1.463,
+   "gap_rel": null,
+   "reason": "solver status Infeasible"
+  },
+  {
+   "slack_required": 8.6,
+   "status": "infeasible",
+   "backend": "highs",
+   "seconds": 0.482,
+   "gap_rel": null,
+   "reason": "solver status Infeasible"
+  },
+  {
+   "slack_required": 10.75,
+   "status": "infeasible",
+   "backend": "highs",
+   "seconds": 0.264,
+   "gap_rel": null,
+   "reason": "solver status Infeasible"
+  },
+  {
+   "slack_required": 12.9,
+   "status": "infeasible",
+   "backend": "highs",
+   "seconds": 0.259,
+   "gap_rel": null,
+   "reason": "solver status Infeasible"
+  },
+  {
+   "slack_required": 15.05,
+   "status": "infeasible",
+   "backend": "highs",
+   "seconds": 0.244,
+   "gap_rel": null,
+   "reason": "solver status Infeasible"
+  }
+ ],
+ "plans": {
+  "cost_optimal": {
+   "slack_required": 0.0,
+   "cost_usd": 200131.0,
+   "metrics": {
+    "cost_usd": 200131.0,
+    "units_shipped": 73,
+    "units_required": 73,
+    "units_left_over": 0.0,
+    "min_slack_days": 2.05,
+    "latest_arrival": "2026-12-14T22:48:00Z",
+    "shipments": 7,
+    "departures_used": 18
+   },
+   "mc": {
+    "n_samples": 10000,
+    "device": "cpu",
+    "seed": 7,
+    "seconds": 0.026,
+    "p_all_on_time": 0.8184,
+    "p_on_time_by_demand": {
+     "B1:a": 0.9931,
+     "B2:a": 1.0,
+     "B3:a": 1.0,
+     "safety:a": 1.0,
+     "B1:b": 0.8624,
+     "B2:b": 0.9998,
+     "B3:b": 1.0,
+     "B1:c": 0.9775,
+     "B2:c": 1.0,
+     "B3:c": 1.0,
+     "safety:c": 1.0,
+     "B1:d": 0.9785,
+     "B2:d": 1.0,
+     "B3:d": 1.0
+    },
+    "p_shelf_ok": 1.0,
+    "p_no_excursion": 0.8807,
+    "expected_late_unit_days": 0.768,
+    "cost_mean_usd": 200515.08,
+    "cost_p50_usd": 200131.0,
+    "cost_p95_usd": 202858.11,
+    "assumptions": "delay=max(0,N(mean,sd)) per leg by mode; missed connection waits for the next departure; later departures have unlimited capacity"
+   },
+   "verify_ok": true,
+   "shipments": [
+    {
+     "id": "S001",
+     "candidate": "prod:a:7.000:standard|T-A1-ZRH@28.250>AIR-ZRH-ICN@29.500>T-ICN-AA@30.750",
+     "item": "a",
+     "qty": 20,
+     "source": "prod:a:7.000:standard",
+     "option": "standard",
+     "mfg": "2026-10-29T00:00:00Z",
+     "ready": "2026-10-29T00:00:00Z",
+     "legs": [
+      {
+       "lane": "T-A1-ZRH",
+       "mode": "truck",
+       "from": "A1",
+       "to": "ZRH",
+       "depart": "2026-10-29T06:00:00Z",
+       "arrive": "2026-10-29T10:48:00Z"
+      },
+      {
+       "lane": "AIR-ZRH-ICN",
+       "mode": "air",
+       "from": "ZRH",
+       "to": "ICN",
+       "depart": "2026-10-30T12:00:00Z",
+       "arrive": "2026-10-31T02:24:00Z"
+      },
+      {
+       "lane": "T-ICN-AA",
+       "mode": "truck",
+       "from": "ICN",
+       "to": "AA",
+       "depart": "2026-10-31T18:00:00Z",
+       "arrive": "2026-10-31T22:48:00Z"
+      }
+     ],
+     "unit_cost_usd": 1293.0
+    },
+    {
+     "id": "S002",
+     "candidate": "prod:b:7.000:standard|T-A2-DUB@27.250>AIR-DUB-FRA@28.625>AIR-FRA-ICN@29.542>T-ICN-AA@30.750",
+     "item": "b",
+     "qty": 10,
+     "source": "prod:b:7.000:standard",
+     "option": "standard",
+     "mfg": "2026-10-22T00:00:00Z",
+     "ready": "2026-10-22T00:00:00Z",
+     "legs": [
+      {
+       "lane": "T-A2-DUB",
+       "mode": "truck",
+       "from": "A2",
+       "to": "DUB",
+       "depart": "2026-10-28T06:00:00Z",
+       "arrive": "2026-10-28T10:48:00Z"
+      },
+      {
+       "lane": "AIR-DUB-FRA",
+       "mode": "air",
+       "from": "DUB",
+       "to": "FRA",
+       "depart": "2026-10-29T15:00:00Z",
+       "arrive": "2026-10-29T19:48:00Z"
+      },
+      {
+       "lane": "AIR-FRA-ICN",
+       "mode": "air",
+       "from": "FRA",
+       "to": "ICN",
+       "depart": "2026-10-30T13:00:00Z",
+       "arrive": "2026-10-31T03:24:00Z"
+      },
+      {
+       "lane": "T-ICN-AA",
+       "mode": "truck",
+       "from": "ICN",
+       "to": "AA",
+       "depart": "2026-10-31T18:00:00Z",
+       "arrive": "2026-10-31T22:48:00Z"
+      }
+     ],
+     "unit_cost_usd": 2698.0
+    },
+    {
+     "id": "S003",
+     "candidate": "prod:b:35.000:standard|T-A2-DUB@52.250>AIR-DUB-FRA@53.625>AIR-FRA-ICN@54.542>T-ICN-AA@55.750",
+     "item": "b",
+     "qty": 10,
+     "source": "prod:b:35.000:standard",
+     "option": "standard",
+     "mfg": "2026-11-19T00:00:00Z",
+     "ready": "2026-11-19T00:00:00Z",
+     "legs": [
+      {
+       "lane": "T-A2-DUB",
+       "mode": "truck",
+       "from": "A2",
+       "to": "DUB",
+       "depart": "2026-11-22T06:00:00Z",
+       "arrive": "2026-11-22T10:48:00Z"
+      },
+      {
+       "lane": "AIR-DUB-FRA",
+       "mode": "air",
+       "from": "DUB",
+       "to": "FRA",
+       "depart": "2026-11-23T15:00:00Z",
+       "arrive": "2026-11-23T19:48:00Z"
+      },
+      {
+       "lane": "AIR-FRA-ICN",
+       "mode": "air",
+       "from": "FRA",
+       "to": "ICN",
+       "depart": "2026-11-24T13:00:00Z",
+       "arrive": "2026-11-25T03:24:00Z"
+      },
+      {
+       "lane": "T-ICN-AA",
+       "mode": "truck",
+       "from": "ICN",
+       "to": "AA",
+       "depart": "2026-11-25T18:00:00Z",
+       "arrive": "2026-11-25T22:48:00Z"
+      }
+     ],
+     "unit_cost_usd": 2698.0
+    },
+    {
+     "id": "S004",
+     "candidate": "prod:b:56.000:standard|T-A2-DUB@71.250>AIR-DUB-FRA@72.625>AIR-FRA-ICN@73.542>T-ICN-AA@74.750",
+     "item": "b",
+     "qty": 10,
+     "source": "prod:b:56.000:standard",
+     "option": "standard",
+     "mfg": "2026-12-10T00:00:00Z",
+     "ready": "2026-12-10T00:00:00Z",
+     "legs": [
+      {
+       "lane": "T-A2-DUB",
+       "mode": "truck",
+       "from": "A2",
+       "to": "DUB",
+       "depart": "2026-12-11T06:00:00Z",
+       "arrive": "2026-12-11T10:48:00Z"
+      },
+      {
+       "lane": "AIR-DUB-FRA",
+       "mode": "air",
+       "from": "DUB",
+       "to": "FRA",
+       "depart": "2026-12-12T15:00:00Z",
+       "arrive": "2026-12-12T19:48:00Z"
+      },
+      {
+       "lane": "AIR-FRA-ICN",
+       "mode": "air",
+       "from": "FRA",
+       "to": "ICN",
+       "depart": "2026-12-13T13:00:00Z",
+       "arrive": "2026-12-14T03:24:00Z"
+      },
+      {
+       "lane": "T-ICN-AA",
+       "mode": "truck",
+       "from": "ICN",
+       "to": "AA",
+       "depart": "2026-12-14T18:00:00Z",
+       "arrive": "2026-12-14T22:48:00Z"
+      }
+     ],
+     "unit_cost_usd": 2698.0
+    },
+    {
+     "id": "S005",
+     "candidate": "prod:c:0.000:standard|T-A3-SIN@29.250>AIR-SIN-ICN@29.958>T-ICN-AA@30.750",
+     "item": "c",
+     "qty": 8,
+     "source": "prod:c:0.000:standard",
+     "option": "standard",
+     "mfg": "2026-10-29T00:00:00Z",
+     "ready": "2026-10-29T00:00:00Z",
+     "legs": [
+      {
+       "lane": "T-A3-SIN",
+       "mode": "truck",
+       "from": "A3",
+       "to": "SIN",
+       "depart": "2026-10-30T06:00:00Z",
+       "arrive": "2026-10-30T08:24:00Z"
+      },
+      {
+       "lane": "AIR-SIN-ICN",
+       "mode": "air",
+       "from": "SIN",
+       "to": "ICN",
+       "depart": "2026-10-30T23:00:00Z",
+       "arrive": "2026-10-31T06:12:00Z"
+      },
+      {
+       "lane": "T-ICN-AA",
+       "mode": "truck",
+       "from": "ICN",
+       "to": "AA",
+       "depart": "2026-10-31T18:00:00Z",
+       "arrive": "2026-10-31T22:48:00Z"
+      }
+     ],
+     "unit_cost_usd": 4047.0
+    },
+    {
+     "id": "S006",
+     "candidate": "prod:d:7.000:standard|T-A3-SIN@29.250>AIR-SIN-ICN@29.958>T-ICN-AA@30.750",
+     "item": "d",
+     "qty": 9,
+     "source": "prod:d:7.000:standard",
+     "option": "standard",
+     "mfg": "2026-10-29T00:00:00Z",
+     "ready": "2026-10-29T00:00:00Z",
+     "legs": [
+      {
+       "lane": "T-A3-SIN",
+       "mode": "truck",
+       "from": "A3",
+       "to": "SIN",
+       "depart": "2026-10-30T06:00:00Z",
+       "arrive": "2026-10-30T08:24:00Z"
+      },
+      {
+       "lane": "AIR-SIN-ICN",
+       "mode": "air",
+       "from": "SIN",
+       "to": "ICN",
+       "depart": "2026-10-30T23:00:00Z",
+       "arrive": "2026-10-31T06:12:00Z"
+      },
+      {
+       "lane": "T-ICN-AA",
+       "mode": "truck",
+       "from": "ICN",
+       "to": "AA",
+       "depart": "2026-10-31T18:00:00Z",
+       "arrive": "2026-10-31T22:48:00Z"
+      }
+     ],
+     "unit_cost_usd": 3147.0
+    },
+    {
+     "id": "S007",
+     "candidate": "prod:d:28.000:standard|T-A3-SIN@54.250>AIR-SIN-ICN@54.958>T-ICN-AA@55.750",
+     "item": "d",
+     "qty": 6,
+     "source": "prod:d:28.000:standard",
+     "option": "standard",
+     "mfg": "2026-11-19T00:00:00Z",
+     "ready": "2026-11-19T00:00:00Z",
+     "legs": [
+      {
+       "lane": "T-A3-SIN",
+       "mode": "truck",
+       "from": "A3",
+       "to": "SIN",
+       "depart": "2026-11-24T06:00:00Z",
+       "arrive": "2026-11-24T08:24:00Z"
+      },
+      {
+       "lane": "AIR-SIN-ICN",
+       "mode": "air",
+       "from": "SIN",
+       "to": "ICN",
+       "depart": "2026-11-24T23:00:00Z",
+       "arrive": "2026-11-25T06:12:00Z"
+      },
+      {
+       "lane": "T-ICN-AA",
+       "mode": "truck",
+       "from": "ICN",
+       "to": "AA",
+       "depart": "2026-11-25T18:00:00Z",
+       "arrive": "2026-11-25T22:48:00Z"
+      }
+     ],
+     "unit_cost_usd": 3147.0
+    }
+   ],
+   "allocations": [
+    {
+     "shipment": "S001",
+     "demand": "B1:a",
+     "qty": 5.0
+    },
+    {
+     "shipment": "S001",
+     "demand": "B2:a",
+     "qty": 5.0
+    },
+    {
+     "shipment": "S001",
+     "demand": "B3:a",
+     "qty": 5.0
+    },
+    {
+     "shipment": "S001",
+     "demand": "safety:a",
+     "qty": 5.0
+    },
+    {
+     "shipment": "S002",
+     "demand": "B1:b",
+     "qty": 10.0
+    },
+    {
+     "shipment": "S003",
+     "demand": "B2:b",
+     "qty": 10.0
+    },
+    {
+     "shipment": "S004",
+     "demand": "B3:b",
+     "qty": 10.0
+    },
+    {
+     "shipment": "S005",
+     "demand": "B1:c",
+     "qty": 2.0
+    },
+    {
+     "shipment": "S005",
+     "demand": "B2:c",
+     "qty": 2.0
+    },
+    {
+     "shipment": "S005",
+     "demand": "B3:c",
+     "qty": 2.0
+    },
+    {
+     "shipment": "S005",
+     "demand": "safety:c",
+     "qty": 2.0
+    },
+    {
+     "shipment": "S006",
+     "demand": "B1:d",
+     "qty": 5.0
+    },
+    {
+     "shipment": "S006",
+     "demand": "B2:d",
+     "qty": 4.0
+    },
+    {
+     "shipment": "S007",
+     "demand": "B2:d",
+     "qty": 1.0
+    },
+    {
+     "shipment": "S007",
+     "demand": "B3:d",
+     "qty": 5.0
+    }
+   ]
+  },
+  "time_optimal": {
+   "slack_required": 2.15,
+   "cost_usd": 200331.0,
+   "metrics": {
+    "cost_usd": 200331.0,
+    "units_shipped": 73,
+    "units_required": 73,
+    "units_left_over": 0.0,
+    "min_slack_days": 3.05,
+    "latest_arrival": "2026-12-23T22:48:00Z",
+    "shipments": 7,
+    "departures_used": 19
+   },
+   "mc": {
+    "n_samples": 10000,
+    "device": "cpu",
+    "seed": 7,
+    "seconds": 0.024,
+    "p_all_on_time": 0.9977,
+    "p_on_time_by_demand": {
+     "B1:a": 1.0,
+     "B2:a": 1.0,
+     "B3:a": 1.0,
+     "safety:a": 1.0,
+     "B1:b": 1.0,
+     "B2:b": 1.0,
+     "B3:b": 1.0,
+     "B1:c": 0.999,
+     "B2:c": 1.0,
+     "B3:c": 1.0,
+     "safety:c": 1.0,
+     "B1:d": 0.9987,
+     "B2:d": 1.0,
+     "B3:d": 1.0
+    },
+    "p_shelf_ok": 1.0,
+    "p_no_excursion": 0.8807,
+    "expected_late_unit_days": 0.002,
+    "cost_mean_usd": 200332.0,
+    "cost_p50_usd": 200331.0,
+    "cost_p95_usd": 200331.0,
+    "assumptions": "delay=max(0,N(mean,sd)) per leg by mode; missed connection waits for the next departure; later departures have unlimited capacity"
+   },
+   "verify_ok": true,
+   "shipments": [
+    {
+     "id": "S001",
+     "candidate": "prod:a:0.000:standard|T-A1-ZRH@21.250>AIR-ZRH-ICN@23.500>T-ICN-AA@24.750",
+     "item": "a",
+     "qty": 20,
+     "source": "prod:a:0.000:standard",
+     "option": "standard",
+     "mfg": "2026-10-22T00:00:00Z",
+     "ready": "2026-10-22T00:00:00Z",
+     "legs": [
+      {
+       "lane": "T-A1-ZRH",
+       "mode": "truck",
+       "from": "A1",
+       "to": "ZRH",
+       "depart": "2026-10-22T06:00:00Z",
+       "arrive": "2026-10-22T10:48:00Z"
+      },
+      {
+       "lane": "AIR-ZRH-ICN",
+       "mode": "air",
+       "from": "ZRH",
+       "to": "ICN",
+       "depart": "2026-10-24T12:00:00Z",
+       "arrive": "2026-10-25T02:24:00Z"
+      },
+      {
+       "lane": "T-ICN-AA",
+       "mode": "truck",
+       "from": "ICN",
+       "to": "AA",
+       "depart": "2026-10-25T18:00:00Z",
+       "arrive": "2026-10-25T22:48:00Z"
+      }
+     ],
+     "unit_cost_usd": 1293.0
+    },
+    {
+     "id": "S002",
+     "candidate": "prod:b:7.000:standard|T-A2-DUB@21.250>AIR-DUB-FRA@22.625>AIR-FRA-ICN@23.542>T-ICN-AA@24.750",
+     "item": "b",
+     "qty": 10,
+     "source": "prod:b:7.000:standard",
+     "option": "standard",
+     "mfg": "2026-10-22T00:00:00Z",
+     "ready": "2026-10-22T00:00:00Z",
+     "legs": [
+      {
+       "lane": "T-A2-DUB",
+       "mode": "truck",
+       "from": "A2",
+       "to": "DUB",
+       "depart": "2026-10-22T06:00:00Z",
+       "arrive": "2026-10-22T10:48:00Z"
+      },
+      {
+       "lane": "AIR-DUB-FRA",
+       "mode": "air",
+       "from": "DUB",
+       "to": "FRA",
+       "depart": "2026-10-23T15:00:00Z",
+       "arrive": "2026-10-23T19:48:00Z"
+      },
+      {
+       "lane": "AIR-FRA-ICN",
+       "mode": "air",
+       "from": "FRA",
+       "to": "ICN",
+       "depart": "2026-10-24T13:00:00Z",
+       "arrive": "2026-10-25T03:24:00Z"
+      },
+      {
+       "lane": "T-ICN-AA",
+       "mode": "truck",
+       "from": "ICN",
+       "to": "AA",
+       "depart": "2026-10-25T18:00:00Z",
+       "arrive": "2026-10-25T22:48:00Z"
+      }
+     ],
+     "unit_cost_usd": 2698.0
+    },
+    {
+     "id": "S003",
+     "candidate": "prod:b:28.000:standard|T-A2-DUB@46.250>AIR-DUB-FRA@47.625>AIR-FRA-ICN@48.542>T-ICN-AA@49.750",
+     "item": "b",
+     "qty": 10,
+     "source": "prod:b:28.000:standard",
+     "option": "standard",
+     "mfg": "2026-11-12T00:00:00Z",
+     "ready": "2026-11-12T00:00:00Z",
+     "legs": [
+      {
+       "lane": "T-A2-DUB",
+       "mode": "truck",
+       "from": "A2",
+       "to": "DUB",
+       "depart": "2026-11-16T06:00:00Z",
+       "arrive": "2026-11-16T10:48:00Z"
+      },
+      {
+       "lane": "AIR-DUB-FRA",
+       "mode": "air",
+       "from": "DUB",
+       "to": "FRA",
+       "depart": "2026-11-17T15:00:00Z",
+       "arrive": "2026-11-17T19:48:00Z"
+      },
+      {
+       "lane": "AIR-FRA-ICN",
+       "mode": "air",
+       "from": "FRA",
+       "to": "ICN",
+       "depart": "2026-11-18T13:00:00Z",
+       "arrive": "2026-11-19T03:24:00Z"
+      },
+      {
+       "lane": "T-ICN-AA",
+       "mode": "truck",
+       "from": "ICN",
+       "to": "AA",
+       "depart": "2026-11-19T18:00:00Z",
+       "arrive": "2026-11-19T22:48:00Z"
+      }
+     ],
+     "unit_cost_usd": 2698.0
+    },
+    {
+     "id": "S004",
+     "candidate": "prod:b:63.000:standard|T-A2-DUB@80.250>AIR-DUB-FRA@81.625>AIR-FRA-ICN@82.542>T-ICN-AA@83.750",
+     "item": "b",
+     "qty": 10,
+     "source": "prod:b:63.000:standard",
+     "option": "standard",
+     "mfg": "2026-12-17T00:00:00Z",
+     "ready": "2026-12-17T00:00:00Z",
+     "legs": [
+      {
+       "lane": "T-A2-DUB",
+       "mode": "truck",
+       "from": "A2",
+       "to": "DUB",
+       "depart": "2026-12-20T06:00:00Z",
+       "arrive": "2026-12-20T10:48:00Z"
+      },
+      {
+       "lane": "AIR-DUB-FRA",
+       "mode": "air",
+       "from": "DUB",
+       "to": "FRA",
+       "depart": "2026-12-21T15:00:00Z",
+       "arrive": "2026-12-21T19:48:00Z"
+      },
+      {
+       "lane": "AIR-FRA-ICN",
+       "mode": "air",
+       "from": "FRA",
+       "to": "ICN",
+       "depart": "2026-12-22T13:00:00Z",
+       "arrive": "2026-12-23T03:24:00Z"
+      },
+      {
+       "lane": "T-ICN-AA",
+       "mode": "truck",
+       "from": "ICN",
+       "to": "AA",
+       "depart": "2026-12-23T18:00:00Z",
+       "arrive": "2026-12-23T22:48:00Z"
+      }
+     ],
+     "unit_cost_usd": 2698.0
+    },
+    {
+     "id": "S005",
+     "candidate": "prod:c:0.000:standard|T-A3-SIN@28.250>AIR-SIN-ICN@28.958>T-ICN-AA@29.750",
+     "item": "c",
+     "qty": 8,
+     "source": "prod:c:0.000:standard",
+     "option": "standard",
+     "mfg": "2026-10-29T00:00:00Z",
+     "ready": "2026-10-29T00:00:00Z",
+     "legs": [
+      {
+       "lane": "T-A3-SIN",
+       "mode": "truck",
+       "from": "A3",
+       "to": "SIN",
+       "depart": "2026-10-29T06:00:00Z",
+       "arrive": "2026-10-29T08:24:00Z"
+      },
+      {
+       "lane": "AIR-SIN-ICN",
+       "mode": "air",
+       "from": "SIN",
+       "to": "ICN",
+       "depart": "2026-10-29T23:00:00Z",
+       "arrive": "2026-10-30T06:12:00Z"
+      },
+      {
+       "lane": "T-ICN-AA",
+       "mode": "truck",
+       "from": "ICN",
+       "to": "AA",
+       "depart": "2026-10-30T18:00:00Z",
+       "arrive": "2026-10-30T22:48:00Z"
+      }
+     ],
+     "unit_cost_usd": 4047.0
+    },
+    {
+     "id": "S006",
+     "candidate": "prod:d:7.000:standard|T-A3-SIN@28.250>AIR-SIN-ICN@28.958>T-ICN-AA@29.750",
+     "item": "d",
+     "qty": 6,
+     "source": "prod:d:7.000:standard",
+     "option": "standard",
+     "mfg": "2026-10-29T00:00:00Z",
+     "ready": "2026-10-29T00:00:00Z",
+     "legs": [
+      {
+       "lane": "T-A3-SIN",
+       "mode": "truck",
+       "from": "A3",
+       "to": "SIN",
+       "depart": "2026-10-29T06:00:00Z",
+       "arrive": "2026-10-29T08:24:00Z"
+      },
+      {
+       "lane": "AIR-SIN-ICN",
+       "mode": "air",
+       "from": "SIN",
+       "to": "ICN",
+       "depart": "2026-10-29T23:00:00Z",
+       "arrive": "2026-10-30T06:12:00Z"
+      },
+      {
+       "lane": "T-ICN-AA",
+       "mode": "truck",
+       "from": "ICN",
+       "to": "AA",
+       "depart": "2026-10-30T18:00:00Z",
+       "arrive": "2026-10-30T22:48:00Z"
+      }
+     ],
+     "unit_cost_usd": 3147.0
+    },
+    {
+     "id": "S007",
+     "candidate": "prod:d:21.000:standard|T-A3-SIN@48.250>AIR-SIN-ICN@48.958>T-ICN-AA@49.750",
+     "item": "d",
+     "qty": 9,
+     "source": "prod:d:21.000:standard",
+     "option": "standard",
+     "mfg": "2026-11-12T00:00:00Z",
+     "ready": "2026-11-12T00:00:00Z",
+     "legs": [
+      {
+       "lane": "T-A3-SIN",
+       "mode": "truck",
+       "from": "A3",
+       "to": "SIN",
+       "depart": "2026-11-18T06:00:00Z",
+       "arrive": "2026-11-18T08:24:00Z"
+      },
+      {
+       "lane": "AIR-SIN-ICN",
+       "mode": "air",
+       "from": "SIN",
+       "to": "ICN",
+       "depart": "2026-11-18T23:00:00Z",
+       "arrive": "2026-11-19T06:12:00Z"
+      },
+      {
+       "lane": "T-ICN-AA",
+       "mode": "truck",
+       "from": "ICN",
+       "to": "AA",
+       "depart": "2026-11-19T18:00:00Z",
+       "arrive": "2026-11-19T22:48:00Z"
+      }
+     ],
+     "unit_cost_usd": 3147.0
+    }
+   ],
+   "allocations": [
+    {
+     "shipment": "S001",
+     "demand": "B1:a",
+     "qty": 5.0
+    },
+    {
+     "shipment": "S001",
+     "demand": "B2:a",
+     "qty": 5.0
+    },
+    {
+     "shipment": "S001",
+     "demand": "B3:a",
+     "qty": 5.0
+    },
+    {
+     "shipment": "S001",
+     "demand": "safety:a",
+     "qty": 5.0
+    },
+    {
+     "shipment": "S002",
+     "demand": "B1:b",
+     "qty": 10.0
+    },
+    {
+     "shipment": "S003",
+     "demand": "B2:b",
+     "qty": 10.0
+    },
+    {
+     "shipment": "S004",
+     "demand": "B3:b",
+     "qty": 10.0
+    },
+    {
+     "shipment": "S005",
+     "demand": "B1:c",
+     "qty": 2.0
+    },
+    {
+     "shipment": "S005",
+     "demand": "B2:c",
+     "qty": 2.0
+    },
+    {
+     "shipment": "S005",
+     "demand": "B3:c",
+     "qty": 2.0
+    },
+    {
+     "shipment": "S005",
+     "demand": "safety:c",
+     "qty": 2.0
+    },
+    {
+     "shipment": "S006",
+     "demand": "B1:d",
+     "qty": 5.0
+    },
+    {
+     "shipment": "S006",
+     "demand": "B2:d",
+     "qty": 1.0
+    },
+    {
+     "shipment": "S007",
+     "demand": "B2:d",
+     "qty": 4.0
+    },
+    {
+     "shipment": "S007",
+     "demand": "B3:d",
+     "qty": 5.0
+    }
+   ]
+  },
+  "balanced": {
+   "slack_required": 2.15,
+   "cost_usd": 200331.0,
+   "metrics": {
+    "cost_usd": 200331.0,
+    "units_shipped": 73,
+    "units_required": 73,
+    "units_left_over": 0.0,
+    "min_slack_days": 3.05,
+    "latest_arrival": "2026-12-23T22:48:00Z",
+    "shipments": 7,
+    "departures_used": 19
+   },
+   "mc": {
+    "n_samples": 10000,
+    "device": "cpu",
+    "seed": 7,
+    "seconds": 0.024,
+    "p_all_on_time": 0.9977,
+    "p_on_time_by_demand": {
+     "B1:a": 1.0,
+     "B2:a": 1.0,
+     "B3:a": 1.0,
+     "safety:a": 1.0,
+     "B1:b": 1.0,
+     "B2:b": 1.0,
+     "B3:b": 1.0,
+     "B1:c": 0.999,
+     "B2:c": 1.0,
+     "B3:c": 1.0,
+     "safety:c": 1.0,
+     "B1:d": 0.9987,
+     "B2:d": 1.0,
+     "B3:d": 1.0
+    },
+    "p_shelf_ok": 1.0,
+    "p_no_excursion": 0.8807,
+    "expected_late_unit_days": 0.002,
+    "cost_mean_usd": 200332.0,
+    "cost_p50_usd": 200331.0,
+    "cost_p95_usd": 200331.0,
+    "assumptions": "delay=max(0,N(mean,sd)) per leg by mode; missed connection waits for the next departure; later departures have unlimited capacity"
+   },
+   "verify_ok": true,
+   "shipments": [
+    {
+     "id": "S001",
+     "candidate": "prod:a:0.000:standard|T-A1-ZRH@21.250>AIR-ZRH-ICN@23.500>T-ICN-AA@24.750",
+     "item": "a",
+     "qty": 20,
+     "source": "prod:a:0.000:standard",
+     "option": "standard",
+     "mfg": "2026-10-22T00:00:00Z",
+     "ready": "2026-10-22T00:00:00Z",
+     "legs": [
+      {
+       "lane": "T-A1-ZRH",
+       "mode": "truck",
+       "from": "A1",
+       "to": "ZRH",
+       "depart": "2026-10-22T06:00:00Z",
+       "arrive": "2026-10-22T10:48:00Z"
+      },
+      {
+       "lane": "AIR-ZRH-ICN",
+       "mode": "air",
+       "from": "ZRH",
+       "to": "ICN",
+       "depart": "2026-10-24T12:00:00Z",
+       "arrive": "2026-10-25T02:24:00Z"
+      },
+      {
+       "lane": "T-ICN-AA",
+       "mode": "truck",
+       "from": "ICN",
+       "to": "AA",
+       "depart": "2026-10-25T18:00:00Z",
+       "arrive": "2026-10-25T22:48:00Z"
+      }
+     ],
+     "unit_cost_usd": 1293.0
+    },
+    {
+     "id": "S002",
+     "candidate": "prod:b:7.000:standard|T-A2-DUB@21.250>AIR-DUB-FRA@22.625>AIR-FRA-ICN@23.542>T-ICN-AA@24.750",
+     "item": "b",
+     "qty": 10,
+     "source": "prod:b:7.000:standard",
+     "option": "standard",
+     "mfg": "2026-10-22T00:00:00Z",
+     "ready": "2026-10-22T00:00:00Z",
+     "legs": [
+      {
+       "lane": "T-A2-DUB",
+       "mode": "truck",
+       "from": "A2",
+       "to": "DUB",
+       "depart": "2026-10-22T06:00:00Z",
+       "arrive": "2026-10-22T10:48:00Z"
+      },
+      {
+       "lane": "AIR-DUB-FRA",
+       "mode": "air",
+       "from": "DUB",
+       "to": "FRA",
+       "depart": "2026-10-23T15:00:00Z",
+       "arrive": "2026-10-23T19:48:00Z"
+      },
+      {
+       "lane": "AIR-FRA-ICN",
+       "mode": "air",
+       "from": "FRA",
+       "to": "ICN",
+       "depart": "2026-10-24T13:00:00Z",
+       "arrive": "2026-10-25T03:24:00Z"
+      },
+      {
+       "lane": "T-ICN-AA",
+       "mode": "truck",
+       "from": "ICN",
+       "to": "AA",
+       "depart": "2026-10-25T18:00:00Z",
+       "arrive": "2026-10-25T22:48:00Z"
+      }
+     ],
+     "unit_cost_usd": 2698.0
+    },
+    {
+     "id": "S003",
+     "candidate": "prod:b:28.000:standard|T-A2-DUB@46.250>AIR-DUB-FRA@47.625>AIR-FRA-ICN@48.542>T-ICN-AA@49.750",
+     "item": "b",
+     "qty": 10,
+     "source": "prod:b:28.000:standard",
+     "option": "standard",
+     "mfg": "2026-11-12T00:00:00Z",
+     "ready": "2026-11-12T00:00:00Z",
+     "legs": [
+      {
+       "lane": "T-A2-DUB",
+       "mode": "truck",
+       "from": "A2",
+       "to": "DUB",
+       "depart": "2026-11-16T06:00:00Z",
+       "arrive": "2026-11-16T10:48:00Z"
+      },
+      {
+       "lane": "AIR-DUB-FRA",
+       "mode": "air",
+       "from": "DUB",
+       "to": "FRA",
+       "depart": "2026-11-17T15:00:00Z",
+       "arrive": "2026-11-17T19:48:00Z"
+      },
+      {
+       "lane": "AIR-FRA-ICN",
+       "mode": "air",
+       "from": "FRA",
+       "to": "ICN",
+       "depart": "2026-11-18T13:00:00Z",
+       "arrive": "2026-11-19T03:24:00Z"
+      },
+      {
+       "lane": "T-ICN-AA",
+       "mode": "truck",
+       "from": "ICN",
+       "to": "AA",
+       "depart": "2026-11-19T18:00:00Z",
+       "arrive": "2026-11-19T22:48:00Z"
+      }
+     ],
+     "unit_cost_usd": 2698.0
+    },
+    {
+     "id": "S004",
+     "candidate": "prod:b:63.000:standard|T-A2-DUB@80.250>AIR-DUB-FRA@81.625>AIR-FRA-ICN@82.542>T-ICN-AA@83.750",
+     "item": "b",
+     "qty": 10,
+     "source": "prod:b:63.000:standard",
+     "option": "standard",
+     "mfg": "2026-12-17T00:00:00Z",
+     "ready": "2026-12-17T00:00:00Z",
+     "legs": [
+      {
+       "lane": "T-A2-DUB",
+       "mode": "truck",
+       "from": "A2",
+       "to": "DUB",
+       "depart": "2026-12-20T06:00:00Z",
+       "arrive": "2026-12-20T10:48:00Z"
+      },
+      {
+       "lane": "AIR-DUB-FRA",
+       "mode": "air",
+       "from": "DUB",
+       "to": "FRA",
+       "depart": "2026-12-21T15:00:00Z",
+       "arrive": "2026-12-21T19:48:00Z"
+      },
+      {
+       "lane": "AIR-FRA-ICN",
+       "mode": "air",
+       "from": "FRA",
+       "to": "ICN",
+       "depart": "2026-12-22T13:00:00Z",
+       "arrive": "2026-12-23T03:24:00Z"
+      },
+      {
+       "lane": "T-ICN-AA",
+       "mode": "truck",
+       "from": "ICN",
+       "to": "AA",
+       "depart": "2026-12-23T18:00:00Z",
+       "arrive": "2026-12-23T22:48:00Z"
+      }
+     ],
+     "unit_cost_usd": 2698.0
+    },
+    {
+     "id": "S005",
+     "candidate": "prod:c:0.000:standard|T-A3-SIN@28.250>AIR-SIN-ICN@28.958>T-ICN-AA@29.750",
+     "item": "c",
+     "qty": 8,
+     "source": "prod:c:0.000:standard",
+     "option": "standard",
+     "mfg": "2026-10-29T00:00:00Z",
+     "ready": "2026-10-29T00:00:00Z",
+     "legs": [
+      {
+       "lane": "T-A3-SIN",
+       "mode": "truck",
+       "from": "A3",
+       "to": "SIN",
+       "depart": "2026-10-29T06:00:00Z",
+       "arrive": "2026-10-29T08:24:00Z"
+      },
+      {
+       "lane": "AIR-SIN-ICN",
+       "mode": "air",
+       "from": "SIN",
+       "to": "ICN",
+       "depart": "2026-10-29T23:00:00Z",
+       "arrive": "2026-10-30T06:12:00Z"
+      },
+      {
+       "lane": "T-ICN-AA",
+       "mode": "truck",
+       "from": "ICN",
+       "to": "AA",
+       "depart": "2026-10-30T18:00:00Z",
+       "arrive": "2026-10-30T22:48:00Z"
+      }
+     ],
+     "unit_cost_usd": 4047.0
+    },
+    {
+     "id": "S006",
+     "candidate": "prod:d:7.000:standard|T-A3-SIN@28.250>AIR-SIN-ICN@28.958>T-ICN-AA@29.750",
+     "item": "d",
+     "qty": 6,
+     "source": "prod:d:7.000:standard",
+     "option": "standard",
+     "mfg": "2026-10-29T00:00:00Z",
+     "ready": "2026-10-29T00:00:00Z",
+     "legs": [
+      {
+       "lane": "T-A3-SIN",
+       "mode": "truck",
+       "from": "A3",
+       "to": "SIN",
+       "depart": "2026-10-29T06:00:00Z",
+       "arrive": "2026-10-29T08:24:00Z"
+      },
+      {
+       "lane": "AIR-SIN-ICN",
+       "mode": "air",
+       "from": "SIN",
+       "to": "ICN",
+       "depart": "2026-10-29T23:00:00Z",
+       "arrive": "2026-10-30T06:12:00Z"
+      },
+      {
+       "lane": "T-ICN-AA",
+       "mode": "truck",
+       "from": "ICN",
+       "to": "AA",
+       "depart": "2026-10-30T18:00:00Z",
+       "arrive": "2026-10-30T22:48:00Z"
+      }
+     ],
+     "unit_cost_usd": 3147.0
+    },
+    {
+     "id": "S007",
+     "candidate": "prod:d:21.000:standard|T-A3-SIN@48.250>AIR-SIN-ICN@48.958>T-ICN-AA@49.750",
+     "item": "d",
+     "qty": 9,
+     "source": "prod:d:21.000:standard",
+     "option": "standard",
+     "mfg": "2026-11-12T00:00:00Z",
+     "ready": "2026-11-12T00:00:00Z",
+     "legs": [
+      {
+       "lane": "T-A3-SIN",
+       "mode": "truck",
+       "from": "A3",
+       "to": "SIN",
+       "depart": "2026-11-18T06:00:00Z",
+       "arrive": "2026-11-18T08:24:00Z"
+      },
+      {
+       "lane": "AIR-SIN-ICN",
+       "mode": "air",
+       "from": "SIN",
+       "to": "ICN",
+       "depart": "2026-11-18T23:00:00Z",
+       "arrive": "2026-11-19T06:12:00Z"
+      },
+      {
+       "lane": "T-ICN-AA",
+       "mode": "truck",
+       "from": "ICN",
+       "to": "AA",
+       "depart": "2026-11-19T18:00:00Z",
+       "arrive": "2026-11-19T22:48:00Z"
+      }
+     ],
+     "unit_cost_usd": 3147.0
+    }
+   ],
+   "allocations": [
+    {
+     "shipment": "S001",
+     "demand": "B1:a",
+     "qty": 5.0
+    },
+    {
+     "shipment": "S001",
+     "demand": "B2:a",
+     "qty": 5.0
+    },
+    {
+     "shipment": "S001",
+     "demand": "B3:a",
+     "qty": 5.0
+    },
+    {
+     "shipment": "S001",
+     "demand": "safety:a",
+     "qty": 5.0
+    },
+    {
+     "shipment": "S002",
+     "demand": "B1:b",
+     "qty": 10.0
+    },
+    {
+     "shipment": "S003",
+     "demand": "B2:b",
+     "qty": 10.0
+    },
+    {
+     "shipment": "S004",
+     "demand": "B3:b",
+     "qty": 10.0
+    },
+    {
+     "shipment": "S005",
+     "demand": "B1:c",
+     "qty": 2.0
+    },
+    {
+     "shipment": "S005",
+     "demand": "B2:c",
+     "qty": 2.0
+    },
+    {
+     "shipment": "S005",
+     "demand": "B3:c",
+     "qty": 2.0
+    },
+    {
+     "shipment": "S005",
+     "demand": "safety:c",
+     "qty": 2.0
+    },
+    {
+     "shipment": "S006",
+     "demand": "B1:d",
+     "qty": 5.0
+    },
+    {
+     "shipment": "S006",
+     "demand": "B2:d",
+     "qty": 1.0
+    },
+    {
+     "shipment": "S007",
+     "demand": "B2:d",
+     "qty": 4.0
+    },
+    {
+     "shipment": "S007",
+     "demand": "B3:d",
+     "qty": 5.0
+    }
+   ]
+  },
+  "risk_adjusted": {
+   "slack_required": 2.15,
+   "cost_usd": 200331.0,
+   "metrics": {
+    "cost_usd": 200331.0,
+    "units_shipped": 73,
+    "units_required": 73,
+    "units_left_over": 0.0,
+    "min_slack_days": 3.05,
+    "latest_arrival": "2026-12-23T22:48:00Z",
+    "shipments": 7,
+    "departures_used": 19
+   },
+   "mc": {
+    "n_samples": 10000,
+    "device": "cpu",
+    "seed": 7,
+    "seconds": 0.024,
+    "p_all_on_time": 0.9977,
+    "p_on_time_by_demand": {
+     "B1:a": 1.0,
+     "B2:a": 1.0,
+     "B3:a": 1.0,
+     "safety:a": 1.0,
+     "B1:b": 1.0,
+     "B2:b": 1.0,
+     "B3:b": 1.0,
+     "B1:c": 0.999,
+     "B2:c": 1.0,
+     "B3:c": 1.0,
+     "safety:c": 1.0,
+     "B1:d": 0.9987,
+     "B2:d": 1.0,
+     "B3:d": 1.0
+    },
+    "p_shelf_ok": 1.0,
+    "p_no_excursion": 0.8807,
+    "expected_late_unit_days": 0.002,
+    "cost_mean_usd": 200332.0,
+    "cost_p50_usd": 200331.0,
+    "cost_p95_usd": 200331.0,
+    "assumptions": "delay=max(0,N(mean,sd)) per leg by mode; missed connection waits for the next departure; later departures have unlimited capacity"
+   },
+   "verify_ok": true,
+   "shipments": [
+    {
+     "id": "S001",
+     "candidate": "prod:a:0.000:standard|T-A1-ZRH@21.250>AIR-ZRH-ICN@23.500>T-ICN-AA@24.750",
+     "item": "a",
+     "qty": 20,
+     "source": "prod:a:0.000:standard",
+     "option": "standard",
+     "mfg": "2026-10-22T00:00:00Z",
+     "ready": "2026-10-22T00:00:00Z",
+     "legs": [
+      {
+       "lane": "T-A1-ZRH",
+       "mode": "truck",
+       "from": "A1",
+       "to": "ZRH",
+       "depart": "2026-10-22T06:00:00Z",
+       "arrive": "2026-10-22T10:48:00Z"
+      },
+      {
+       "lane": "AIR-ZRH-ICN",
+       "mode": "air",
+       "from": "ZRH",
+       "to": "ICN",
+       "depart": "2026-10-24T12:00:00Z",
+       "arrive": "2026-10-25T02:24:00Z"
+      },
+      {
+       "lane": "T-ICN-AA",
+       "mode": "truck",
+       "from": "ICN",
+       "to": "AA",
+       "depart": "2026-10-25T18:00:00Z",
+       "arrive": "2026-10-25T22:48:00Z"
+      }
+     ],
+     "unit_cost_usd": 1293.0
+    },
+    {
+     "id": "S002",
+     "candidate": "prod:b:7.000:standard|T-A2-DUB@21.250>AIR-DUB-FRA@22.625>AIR-FRA-ICN@23.542>T-ICN-AA@24.750",
+     "item": "b",
+     "qty": 10,
+     "source": "prod:b:7.000:standard",
+     "option": "standard",
+     "mfg": "2026-10-22T00:00:00Z",
+     "ready": "2026-10-22T00:00:00Z",
+     "legs": [
+      {
+       "lane": "T-A2-DUB",
+       "mode": "truck",
+       "from": "A2",
+       "to": "DUB",
+       "depart": "2026-10-22T06:00:00Z",
+       "arrive": "2026-10-22T10:48:00Z"
+      },
+      {
+       "lane": "AIR-DUB-FRA",
+       "mode": "air",
+       "from": "DUB",
+       "to": "FRA",
+       "depart": "2026-10-23T15:00:00Z",
+       "arrive": "2026-10-23T19:48:00Z"
+      },
+      {
+       "lane": "AIR-FRA-ICN",
+       "mode": "air",
+       "from": "FRA",
+       "to": "ICN",
+       "depart": "2026-10-24T13:00:00Z",
+       "arrive": "2026-10-25T03:24:00Z"
+      },
+      {
+       "lane": "T-ICN-AA",
+       "mode": "truck",
+       "from": "ICN",
+       "to": "AA",
+       "depart": "2026-10-25T18:00:00Z",
+       "arrive": "2026-10-25T22:48:00Z"
+      }
+     ],
+     "unit_cost_usd": 2698.0
+    },
+    {
+     "id": "S003",
+     "candidate": "prod:b:28.000:standard|T-A2-DUB@46.250>AIR-DUB-FRA@47.625>AIR-FRA-ICN@48.542>T-ICN-AA@49.750",
+     "item": "b",
+     "qty": 10,
+     "source": "prod:b:28.000:standard",
+     "option": "standard",
+     "mfg": "2026-11-12T00:00:00Z",
+     "ready": "2026-11-12T00:00:00Z",
+     "legs": [
+      {
+       "lane": "T-A2-DUB",
+       "mode": "truck",
+       "from": "A2",
+       "to": "DUB",
+       "depart": "2026-11-16T06:00:00Z",
+       "arrive": "2026-11-16T10:48:00Z"
+      },
+      {
+       "lane": "AIR-DUB-FRA",
+       "mode": "air",
+       "from": "DUB",
+       "to": "FRA",
+       "depart": "2026-11-17T15:00:00Z",
+       "arrive": "2026-11-17T19:48:00Z"
+      },
+      {
+       "lane": "AIR-FRA-ICN",
+       "mode": "air",
+       "from": "FRA",
+       "to": "ICN",
+       "depart": "2026-11-18T13:00:00Z",
+       "arrive": "2026-11-19T03:24:00Z"
+      },
+      {
+       "lane": "T-ICN-AA",
+       "mode": "truck",
+       "from": "ICN",
+       "to": "AA",
+       "depart": "2026-11-19T18:00:00Z",
+       "arrive": "2026-11-19T22:48:00Z"
+      }
+     ],
+     "unit_cost_usd": 2698.0
+    },
+    {
+     "id": "S004",
+     "candidate": "prod:b:63.000:standard|T-A2-DUB@80.250>AIR-DUB-FRA@81.625>AIR-FRA-ICN@82.542>T-ICN-AA@83.750",
+     "item": "b",
+     "qty": 10,
+     "source": "prod:b:63.000:standard",
+     "option": "standard",
+     "mfg": "2026-12-17T00:00:00Z",
+     "ready": "2026-12-17T00:00:00Z",
+     "legs": [
+      {
+       "lane": "T-A2-DUB",
+       "mode": "truck",
+       "from": "A2",
+       "to": "DUB",
+       "depart": "2026-12-20T06:00:00Z",
+       "arrive": "2026-12-20T10:48:00Z"
+      },
+      {
+       "lane": "AIR-DUB-FRA",
+       "mode": "air",
+       "from": "DUB",
+       "to": "FRA",
+       "depart": "2026-12-21T15:00:00Z",
+       "arrive": "2026-12-21T19:48:00Z"
+      },
+      {
+       "lane": "AIR-FRA-ICN",
+       "mode": "air",
+       "from": "FRA",
+       "to": "ICN",
+       "depart": "2026-12-22T13:00:00Z",
+       "arrive": "2026-12-23T03:24:00Z"
+      },
+      {
+       "lane": "T-ICN-AA",
+       "mode": "truck",
+       "from": "ICN",
+       "to": "AA",
+       "depart": "2026-12-23T18:00:00Z",
+       "arrive": "2026-12-23T22:48:00Z"
+      }
+     ],
+     "unit_cost_usd": 2698.0
+    },
+    {
+     "id": "S005",
+     "candidate": "prod:c:0.000:standard|T-A3-SIN@28.250>AIR-SIN-ICN@28.958>T-ICN-AA@29.750",
+     "item": "c",
+     "qty": 8,
+     "source": "prod:c:0.000:standard",
+     "option": "standard",
+     "mfg": "2026-10-29T00:00:00Z",
+     "ready": "2026-10-29T00:00:00Z",
+     "legs": [
+      {
+       "lane": "T-A3-SIN",
+       "mode": "truck",
+       "from": "A3",
+       "to": "SIN",
+       "depart": "2026-10-29T06:00:00Z",
+       "arrive": "2026-10-29T08:24:00Z"
+      },
+      {
+       "lane": "AIR-SIN-ICN",
+       "mode": "air",
+       "from": "SIN",
+       "to": "ICN",
+       "depart": "2026-10-29T23:00:00Z",
+       "arrive": "2026-10-30T06:12:00Z"
+      },
+      {
+       "lane": "T-ICN-AA",
+       "mode": "truck",
+       "from": "ICN",
+       "to": "AA",
+       "depart": "2026-10-30T18:00:00Z",
+       "arrive": "2026-10-30T22:48:00Z"
+      }
+     ],
+     "unit_cost_usd": 4047.0
+    },
+    {
+     "id": "S006",
+     "candidate": "prod:d:7.000:standard|T-A3-SIN@28.250>AIR-SIN-ICN@28.958>T-ICN-AA@29.750",
+     "item": "d",
+     "qty": 6,
+     "source": "prod:d:7.000:standard",
+     "option": "standard",
+     "mfg": "2026-10-29T00:00:00Z",
+     "ready": "2026-10-29T00:00:00Z",
+     "legs": [
+      {
+       "lane": "T-A3-SIN",
+       "mode": "truck",
+       "from": "A3",
+       "to": "SIN",
+       "depart": "2026-10-29T06:00:00Z",
+       "arrive": "2026-10-29T08:24:00Z"
+      },
+      {
+       "lane": "AIR-SIN-ICN",
+       "mode": "air",
+       "from": "SIN",
+       "to": "ICN",
+       "depart": "2026-10-29T23:00:00Z",
+       "arrive": "2026-10-30T06:12:00Z"
+      },
+      {
+       "lane": "T-ICN-AA",
+       "mode": "truck",
+       "from": "ICN",
+       "to": "AA",
+       "depart": "2026-10-30T18:00:00Z",
+       "arrive": "2026-10-30T22:48:00Z"
+      }
+     ],
+     "unit_cost_usd": 3147.0
+    },
+    {
+     "id": "S007",
+     "candidate": "prod:d:21.000:standard|T-A3-SIN@48.250>AIR-SIN-ICN@48.958>T-ICN-AA@49.750",
+     "item": "d",
+     "qty": 9,
+     "source": "prod:d:21.000:standard",
+     "option": "standard",
+     "mfg": "2026-11-12T00:00:00Z",
+     "ready": "2026-11-12T00:00:00Z",
+     "legs": [
+      {
+       "lane": "T-A3-SIN",
+       "mode": "truck",
+       "from": "A3",
+       "to": "SIN",
+       "depart": "2026-11-18T06:00:00Z",
+       "arrive": "2026-11-18T08:24:00Z"
+      },
+      {
+       "lane": "AIR-SIN-ICN",
+       "mode": "air",
+       "from": "SIN",
+       "to": "ICN",
+       "depart": "2026-11-18T23:00:00Z",
+       "arrive": "2026-11-19T06:12:00Z"
+      },
+      {
+       "lane": "T-ICN-AA",
+       "mode": "truck",
+       "from": "ICN",
+       "to": "AA",
+       "depart": "2026-11-19T18:00:00Z",
+       "arrive": "2026-11-19T22:48:00Z"
+      }
+     ],
+     "unit_cost_usd": 3147.0
+    }
+   ],
+   "allocations": [
+    {
+     "shipment": "S001",
+     "demand": "B1:a",
+     "qty": 5.0
+    },
+    {
+     "shipment": "S001",
+     "demand": "B2:a",
+     "qty": 5.0
+    },
+    {
+     "shipment": "S001",
+     "demand": "B3:a",
+     "qty": 5.0
+    },
+    {
+     "shipment": "S001",
+     "demand": "safety:a",
+     "qty": 5.0
+    },
+    {
+     "shipment": "S002",
+     "demand": "B1:b",
+     "qty": 10.0
+    },
+    {
+     "shipment": "S003",
+     "demand": "B2:b",
+     "qty": 10.0
+    },
+    {
+     "shipment": "S004",
+     "demand": "B3:b",
+     "qty": 10.0
+    },
+    {
+     "shipment": "S005",
+     "demand": "B1:c",
+     "qty": 2.0
+    },
+    {
+     "shipment": "S005",
+     "demand": "B2:c",
+     "qty": 2.0
+    },
+    {
+     "shipment": "S005",
+     "demand": "B3:c",
+     "qty": 2.0
+    },
+    {
+     "shipment": "S005",
+     "demand": "safety:c",
+     "qty": 2.0
+    },
+    {
+     "shipment": "S006",
+     "demand": "B1:d",
+     "qty": 5.0
+    },
+    {
+     "shipment": "S006",
+     "demand": "B2:d",
+     "qty": 1.0
+    },
+    {
+     "shipment": "S007",
+     "demand": "B2:d",
+     "qty": 4.0
+    },
+    {
+     "shipment": "S007",
+     "demand": "B3:d",
+     "qty": 5.0
+    }
+   ]
+  }
+ },
+ "recommended": "balanced",
+ "status": "ok",
+ "seconds": 15.067,
+ "time_limited": []
+}

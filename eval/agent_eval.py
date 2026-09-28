@@ -19,24 +19,33 @@ from engine import journal  # noqa: E402
 
 GOALS = [
     ("s1-v1-tight-deadline", "s1_base", {"due_days": 11}, "C 제품 100개를 A에서 B로 11일 안에 보내야 해. 예산은 6만 달러야. 계획을 제안해줘."),
-    ("s1-v3-short-shelf-life", "s1_base", {"shelf_life_days": {"C": 120}}, "이번 C 제품 로트는 유통기한이 120일이야. 수령 시 60% 이상 남아 있어야 하는 건 그대로고, 100개를 A에서 B로 40일 안에, 예산 6만 달러로 보내야 해."),
-    ("s1-v4-low-exposure", "s1_base", {"max_exposure_hours": 2.0}, "C 제품 100개 A에서 B로, 기한 40일, 예산 6만 달러. 고객이 온도 통제 밖 노출을 합계 2시간 이내로 요구했어."),
+    ("s1-v3-short-shelf-life", "s1_base", [{"shelf_life_days": {"C": 120}}, {"shelf_life_days": {"C": 120}, "due_days": 40}], "이번 C 제품 로트는 유통기한이 120일이야. 수령 시 60% 이상 남아 있어야 하는 건 그대로고, 100개를 A에서 B로 40일 안에, 예산 6만 달러로 보내야 해."),
+    ("s1-v4-low-exposure", "s1_base", [{"max_exposure_hours": 2.0}, {"max_exposure_hours": 2.0, "due_days": 40}], "C 제품 100개 A에서 B로, 기한 40일, 예산 6만 달러. 고객이 온도 통제 밖 노출을 합계 2시간 이내로 요구했어."),
     ("s2-v1-site-delay", "s2_base", {"lead_time_add_days": {"c": 10, "d": 10}}, "AA 사이트 배치 3개용 원료 발주 계획이 필요해. A3 사이트가 모든 발주에서 10일씩 늦어진대. 예산 25만 달러."),
     ("s2-v2-moq-above-need", "s2_base", {"moq": {"b": 15}}, "AA 배치 3개용 원료 계획을 짜줘. A2 사이트가 원료 b의 최소 발주량을 15개로 올렸어. 예산 25만 달러."),
     ("s2-v4-budget-cut", "s2_base", {"budget_usd": 205000}, "AA 배치 3개용 원료 발주·운송 계획. 예산이 20만 5천 달러로 깎였어."),
 ]
-DEFAULTS = {"s1_base": {"due_days": 40, "budget_usd": 60000}, "s2_base": {"budget_usd": 250000}}
 
 
-def params_match(got: dict, want: dict, base: str) -> bool:
-    """Same meaning: every wanted key equal; extra keys allowed only if they restate the base default."""
-    for k, v in want.items():
-        if got.get(k) != v and not (isinstance(v, float) and got.get(k) == int(v)):
-            return False
-    for k, v in got.items():
-        if k not in want and DEFAULTS.get(base, {}).get(k) != v:
-            return False
-    return True
+def params_match(got: dict, want, base: str) -> bool:
+    """want may be a list of acceptable parameter sets: when the goal sentence states a value
+    ("기한 40일"), restating it is faithful to the user even if the base spec's due time differs
+    by hours (base due is 40.75 days)."""
+    if isinstance(want, list):
+        return any(params_match(got, w, base) for w in want)
+    return _same_spec(got, want, base)
+
+
+def _same_spec(got: dict, want: dict, base: str) -> bool:
+    """Same MEANING: both parameter sets generate the same spec (id aside). The first version
+    compared dicts literally and failed an answer that restated a base default (min_remaining_pct 60)."""
+    from scenarios.gen import generate
+    b = json.load(open(os.path.join(ROOT, "scenarios", "examples", f"{base}.json")))
+    try:
+        a = generate(b, got, 0, new_id="x")
+    except (ValueError, KeyError, TypeError):
+        return False
+    return a == generate(b, want, 0, new_id="x")
 
 
 def main() -> int:

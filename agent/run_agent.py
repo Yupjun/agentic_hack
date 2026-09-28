@@ -24,7 +24,9 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 from engine import journal  # noqa: E402
 
-REC = re.compile(r"RECOMMENDED:\s*(\S+)\s+(cost_optimal|time_optimal|balanced|risk_adjusted)")
+# tolerant of markdown: "RECOMMENDED: id plan", "**RECOMMENDED**: id plan", "**RECOMMENDED:** `id` plan"
+# (the strict version missed a verified answer on 2026-09-28 because the model bolded the label)
+REC = re.compile(r"\**RECOMMENDED\**\s*:\s*\**\s*`?([A-Za-z0-9_.\-]+)`?\s+`?(cost_optimal|time_optimal|balanced|risk_adjusted)`?")
 
 
 def run(goal: str, config: str, timeout: int = 900) -> dict:
@@ -44,6 +46,14 @@ def run(goal: str, config: str, timeout: int = 900) -> dict:
     open(logp, "w").write(out)
     m = out.split("Workflow Result:", 1)
     answer = re.sub(r"\x1b\[[0-9;]*m", "", m[1]).split("\n-----", 1)[0].strip() if len(m) == 2 else ""
+    check = check_answer(answer)
+    res = {"session": session, "rc": rc, "seconds": round(time.time() - t, 1), "answer": answer, "recommended": check, "log": os.path.relpath(logp, ROOT)}
+    journal.append("agent_run_end", **{k: v for k, v in res.items() if k != "answer"}, answer=answer[:4000])
+    return res
+
+
+def check_answer(answer: str) -> dict:
+    """RECOMMENDED line -> does the run exist and did that plan pass verify?"""
     rec = REC.findall(answer)
     check = {"found": bool(rec)}
     if rec:
@@ -58,9 +68,7 @@ def run(goal: str, config: str, timeout: int = 900) -> dict:
                          reason=None if pl and pl.get("verify_ok") else "plan missing or not verified")
     else:
         check.update(ok=False, reason="no RECOMMENDED line in the answer")
-    res = {"session": session, "rc": rc, "seconds": round(time.time() - t, 1), "answer": answer, "recommended": check, "log": os.path.relpath(logp, ROOT)}
-    journal.append("agent_run_end", **{k: v for k, v in res.items() if k != "answer"}, answer=answer[:4000])
-    return res
+    return check
 
 
 if __name__ == "__main__":

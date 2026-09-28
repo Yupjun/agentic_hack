@@ -1,0 +1,16 @@
+# NeMo Evaluator: spec-writer benchmark on Nemotron 3 Super (build.nvidia.com). Key from the environment.
+#   source ~/.config/nvidia/env && .venv/bin/nel eval run nemo/eval_super.yaml
+services:
+  model:
+    type: api
+    url: https://integrate.api.nvidia.com/v1/chat/completions
+    protocol: chat_completions
+    model: nvidia/nemotron-3-super-120b-a12b
+    api_key: ${NVIDIA_API_KEY}
+    generation: {temperature: 0.0, max_tokens: 6000}
+benchmarks:
+  - name: nemo/spec_writer_bench.py:spec-writer
+    solver: {type: simple, service: model}
+    max_concurrent: 2          # 32 (default) and quick mode got HTTP 429/503 on 65-80 % of problems
+    max_system_retries: 5
+output: {dir: nemo/eval-out/super}

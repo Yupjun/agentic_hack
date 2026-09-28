@@ -1,0 +1,62 @@
+[
+ {
+  "scenario": "s1-v1-tight-deadline",
+  "params_ok": true,
+  "verified": true,
+  "plan": "cost_optimal",
+  "cost_matches_bank": true,
+  "reason": null,
+  "old_params_ok": true,
+  "old_verified": true
+ },
+ {
+  "scenario": "s1-v3-short-shelf-life",
+  "params_ok": false,
+  "verified": true,
+  "plan": "time_optimal",
+  "cost_matches_bank": true,
+  "reason": null,
+  "old_params_ok": false,
+  "old_verified": true
+ },
+ {
+  "scenario": "s1-v4-low-exposure",
+  "params_ok": true,
+  "verified": true,
+  "plan": "time_optimal",
+  "cost_matches_bank": true,
+  "reason": null,
+  "old_params_ok": true,
+  "old_verified": true
+ },
+ {
+  "scenario": "s2-v1-site-delay",
+  "params_ok": true,
+  "verified": false,
+  "plan": null,
+  "cost_matches_bank": false,
+  "reason": "no RECOMMENDED line in the answer",
+  "old_params_ok": true,
+  "old_verified": false
+ },
+ {
+  "scenario": "s2-v2-moq-above-need",
+  "params_ok": true,
+  "verified": true,
+  "plan": "time_optimal",
+  "cost_matches_bank": true,
+  "reason": null,
+  "old_params_ok": true,
+  "old_verified": true
+ },
+ {
+  "scenario": "s2-v4-budget-cut",
+  "params_ok": true,
+  "verified": true,
+  "plan": "balanced",
+  "cost_matches_bank": true,
+  "reason": null,
+  "old_params_ok": true,
+  "old_verified": true
+ }
+]

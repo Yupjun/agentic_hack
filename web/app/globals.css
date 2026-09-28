@@ -1,0 +1,52 @@
+/* Signal on Paper — the only place hex values live in this app (palette = source of truth).
+   Screen is a document; colour is a signal. No dark mode. radius 0. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ground: #F2F2F0;   /* page */
+  --sheet: #FFFFFF;    /* card */
+  --ink: #171715;      /* body text */
+  --muted: #6B6A65;    /* secondary text */
+  --faint: #8B8985;    /* meta, axis */
+  --line: #DEDEDA;     /* hairline */
+  --cobalt: #1B3EC2;   /* decision: selection, current series, link */
+  --tomato: #D6402B;   /* warning: miss, late, blocked */
+  --butter: #FFF6D9;   /* human hand: user-entered cells */
+  --butter-ink: #7A5A10;
+  --plum: #7D3C64;     /* categorical slot 3 */
+  --green: #1F8159;    /* categorical slot 4 */
+  --mustard: #A87B12;  /* categorical slot 5 */
+  --graphite: #8B8985; /* non-hero series */
+  --corner: var(--ink);
+}
+
+html { background: var(--ground); color: var(--ink); }
+body { font-size: 14px; line-height: 20px; font-variant-numeric: tabular-nums; }
+
+.kicker { font-size: 12px; line-height: 16px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.sheet { background: var(--sheet); border: 1px solid var(--line); }
+
+/* Controls are stamps: square, 2px ink border, hard offset shadow that collapses when pressed.
+   The one purposeful elevation in the system (it shows the control moves). */
+.stamp { border: 2px solid var(--ink); background: var(--sheet); color: var(--ink); padding: 6px 14px; font-size: 14px;
+         box-shadow: -3px 3px 0 var(--ink); transition: transform 60ms, box-shadow 60ms; }
+.stamp:active { transform: translate(-3px, 3px); box-shadow: none; }
+.stamp:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 2px; }
+.stamp:disabled { box-shadow: none; color: var(--faint); border-color: var(--faint); }
+.stamp-primary { background: var(--ink); color: var(--sheet); }
+.stamp-quiet { box-shadow: none; }
+.stamp-quiet:hover { box-shadow: -3px 3px 0 var(--ink); }
+
+/* Accent box: left 2px edge + right-hand brackets in the same tone. */
+.accent-corners { position: relative; border-left: 2px solid var(--corner); }
+.accent-corners::before, .accent-corners::after { content: ""; position: absolute; right: 0; width: 10px; height: 10px; border-color: var(--corner); border-style: solid; }
+.accent-corners::before { top: 0; border-width: 2px 2px 0 0; }
+.accent-corners::after { bottom: 0; border-width: 0 2px 2px 0; }
+.tone-cobalt { --corner: var(--cobalt); }
+.tone-tomato { --corner: var(--tomato); }
+.tone-green { --corner: var(--green); }
+.tone-ink { --corner: var(--ink); }
+
+textarea.human, input.human { background: var(--butter); color: var(--butter-ink); border: 1px solid var(--line); }

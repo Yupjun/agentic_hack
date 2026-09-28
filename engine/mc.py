@@ -8,7 +8,8 @@ NOT modelled (optimistic; stated in the result).
 
 Outputs: P(every demand on time), P(each demand on time), P(shelf-life rule still
 met at receipt/use), P(no temperature excursion on any leg), expected late
-unit-days, and cost = plan cost + late penalty (p50 / p95).
+unit-days, and cost = plan cost + late penalty + value of units rejected for
+shelf life (mean / p50 / p95). Excursion losses are reported, not costed.
 
 Device: CARGO_MC_DEVICE (default "cpu"; this server's GPUs are off-limits).
 """
@@ -64,6 +65,7 @@ def simulate(spec: dict, result: dict, n_samples: int | None = None, device: str
     all_ok = torch.ones(n, dtype=torch.bool, device=dev)
     shelf_all = torch.ones(n, dtype=torch.bool, device=dev)
     late_unit_days = torch.zeros(n, dtype=torch.float64, device=dev)
+    shelf_loss = torch.zeros(n, dtype=torch.float64, device=dev)   # units rejected for shelf life x unit value
     per_demand = {}
     ship_by_id = {sh["id"]: sh for sh in ships}
     for did, allocs in by_d.items():
@@ -78,10 +80,15 @@ def simulate(spec: dict, result: dict, n_samples: int | None = None, device: str
             it = s.items[sh["item"]]
             mfg = tu.to_day(sh["mfg"], s.t0)
             check = arr if s.family == "S1" else torch.maximum(arr, torch.full_like(arr, due))
-            shelf_all &= (mfg + it.shelf_life_days - check) >= it.shelf_life_days * it.min_remaining_shelf_life_pct / 100 - 1e-9
+            ok_shelf = (mfg + it.shelf_life_days - check) >= it.shelf_life_days * it.min_remaining_shelf_life_pct / 100 - 1e-9
+            shelf_all &= ok_shelf
+            # goods that arrive below the receipt threshold are rejected: their value is lost.
+            # Added 2026-09-28 after the agent pointed out that a plan on time 99.8 % of the time
+            # met the shelf-life rule only 20.2 % of the time and was still named risk-adjusted.
+            shelf_loss += (~ok_shelf).double() * a["qty"] * it.unit_value_usd
         per_demand[did] = round(ok.double().mean().item(), 4)
         all_ok &= ok
-    cost = result.get("cost_usd", 0.0) + late_unit_days * u.late_penalty_usd_per_unit_day
+    cost = result.get("cost_usd", 0.0) + late_unit_days * u.late_penalty_usd_per_unit_day + shelf_loss
     q = torch.quantile(cost.float().cpu(), torch.tensor([0.5, 0.95]))
     return {
         "n_samples": n, "device": str(dev), "seed": u.seed, "seconds": round(time.time() - t_start, 3),
@@ -90,6 +97,7 @@ def simulate(spec: dict, result: dict, n_samples: int | None = None, device: str
         "p_shelf_ok": round(shelf_all.double().mean().item(), 4),
         "p_no_excursion": round(exc_free.double().mean().item(), 4),
         "expected_late_unit_days": round(late_unit_days.mean().item(), 3),
+        "expected_shelf_loss_usd": round(shelf_loss.mean().item(), 2),
         "cost_mean_usd": round(cost.mean().item(), 2),
         "cost_p50_usd": round(q[0].item(), 2), "cost_p95_usd": round(q[1].item(), 2),
         "assumptions": "delay=max(0,N(mean,sd)) per leg by mode; missed connection waits for the next departure; later departures have unlimited capacity",

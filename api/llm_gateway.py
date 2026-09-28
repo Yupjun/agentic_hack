@@ -9,6 +9,7 @@ Configuration: agent/guardrails/config.yml. Key: NVIDIA_API_KEY in the environme
 """
 from __future__ import annotations
 
+import asyncio
 import json
 import os
 import time
@@ -20,6 +21,7 @@ from fastapi.responses import StreamingResponse
 from engine import journal
 
 router = APIRouter()
+RETRIES = int(os.environ.get("CARGO_GATEWAY_RETRIES", "3"))
 _G = None
 CFG = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "agent", "guardrails")
 
@@ -53,11 +55,18 @@ async def chat_completions(request: Request):
         if m.get("tool_calls"):
             m["tool_calls"] = [{**tc, "function": {**tc["function"], "arguments": json.loads(tc["function"]["arguments"]) if isinstance(tc["function"].get("arguments"), str) and tc["function"]["arguments"] else (tc["function"].get("arguments") or {})}} for tc in m["tool_calls"]]
         msgs.append(m)
-    try:
-        r = await g.generate_async(messages=msgs, options={"llm_params": llm_params, "log": {"activated_rails": True}})
-    except Exception as e:  # noqa: BLE001 — upstream failure is reported, not hidden
-        journal.append("llm_call", ok=False, error=f"{type(e).__name__}: {str(e)[:300]}", seconds=round(time.time() - t, 3))
-        raise HTTPException(status_code=502, detail=f"guarded upstream failed: {type(e).__name__}: {str(e)[:300]}")
+    r, last = None, None
+    for attempt in range(RETRIES + 1):   # transient upstream 5xx/429: retry with backoff (found 2026-09-28: one HTTP 500 ended a session)
+        try:
+            r = await g.generate_async(messages=msgs, options={"llm_params": llm_params, "log": {"activated_rails": True}})
+            break
+        except Exception as e:  # noqa: BLE001 — upstream failure is reported, not hidden
+            last = e
+            transient = any(code in str(e) for code in ("HTTP 500", "HTTP 502", "HTTP 503", "HTTP 504", "HTTP 429", "Timeout", "timed out"))
+            journal.append("llm_call", ok=False, attempt=attempt, transient=transient, error=f"{type(e).__name__}: {str(e)[:300]}", seconds=round(time.time() - t, 3))
+            if not transient or attempt == RETRIES:
+                raise HTTPException(status_code=502, detail=f"guarded upstream failed after {attempt + 1} attempt(s): {type(e).__name__}: {str(e)[:300]}")
+            await asyncio.sleep(2 ** (attempt + 1))
     content = ""
     if getattr(r, "response", None):
         content = r.response[-1].get("content") or ""

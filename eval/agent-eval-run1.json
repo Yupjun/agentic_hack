@@ -1,0 +1,177 @@
+[
+ {
+  "scenario": "s1-v1-tight-deadline",
+  "goal": "C 제품 100개를 A에서 B로 11일 안에 보내야 해. 예산은 6만 달러야. 계획을 제안해줘.",
+  "seconds": 47.1,
+  "tool_calls": [
+   "list_bases",
+   "make_spec",
+   "solve_plan",
+   "plan_details"
+  ],
+  "base_ok": true,
+  "params": {
+   "due_days": 11,
+   "budget_usd": 60000
+  },
+  "params_ok": true,
+  "recommended": {
+   "found": true,
+   "run_id": "s1_base-agent-1790595566-adc245104c790708",
+   "plan": "cost_optimal",
+   "ok": true,
+   "cost_usd": 25100.0,
+   "reason": null
+  },
+  "cost_matches_bank": true,
+  "bank_cost": 25100.0,
+  "session": "agent-20260928-203905-db4a38"
+ },
+ {
+  "scenario": "s1-v3-short-shelf-life",
+  "goal": "이번 C 제품 로트는 유통기한이 120일이야. 수령 시 60% 이상 남아 있어야 하는 건 그대로고, 100개를 A에서 B로 40일 안에, 예산 6만 달러로 보내야 해.",
+  "seconds": 63.6,
+  "tool_calls": [
+   "list_bases",
+   "make_spec",
+   "solve_plan"
+  ],
+  "base_ok": true,
+  "params": {
+   "due_days": 40,
+   "budget_usd": 60000,
+   "shelf_life_days": {
+    "C": 120
+   },
+   "min_remaining_pct": {
+    "C": 60
+   },
+   "moq": {
+    "C": 100
+   }
+  },
+  "params_ok": false,
+  "recommended": {
+   "found": true,
+   "run_id": "s1_base-agent-1790595615-5e4b1c79bd811d28",
+   "plan": "time_optimal",
+   "ok": true,
+   "cost_usd": 25100.0,
+   "reason": null
+  },
+  "cost_matches_bank": true,
+  "bank_cost": 25100.0,
+  "session": "agent-20260928-203952-f4ac06"
+ },
+ {
+  "scenario": "s1-v4-low-exposure",
+  "goal": "C 제품 100개 A에서 B로, 기한 40일, 예산 6만 달러. 고객이 온도 통제 밖 노출을 합계 2시간 이내로 요구했어.",
+  "seconds": 54.9,
+  "tool_calls": [
+   "list_bases",
+   "make_spec",
+   "solve_plan",
+   "plan_details"
+  ],
+  "base_ok": true,
+  "params": {
+   "due_days": 40,
+   "budget_usd": 60000,
+   "max_exposure_hours": 2
+  },
+  "params_ok": true,
+  "recommended": {
+   "found": true,
+   "run_id": "s1_base-agent-1790595667-a99eb839c34acf80",
+   "plan": "time_optimal",
+   "ok": true,
+   "cost_usd": 32900.0,
+   "reason": null
+  },
+  "cost_matches_bank": true,
+  "bank_cost": 32900.0,
+  "session": "agent-20260928-204055-207917"
+ },
+ {
+  "scenario": "s2-v1-site-delay",
+  "goal": "AA 사이트 배치 3개용 원료 발주 계획이 필요해. A3 사이트가 모든 발주에서 10일씩 늦어진대. 예산 25만 달러.",
+  "seconds": 112.4,
+  "tool_calls": [
+   "list_bases",
+   "make_spec",
+   "solve_plan"
+  ],
+  "base_ok": true,
+  "params": {
+   "budget_usd": 250000,
+   "lead_time_add_days": {
+    "c": 10,
+    "d": 10
+   }
+  },
+  "params_ok": true,
+  "recommended": {
+   "found": false,
+   "ok": false,
+   "reason": "no RECOMMENDED line in the answer"
+  },
+  "cost_matches_bank": false,
+  "bank_cost": null,
+  "session": "agent-20260928-204150-25da20"
+ },
+ {
+  "scenario": "s2-v2-moq-above-need",
+  "goal": "AA 배치 3개용 원료 계획을 짜줘. A2 사이트가 원료 b의 최소 발주량을 15개로 올렸어. 예산 25만 달러.",
+  "seconds": 152.7,
+  "tool_calls": [
+   "list_bases",
+   "make_spec",
+   "solve_plan"
+  ],
+  "base_ok": true,
+  "params": {
+   "budget_usd": 250000,
+   "moq": {
+    "b": 15
+   }
+  },
+  "params_ok": true,
+  "recommended": {
+   "found": true,
+   "run_id": "spec_aa_batch3-d567d7f21178f13e",
+   "plan": "time_optimal",
+   "ok": true,
+   "cost_usd": 240801.0,
+   "reason": null
+  },
+  "cost_matches_bank": true,
+  "bank_cost": 240801.0,
+  "session": "agent-20260928-204343-f05baa"
+ },
+ {
+  "scenario": "s2-v4-budget-cut",
+  "goal": "AA 배치 3개용 원료 발주·운송 계획. 예산이 20만 5천 달러로 깎였어.",
+  "seconds": 60.6,
+  "tool_calls": [
+   "list_bases",
+   "make_spec",
+   "solve_plan"
+  ],
+  "base_ok": true,
+  "params": {
+   "budget_usd": 205000
+  },
+  "params_ok": true,
+  "recommended": {
+   "found": true,
+   "run_id": "s2_base-agent-1790595991-de1a2d65b12728bd",
+   "plan": "balanced",
+   "ok": true,
+   "cost_usd": 200331.0,
+   "reason": null
+  },
+  "cost_matches_bank": true,
+  "bank_cost": 200331.0,
+  "session": "agent-20260928-204615-e1c115"
+ }
+]

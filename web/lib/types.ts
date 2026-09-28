@@ -1,0 +1,11 @@
+export type PlanRow = { plan: string; cost_usd: number | null; min_slack_days: number | null; verify_ok: boolean; p_all_on_time: number | null;
+  cost_mean_usd: number | null; left_over: number | null; routes: string[]; expedite: string[]; verify_problems?: string[] };
+export type Check = { metric: string; op: string; value: unknown; got: unknown; ok: boolean };
+export type ScenarioRow = { id: string; family: string; status: string; registered: string; params: Record<string, unknown>; rationale: string; falsifier: string;
+  verdict: string | null; passed: number | null; total: number | null; cost_optimal?: PlanRow; risk_adjusted?: PlanRow; rule_cheapest?: PlanRow; seconds?: number };
+export type Overview = { scenarios: number; judged: number; supported: number; pre_registered: number; runs: number; sessions: number; sessions_verified: number;
+  guardrail_blocks: number; llm_calls: number; tool_calls: number; agent_eval: { n: number; params_ok: number; verified: number };
+  latest_session: Session | null; agent_running: boolean };
+export type Session = { session: string; goal: string; started: string; ended: string | null; seconds: number | null; status: string; plan: string | null;
+  run_id: string | null; cost_usd: number | null; reason: string | null };
+export type Step = { ts: string; kind: "tool" | "llm" | "block"; name: string; args?: string[]; seconds?: number; error?: string | null; blocked?: string[]; content?: string };

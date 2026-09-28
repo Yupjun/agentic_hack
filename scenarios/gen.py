@@ -36,7 +36,41 @@ def _iso(d: dt.datetime) -> str:
     return d.strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
+KNOWN = {"due_days", "budget_usd", "shelf_life_days", "min_remaining_pct", "max_exposure_hours", "allowed_modes", "delay_scale",
+         "delay_mean_days", "lead_time_add_days", "moq", "capacity_per_week", "batch_shift_days", "rate_jitter_pct"}
+
+
+def check_params(base: dict, params: dict) -> list[str]:
+    """Refuse parameters that would be silently ignored. Found 2026-09-28: the agent sent
+    moq {C: 100} for an S1 (stock) request; generate() ignored it without a word."""
+    p = params or {}
+    probs = [f"unknown parameter {k!r}; known: {sorted(KNOWN)}" for k in p if k not in KNOWN]
+    produced = {x["item"] for x in base.get("production", [])}
+    items = set(base.get("items", {}))
+    modes = set(base.get("uncertainty", {}).get("delay", {}))
+    for k in ("moq", "capacity_per_week", "lead_time_add_days"):
+        for it in (p.get(k) or {}):
+            if it not in produced:
+                probs.append(f"{k}: {it!r} has no production order in this base (produced here: {sorted(produced) or 'none'})")
+    for k in ("shelf_life_days", "min_remaining_pct"):
+        for it in (p.get(k) or {}):
+            if it not in items:
+                probs.append(f"{k}: unknown item {it!r} (items: {sorted(items)})")
+    for k in ("delay_mean_days", "delay_scale"):
+        for m in (p.get(k) or {}):
+            if m not in modes:
+                probs.append(f"{k}: mode {m!r} has no delay model in this base (modes: {sorted(modes)})")
+    if "due_days" in p and not base.get("demand"):
+        probs.append("due_days applies to S1 demand; this base has production batches — use batch_shift_days")
+    if "batch_shift_days" in p and not base.get("production_plan"):
+        probs.append("batch_shift_days applies to S2 batches; this base has no production plan — use due_days")
+    return probs
+
+
 def generate(base: dict, params: dict, seed: int = 0, new_id: str | None = None) -> dict:
+    probs = check_params(base, params)
+    if probs:
+        raise ValueError("; ".join(probs))
     s = copy.deepcopy(base)
     p = params or {}
     if new_id:

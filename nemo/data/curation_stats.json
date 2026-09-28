@@ -1,0 +1,9 @@
+{
+ "raw": 3000,
+ "curated": 2602,
+ "removed": 398,
+ "train": 2044,
+ "val": 277,
+ "test": 281,
+ "unique_labels_curated": 1913
+}

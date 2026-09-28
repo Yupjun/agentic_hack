@@ -1,0 +1,156 @@
+[
+ {
+  "page": "overview",
+  "size": "1512x982",
+  "console_errors": 0,
+  "errors": [],
+  "text_below_12px": 0,
+  "examples": [],
+  "misaligned_rows": 0,
+  "misaligned_examples": [],
+  "file": "docs/screens/overview-mac-1512x982.png"
+ },
+ {
+  "page": "scenarios",
+  "size": "1512x982",
+  "console_errors": 0,
+  "errors": [],
+  "text_below_12px": 0,
+  "examples": [],
+  "misaligned_rows": 0,
+  "misaligned_examples": [],
+  "file": "docs/screens/scenarios-mac-1512x982.png"
+ },
+ {
+  "page": "scenario-s1-base",
+  "size": "1512x982",
+  "console_errors": 0,
+  "errors": [],
+  "text_below_12px": 0,
+  "examples": [],
+  "misaligned_rows": 0,
+  "misaligned_examples": [],
+  "file": "docs/screens/scenario-s1-base-mac-1512x982.png"
+ },
+ {
+  "page": "agent",
+  "size": "1512x982",
+  "console_errors": 0,
+  "errors": [],
+  "text_below_12px": 0,
+  "examples": [],
+  "misaligned_rows": 0,
+  "misaligned_examples": [],
+  "file": "docs/screens/agent-mac-1512x982.png"
+ },
+ {
+  "page": "plans-s1",
+  "size": "1512x982",
+  "console_errors": 0,
+  "errors": [],
+  "text_below_12px": 0,
+  "examples": [],
+  "misaligned_rows": 0,
+  "misaligned_examples": [],
+  "file": "docs/screens/plans-s1-mac-1512x982.png"
+ },
+ {
+  "page": "plans-s2",
+  "size": "1512x982",
+  "console_errors": 0,
+  "errors": [],
+  "text_below_12px": 0,
+  "examples": [],
+  "misaligned_rows": 0,
+  "misaligned_examples": [],
+  "file": "docs/screens/plans-s2-mac-1512x982.png"
+ },
+ {
+  "page": "live",
+  "size": "1512x982",
+  "console_errors": 0,
+  "errors": [],
+  "text_below_12px": 0,
+  "examples": [],
+  "misaligned_rows": 0,
+  "misaligned_examples": [],
+  "file": "docs/screens/live-mac-1512x982.png"
+ },
+ {
+  "page": "overview",
+  "size": "1920x1080",
+  "console_errors": 0,
+  "errors": [],
+  "text_below_12px": 0,
+  "examples": [],
+  "misaligned_rows": 0,
+  "misaligned_examples": [],
+  "file": "docs/screens/overview-win-1920x1080.png"
+ },
+ {
+  "page": "scenarios",
+  "size": "1920x1080",
+  "console_errors": 0,
+  "errors": [],
+  "text_below_12px": 0,
+  "examples": [],
+  "misaligned_rows": 0,
+  "misaligned_examples": [],
+  "file": "docs/screens/scenarios-win-1920x1080.png"
+ },
+ {
+  "page": "scenario-s1-base",
+  "size": "1920x1080",
+  "console_errors": 0,
+  "errors": [],
+  "text_below_12px": 0,
+  "examples": [],
+  "misaligned_rows": 0,
+  "misaligned_examples": [],
+  "file": "docs/screens/scenario-s1-base-win-1920x1080.png"
+ },
+ {
+  "page": "agent",
+  "size": "1920x1080",
+  "console_errors": 0,
+  "errors": [],
+  "text_below_12px": 0,
+  "examples": [],
+  "misaligned_rows": 0,
+  "misaligned_examples": [],
+  "file": "docs/screens/agent-win-1920x1080.png"
+ },
+ {
+  "page": "plans-s1",
+  "size": "1920x1080",
+  "console_errors": 0,
+  "errors": [],
+  "text_below_12px": 0,
+  "examples": [],
+  "misaligned_rows": 0,
+  "misaligned_examples": [],
+  "file": "docs/screens/plans-s1-win-1920x1080.png"
+ },
+ {
+  "page": "plans-s2",
+  "size": "1920x1080",
+  "console_errors": 0,
+  "errors": [],
+  "text_below_12px": 0,
+  "examples": [],
+  "misaligned_rows": 0,
+  "misaligned_examples": [],
+  "file": "docs/screens/plans-s2-win-1920x1080.png"
+ },
+ {
+  "page": "live",
+  "size": "1920x1080",
+  "console_errors": 0,
+  "errors": [],
+  "text_below_12px": 0,
+  "examples": [],
+  "misaligned_rows": 0,
+  "misaligned_examples": [],
+  "file": "docs/screens/live-win-1920x1080.png"
+ }
+]

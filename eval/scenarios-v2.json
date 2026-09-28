@@ -3,7 +3,7 @@
   "id": "s1-base",
   "family": "S1",
   "status": "ok",
-  "seconds": 31.5,
+  "seconds": 31.6,
   "n_candidates": 400,
   "problems": null,
   "rows": [
@@ -13,7 +13,7 @@
     "min_slack_days": 1.7,
     "verify_ok": true,
     "p_all_on_time": 0.3064,
-    "cost_mean_usd": 53706.26,
+    "cost_mean_usd": 91866.26,
     "left_over": 0.0,
     "routes": [
      "ocean"
@@ -66,7 +66,7 @@
     "verify_ok": true,
     "verify_problems": [],
     "p_all_on_time": 0.3064,
-    "cost_mean_usd": 53706.26,
+    "cost_mean_usd": 91866.26,
     "left_over": 0.0,
     "routes": [
      "ocean"
@@ -150,7 +150,7 @@
   "id": "s1-v1-tight-deadline",
   "family": "S1",
   "status": "ok",
-  "seconds": 1.8,
+  "seconds": 1.9,
   "n_candidates": 50,
   "problems": null,
   "rows": [
@@ -295,7 +295,7 @@
     "min_slack_days": 1.7,
     "verify_ok": true,
     "p_all_on_time": 0.3064,
-    "cost_mean_usd": 53706.26,
+    "cost_mean_usd": 91866.26,
     "left_over": 0.0,
     "routes": [
      "ocean"
@@ -308,7 +308,7 @@
     "min_slack_days": 1.7,
     "verify_ok": true,
     "p_all_on_time": 0.3064,
-    "cost_mean_usd": 53706.26,
+    "cost_mean_usd": 91866.26,
     "left_over": 0.0,
     "routes": [
      "ocean"
@@ -321,7 +321,7 @@
     "min_slack_days": 1.7,
     "verify_ok": true,
     "p_all_on_time": 0.3064,
-    "cost_mean_usd": 53706.26,
+    "cost_mean_usd": 91866.26,
     "left_over": 0.0,
     "routes": [
      "ocean"
@@ -334,7 +334,7 @@
     "min_slack_days": 1.7,
     "verify_ok": true,
     "p_all_on_time": 0.3064,
-    "cost_mean_usd": 53706.26,
+    "cost_mean_usd": 91866.26,
     "left_over": 0.0,
     "routes": [
      "ocean"
@@ -348,7 +348,7 @@
     "verify_ok": true,
     "verify_problems": [],
     "p_all_on_time": 0.3064,
-    "cost_mean_usd": 53706.26,
+    "cost_mean_usd": 91866.26,
     "left_over": 0.0,
     "routes": [
      "ocean"
@@ -419,7 +419,7 @@
   "id": "s1-v3-short-shelf-life",
   "family": "S1",
   "status": "ok",
-  "seconds": 30.0,
+  "seconds": 30.5,
   "n_candidates": 400,
   "problems": null,
   "rows": [
@@ -429,7 +429,7 @@
     "min_slack_days": 15.7,
     "verify_ok": true,
     "p_all_on_time": 0.9989,
-    "cost_mean_usd": 21410.63,
+    "cost_mean_usd": 514610.63,
     "left_over": 0.0,
     "routes": [
      "sea-air"
@@ -438,27 +438,27 @@
    },
    {
     "plan": "risk_adjusted",
-    "cost_usd": 21400.0,
-    "min_slack_days": 15.7,
+    "cost_usd": 25100.0,
+    "min_slack_days": 33.2,
     "verify_ok": true,
-    "p_all_on_time": 0.9989,
-    "cost_mean_usd": 21410.63,
+    "p_all_on_time": 1.0,
+    "cost_mean_usd": 25100.0,
     "left_over": 0.0,
     "routes": [
-     "sea-air"
+     "air"
     ],
     "expedite": []
    },
    {
     "plan": "balanced",
-    "cost_usd": 21400.0,
-    "min_slack_days": 15.7,
+    "cost_usd": 25100.0,
+    "min_slack_days": 33.2,
     "verify_ok": true,
-    "p_all_on_time": 0.9989,
-    "cost_mean_usd": 21410.63,
+    "p_all_on_time": 1.0,
+    "cost_mean_usd": 25100.0,
     "left_over": 0.0,
     "routes": [
-     "sea-air"
+     "air"
     ],
     "expedite": []
    },
@@ -482,7 +482,7 @@
     "verify_ok": true,
     "verify_problems": [],
     "p_all_on_time": 0.9989,
-    "cost_mean_usd": 21410.63,
+    "cost_mean_usd": 514610.63,
     "left_over": 0.0,
     "routes": [
      "sea-air"
@@ -547,7 +547,7 @@
   "id": "s1-v4-low-exposure",
   "family": "S1",
   "status": "ok",
-  "seconds": 9.5,
+  "seconds": 9.6,
   "n_candidates": 146,
   "problems": null,
   "rows": [
@@ -557,7 +557,7 @@
     "min_slack_days": 1.7,
     "verify_ok": true,
     "p_all_on_time": 0.3064,
-    "cost_mean_usd": 53706.26,
+    "cost_mean_usd": 91866.26,
     "left_over": 0.0,
     "routes": [
      "ocean"
@@ -610,7 +610,7 @@
     "verify_ok": true,
     "verify_problems": [],
     "p_all_on_time": 0.3064,
-    "cost_mean_usd": 53706.26,
+    "cost_mean_usd": 91866.26,
     "left_over": 0.0,
     "routes": [
      "ocean"
@@ -694,7 +694,7 @@
   "id": "s1-v5-ocean-delay-2026",
   "family": "S1",
   "status": "ok",
-  "seconds": 31.3,
+  "seconds": 33.0,
   "n_candidates": 400,
   "problems": null,
   "rows": [
@@ -704,7 +704,7 @@
     "min_slack_days": 1.7,
     "verify_ok": true,
     "p_all_on_time": 0.1042,
-    "cost_mean_usd": 89896.45,
+    "cost_mean_usd": 212026.45,
     "left_over": 0.0,
     "routes": [
      "ocean"
@@ -757,7 +757,7 @@
     "verify_ok": true,
     "verify_problems": [],
     "p_all_on_time": 0.1042,
-    "cost_mean_usd": 89896.45,
+    "cost_mean_usd": 212026.45,
     "left_over": 0.0,
     "routes": [
      "ocean"
@@ -819,7 +819,7 @@
   "id": "s2-base",
   "family": "S2",
   "status": "ok",
-  "seconds": 84.9,
+  "seconds": 84.7,
   "n_candidates": 752,
   "problems": null,
   "rows": [
@@ -961,7 +961,7 @@
   "id": "s2-v1-site-delay",
   "family": "S2",
   "status": "ok",
-  "seconds": 59.0,
+  "seconds": 58.9,
   "n_candidates": 692,
   "problems": null,
   "rows": [
@@ -1104,7 +1104,7 @@
   "id": "s2-v2-moq-above-need",
   "family": "S2",
   "status": "ok",
-  "seconds": 124.4,
+  "seconds": 124.2,
   "n_candidates": 752,
   "problems": null,
   "rows": [
@@ -1234,7 +1234,7 @@
   "id": "s2-v3-short-shelf-d",
   "family": "S2",
   "status": "ok",
-  "seconds": 124.8,
+  "seconds": 126.4,
   "n_candidates": 752,
   "problems": null,
   "rows": [
@@ -1367,7 +1367,7 @@
   "id": "s2-v4-budget-cut",
   "family": "S2",
   "status": "ok",
-  "seconds": 15.1,
+  "seconds": 15.3,
   "n_candidates": 752,
   "problems": null,
   "rows": [

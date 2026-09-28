@@ -64,7 +64,8 @@ def make_spec(base: str, params_json: str = "{}", new_id: str = "") -> str:
     try:
         spec = generate(_base(base), params, 0, new_id=sid)
     except (KeyError, TypeError, ValueError) as e:
-        return _dump({"error": f"cannot apply params: {type(e).__name__}: {e}", "params": PARAMS_DOC})
+        return _dump({"error": f"cannot apply params: {e}", "params": PARAMS_DOC,
+                      "hint": "remove or correct the listed parameters and call make_spec again"})
     probs = validate(spec)
     os.makedirs(os.path.join(ROOT, "state", "specs"), exist_ok=True)
     json.dump(spec, open(os.path.join(ROOT, "state", "specs", f"{sid}.json"), "w", encoding="utf-8"), indent=1, ensure_ascii=False)
@@ -95,7 +96,7 @@ def solve_plan(spec_id: str) -> str:
         d = derived(v)
         plans[k] = {"cost_usd": v["cost_usd"], "min_slack_days": v["metrics"]["min_slack_days"], "latest_arrival": v["metrics"]["latest_arrival"],
                     "p_all_on_time": v["mc"]["p_all_on_time"], "expected_cost_usd": v["mc"]["cost_mean_usd"], "cost_p95_usd": v["mc"]["cost_p95_usd"],
-                    "p_shelf_ok": v["mc"]["p_shelf_ok"], "p_no_excursion": v["mc"]["p_no_excursion"],
+                    "p_shelf_ok": v["mc"]["p_shelf_ok"], "expected_shelf_loss_usd": v["mc"].get("expected_shelf_loss_usd"), "p_no_excursion": v["mc"]["p_no_excursion"],
                     "routes": d["route_classes"], "expedite_items": d["expedite_items"], "units_left_over": v["metrics"]["units_left_over"],
                     "shipments": len(v["shipments"]), "verified": v["verify_ok"]}
     return _dump({"run_id": run_id, "status": "ok", "backend": res["backend"], "seconds": res["seconds"],

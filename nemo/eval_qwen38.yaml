@@ -1,0 +1,15 @@
+# NeMo Evaluator: the same benchmark on the local qwen38 (this server's vLLM router, OpenAI-compatible).
+#   .venv/bin/nel eval run nemo/eval_qwen38.yaml
+services:
+  model:
+    type: api
+    url: http://127.0.0.1:8001/v1/chat/completions
+    protocol: chat_completions
+    model: qwen38
+    generation: {temperature: 0.0, max_tokens: 3000}
+benchmarks:
+  - name: nemo/spec_writer_bench.py:spec-writer
+    solver: {type: simple, service: model}
+    max_concurrent: 2
+    max_system_retries: 5
+output: {dir: nemo/eval-out/qwen38}
