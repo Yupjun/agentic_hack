@@ -1,0 +1,342 @@
+{
+ "spec": "plan/v1",
+ "id": "s1-base",
+ "family": "S1",
+ "t0": "2026-10-01T00:00:00Z",
+ "budget_usd": 60000,
+ "objective": {
+  "primary": "balanced",
+  "pareto_points": 8
+ },
+ "items": {
+  "C": {
+   "kind": "product",
+   "temp_band": "2-8C",
+   "shelf_life_days": 180,
+   "min_remaining_shelf_life_pct": 60,
+   "lot_size": 10,
+   "unit_kg": 12,
+   "unit_value_usd": 9000
+  }
+ },
+ "nodes": {
+  "A": {
+   "kind": "site",
+   "name": "Plant A (Incheon area)",
+   "lat": 37.46,
+   "lon": 126.44
+  },
+  "ICN": {
+   "kind": "airport",
+   "name": "Incheon Intl",
+   "lat": 37.46,
+   "lon": 126.44,
+   "min_connect_days": 0.25
+  },
+  "PUS": {
+   "kind": "port",
+   "name": "Busan New Port",
+   "lat": 35.08,
+   "lon": 128.83,
+   "min_connect_days": 1.0
+  },
+  "DXB": {
+   "kind": "hub",
+   "name": "Dubai sea-air hub (Jebel Ali / DWC)",
+   "lat": 24.98,
+   "lon": 55.06,
+   "min_connect_days": 1.0
+  },
+  "RTM": {
+   "kind": "port",
+   "name": "Rotterdam",
+   "lat": 51.95,
+   "lon": 4.14,
+   "min_connect_days": 1.0
+  },
+  "FRA": {
+   "kind": "airport",
+   "name": "Frankfurt",
+   "lat": 50.04,
+   "lon": 8.56,
+   "min_connect_days": 0.25
+  },
+  "B": {
+   "kind": "warehouse",
+   "name": "Distribution centre B (Frankfurt area)",
+   "lat": 50.1,
+   "lon": 8.7
+  }
+ },
+ "lanes": [
+  {
+   "id": "T-A-ICN",
+   "mode": "truck",
+   "from": "A",
+   "to": "ICN",
+   "carrier": "reefer truck",
+   "transit_days": 0.3,
+   "cost_fixed_usd": 400,
+   "cost_per_unit_usd": 5,
+   "capacity_units": 300,
+   "temp_bands": [
+    "2-8C",
+    "15-25C"
+   ],
+   "exposure_hours": 0.5,
+   "schedule": {
+    "first": "2026-10-02T06:00:00Z",
+    "every_days": 1,
+    "count": 60
+   }
+  },
+  {
+   "id": "AIR-ICN-FRA-STD",
+   "mode": "air",
+   "from": "ICN",
+   "to": "FRA",
+   "carrier": "belly, passive shipper",
+   "transit_days": 0.6,
+   "cost_fixed_usd": 1500,
+   "cost_per_unit_usd": 180,
+   "capacity_units": 40,
+   "temp_bands": [
+    "2-8C",
+    "15-25C"
+   ],
+   "exposure_hours": 3.0,
+   "schedule": {
+    "first": "2026-10-02T14:00:00Z",
+    "every_days": 1,
+    "count": 60
+   }
+  },
+  {
+   "id": "AIR-ICN-FRA-ACT",
+   "mode": "air",
+   "from": "ICN",
+   "to": "FRA",
+   "carrier": "freighter, active container",
+   "transit_days": 0.6,
+   "cost_fixed_usd": 2500,
+   "cost_per_unit_usd": 260,
+   "capacity_units": 60,
+   "temp_bands": [
+    "2-8C",
+    "15-25C"
+   ],
+   "exposure_hours": 0.5,
+   "schedule": {
+    "first": "2026-10-03T02:00:00Z",
+    "every_days": 2,
+    "count": 30
+   }
+  },
+  {
+   "id": "T-FRA-B",
+   "mode": "truck",
+   "from": "FRA",
+   "to": "B",
+   "carrier": "reefer truck",
+   "transit_days": 0.3,
+   "cost_fixed_usd": 300,
+   "cost_per_unit_usd": 4,
+   "capacity_units": 300,
+   "temp_bands": [
+    "2-8C",
+    "15-25C"
+   ],
+   "exposure_hours": 0.5,
+   "schedule": {
+    "first": "2026-10-02T06:00:00Z",
+    "every_days": 0.5,
+    "count": 120
+   }
+  },
+  {
+   "id": "T-A-PUS",
+   "mode": "truck",
+   "from": "A",
+   "to": "PUS",
+   "carrier": "reefer truck",
+   "transit_days": 0.4,
+   "cost_fixed_usd": 600,
+   "cost_per_unit_usd": 4,
+   "capacity_units": 400,
+   "temp_bands": [
+    "2-8C",
+    "15-25C"
+   ],
+   "exposure_hours": 0.5,
+   "schedule": {
+    "first": "2026-10-02T06:00:00Z",
+    "every_days": 1,
+    "count": 60
+   }
+  },
+  {
+   "id": "OCN-PUS-RTM",
+   "mode": "ocean",
+   "from": "PUS",
+   "to": "RTM",
+   "carrier": "reefer container, via Cape",
+   "transit_days": 34,
+   "cost_fixed_usd": 6500,
+   "cost_per_unit_usd": 3,
+   "capacity_units": 400,
+   "temp_bands": [
+    "2-8C",
+    "15-25C"
+   ],
+   "exposure_hours": 1.0,
+   "schedule": {
+    "first": "2026-10-04T00:00:00Z",
+    "every_days": 7,
+    "count": 8
+   }
+  },
+  {
+   "id": "T-RTM-B",
+   "mode": "truck",
+   "from": "RTM",
+   "to": "B",
+   "carrier": "reefer truck",
+   "transit_days": 0.8,
+   "cost_fixed_usd": 700,
+   "cost_per_unit_usd": 4,
+   "capacity_units": 400,
+   "temp_bands": [
+    "2-8C",
+    "15-25C"
+   ],
+   "exposure_hours": 0.5,
+   "schedule": {
+    "first": "2026-10-02T06:00:00Z",
+    "every_days": 1,
+    "count": 90
+   }
+  },
+  {
+   "id": "OCN-PUS-DXB",
+   "mode": "ocean",
+   "from": "PUS",
+   "to": "DXB",
+   "carrier": "reefer container",
+   "transit_days": 16,
+   "cost_fixed_usd": 4500,
+   "cost_per_unit_usd": 3,
+   "capacity_units": 400,
+   "temp_bands": [
+    "2-8C",
+    "15-25C"
+   ],
+   "exposure_hours": 1.0,
+   "schedule": {
+    "first": "2026-10-06T00:00:00Z",
+    "every_days": 7,
+    "count": 8
+   }
+  },
+  {
+   "id": "AIR-DXB-FRA",
+   "mode": "air",
+   "from": "DXB",
+   "to": "FRA",
+   "carrier": "sea-air onward, active container",
+   "transit_days": 0.4,
+   "cost_fixed_usd": 1800,
+   "cost_per_unit_usd": 110,
+   "capacity_units": 50,
+   "temp_bands": [
+    "2-8C",
+    "15-25C"
+   ],
+   "exposure_hours": 1.5,
+   "schedule": {
+    "first": "2026-10-02T20:00:00Z",
+    "every_days": 1,
+    "count": 70
+   }
+  },
+  {
+   "id": "PCL-A-B",
+   "mode": "parcel",
+   "from": "A",
+   "to": "B",
+   "carrier": "express courier, passive box",
+   "transit_days": 3,
+   "cost_fixed_usd": 0,
+   "cost_per_unit_usd": 420,
+   "capacity_units": 20,
+   "temp_bands": [
+    "2-8C",
+    "15-25C"
+   ],
+   "exposure_hours": 6.0,
+   "schedule": {
+    "first": "2026-10-02T09:00:00Z",
+    "every_days": 1,
+    "count": 60
+   }
+  }
+ ],
+ "stock": [
+  {
+   "item": "C",
+   "node": "A",
+   "qty": 100,
+   "available_from": "2026-10-02T00:00:00Z",
+   "mfg_date": "2026-09-10T00:00:00Z"
+  }
+ ],
+ "demand": [
+  {
+   "id": "B-C-100",
+   "item": "C",
+   "node": "B",
+   "qty": 100,
+   "due": "2026-11-10T18:00:00Z"
+  }
+ ],
+ "constraints": {
+  "qualified_lanes_only": true,
+  "max_exposure_hours": 4,
+  "allowed_modes": [
+   "truck",
+   "parcel",
+   "air",
+   "ocean"
+  ],
+  "max_legs": 3
+ },
+ "uncertainty": {
+  "n_samples": 10000,
+  "seed": 7,
+  "delay": {
+   "truck": {
+    "mean_days": 0.05,
+    "sd_days": 0.2
+   },
+   "parcel": {
+    "mean_days": 0.3,
+    "sd_days": 0.8
+   },
+   "air": {
+    "mean_days": 0.3,
+    "sd_days": 0.7
+   },
+   "ocean": {
+    "mean_days": 3.0,
+    "sd_days": 4.0
+   }
+  },
+  "excursion_prob_per_leg": {
+   "truck": 0.002,
+   "parcel": 0.03,
+   "air": 0.01,
+   "ocean": 0.004
+  },
+  "late_penalty_usd_per_unit_day": 150
+ },
+ "hypothesis": "Ocean is cheapest and still meets the 40-day deadline with >=60% shelf life; sea-air via DXB should sit between ocean and air on both cost and lead time."
+}
