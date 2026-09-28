@@ -1,7 +1,10 @@
-# NeMo Guardrails (IORails engine) in front of the planner model.
+# NeMo Guardrails (IORails engine) in front of the planner model. Three models, three roles:
+#   main            Nemotron 3 Super            plans and calls tools
+#   content_safety  Llama 3.1 Nemotron Safety Guard 8B v3   checks the user's goal (input) and the final answer (output)
 # Policy (mechanism lives in the rails, not in the prompt):
 #   - the model may only call tools the agent declared in the request (allowlist + JSON-schema check)
 #   - there is no booking / ordering / sending tool; a call to one is blocked here even if the model invents it
+#   - unsafe requests and unsafe answers are refused (NemoGuard content-safety taxonomy)
 models:
   - type: main
     engine: nim
@@ -10,8 +13,21 @@ models:
       base_url: https://integrate.api.nvidia.com/v1
       max_tokens: 8000
       temperature: 0.2
+  - type: content_safety
+    engine: nim
+    model: nvidia/llama-3.1-nemotron-safety-guard-8b-v3
+    parameters:
+      base_url: https://integrate.api.nvidia.com/v1
+      max_tokens: 200
+      temperature: 0.0
 passthrough: true
 rails:
+  input:
+    flows:
+      - content safety check input $model=content_safety
+  output:
+    flows:
+      - content safety check output $model=content_safety
   tool_output:
     flows:
       - tool call validation

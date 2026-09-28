@@ -42,6 +42,10 @@ class StressTestConfig(FunctionBaseConfig, name="cargo_stress_test"):
     """Monte Carlo what-if with different mean delays per mode."""
 
 
+class ExplainPlanConfig(FunctionBaseConfig, name="cargo_explain_plan"):
+    """Approver brief of one verified plan, written by a second model (Nemotron 3.5 Lightning)."""
+
+
 class AirspaceConfig(FunctionBaseConfig, name="cargo_airspace_status"):
     """Live FAA airspace status for a US airport."""
 
@@ -89,6 +93,15 @@ async def cargo_stress_test(config: StressTestConfig, builder: Builder):
     async def _fn(run_id: str, plan: str, delay_mean_days_json: str = "{}") -> str:
         """What-if: re-run Monte Carlo for one plan with other mean delays per mode, e.g. {"ocean": 6.06}. Returns on-time probability and expected cost."""
         return T.stress_test(run_id, plan, delay_mean_days_json)
+    yield FunctionInfo.from_fn(_fn, description=_fn.__doc__)
+
+
+@register_function(config_type=ExplainPlanConfig)
+async def cargo_explain_plan(config: ExplainPlanConfig, builder: Builder):
+    async def _fn(run_id: str, plan: str) -> str:
+        """Write a short Korean brief of one verified plan for the approver, using a second, smaller model. Returns the brief and
+        unverified_numbers (numbers in the brief that are not in the plan data). Call it once for the plan you recommend."""
+        return T.explain_plan(run_id, plan)
     yield FunctionInfo.from_fn(_fn, description=_fn.__doc__)
 
 

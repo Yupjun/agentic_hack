@@ -3,7 +3,7 @@
  "id": "spec_c_100",
  "family": "S1",
  "t0": "2026-10-01T00:00:00Z",
- "budget_usd": 60000,
+ "budget_usd": 40000,
  "objective": {
   "primary": "balanced",
   "pareto_points": 8
@@ -295,12 +295,12 @@
    "item": "C",
    "node": "B",
    "qty": 100,
-   "due": "2026-11-10T00:00:00Z"
+   "due": "2026-10-31T00:00:00Z"
   }
  ],
  "constraints": {
   "qualified_lanes_only": true,
-  "max_exposure_hours": 2,
+  "max_exposure_hours": 4,
   "allowed_modes": [
    "truck",
    "parcel",

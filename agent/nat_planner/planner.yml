@@ -1,5 +1,7 @@
 # NeMo Agent Toolkit workflow: order-and-transport planner.
 # Different models serve different roles (model routing is data, here):
+#   explainer       Nemotron 3.5 Lightning 30B-A3B (tool cargo_explain_plan, reasoning off) writes the approver brief
+#   content safety  Llama 3.1 Nemotron Safety Guard 8B v3 (Guardrails input/output rails in the gateway)
 #   planner_guarded Nemotron 3 Super through the NeMo Guardrails gateway on :8091 (default)
 #   planner       Nemotron 3 Super on build.nvidia.com (NIM API), native tool calling
 #   planner_local qwen38 on this server's vLLM (OpenAI-compatible) — fallback / offline
@@ -13,6 +15,7 @@ functions:
   cargo_solve_plan: {_type: cargo_solve_plan}
   cargo_plan_details: {_type: cargo_plan_details}
   cargo_stress_test: {_type: cargo_stress_test}
+  cargo_explain_plan: {_type: cargo_explain_plan}
   cargo_airspace_status: {_type: cargo_airspace_status}
   cargo_aviation_weather: {_type: cargo_aviation_weather}
 
@@ -43,7 +46,7 @@ llms:
 workflow:
   _type: tool_calling_agent
   llm_name: planner_guarded
-  tool_names: [cargo_list_bases, cargo_make_spec, cargo_solve_plan, cargo_plan_details, cargo_stress_test, cargo_airspace_status, cargo_aviation_weather]
+  tool_names: [cargo_list_bases, cargo_make_spec, cargo_solve_plan, cargo_plan_details, cargo_stress_test, cargo_explain_plan, cargo_airspace_status, cargo_aviation_weather]
   max_iterations: 16
   handle_tool_errors: true
   truncation_retry: {max_retries: 1, token_increment: 4000}
@@ -57,4 +60,5 @@ workflow:
     3. Call cargo_solve_plan. Every number you report must come from a tool result.
     4. Compare the four plans. Recommend one and say why in terms of cost, minimum slack, on-time probability and expected cost. If the cheapest plan is rarely on time, say so.
     5. If the user mentions a disruption (delay, airport, weather), use cargo_stress_test and/or the live tools before recommending.
+    6. Call cargo_explain_plan once for the plan you recommend and include its brief under the heading "승인자 요약"; if unverified_numbers is not empty, say which numbers were not verified.
     Answer in the user's language. End with one line: RECOMMENDED: <run_id> <plan_name>.

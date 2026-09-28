@@ -144,6 +144,55 @@ def stress_test(run_id: str, plan: str, delay_mean_days_json: str = "{}") -> str
                   "expected_cost_usd": mc["cost_mean_usd"], "cost_p95_usd": mc["cost_p95_usd"], "baseline_p_all_on_time": p["mc"]["p_all_on_time"]})
 
 
+EXPLAINER_MODEL = os.environ.get("CARGO_EXPLAINER_MODEL", "nvidia/nemotron-3.5-lightning-30b-a3b")
+
+
+def _numbers(text: str) -> list[str]:
+    import re
+    return [n.replace(",", "") for n in re.findall(r"\d[\d,]*\.?\d*", text)]
+
+
+def explain_plan(run_id: str, plan: str) -> str:
+    """Write a short Korean brief of one verified plan for the approver, with a second, smaller model
+    (Nemotron 3.5 Lightning, reasoning off). Every number in the brief is checked against the plan data;
+    numbers that do not appear there are listed as unverified (the brief is not silently trusted)."""
+    import httpx
+    r = _run(run_id)
+    if r is None:
+        return _dump({"error": f"no run {run_id!r}"})
+    p = r.get("plans", {}).get(plan)
+    if p is None:
+        return _dump({"error": f"no plan {plan!r}", "plans": list(r.get("plans", {}))})
+    facts = {"plan": plan, "cost_usd": p["cost_usd"], "min_slack_days": p["metrics"]["min_slack_days"], "latest_arrival": p["metrics"]["latest_arrival"],
+             "p_all_on_time": p["mc"]["p_all_on_time"], "expected_cost_usd": p["mc"]["cost_mean_usd"], "units_left_over": p["metrics"]["units_left_over"],
+             "shipments": [{"item": s["item"], "qty": s["qty"], "option": s["option"], "route": " > ".join(f"{g['mode']} {g['from']}-{g['to']}" for g in s["legs"]),
+                            "depart": s["legs"][0]["depart"][:10], "arrive": s["legs"][-1]["arrive"][:10]} for s in p["shipments"]]}
+    key = os.environ.get("NVIDIA_API_KEY")
+    if not key:
+        return _dump({"error": "NVIDIA_API_KEY not set"})
+    body = {"model": EXPLAINER_MODEL, "max_tokens": 700, "temperature": 0.2, "chat_template_kwargs": {"enable_thinking": False},
+            "messages": [{"role": "system", "content": "승인자에게 보낼 발주·운송 계획 요약을 한국어로 5문장 이내로 쓴다. 아래 JSON에 있는 숫자만 쓴다. 숫자를 새로 계산하거나 지어내지 않는다."},
+                         {"role": "user", "content": json.dumps(facts, ensure_ascii=False)}]}
+    last = None
+    for attempt in range(4):
+        try:
+            resp = httpx.post("https://integrate.api.nvidia.com/v1/chat/completions", json=body, headers={"Authorization": f"Bearer {key}"}, timeout=120)
+            if resp.status_code == 200:
+                text = resp.json()["choices"][0]["message"]["content"] or ""
+                source = _numbers(json.dumps(facts, ensure_ascii=False))
+                pct = [f"{v * 100:.1f}".rstrip("0").rstrip(".") for v in (facts["p_all_on_time"],)]
+                unverified = [n for n in _numbers(text) if not any(n == s or s.startswith(n) or n in s for s in source + pct)]
+                return _dump({"model": EXPLAINER_MODEL, "brief": text.strip(), "unverified_numbers": unverified,
+                              "note": "unverified_numbers lists numbers in the brief that do not appear in the plan data"})
+            last = f"HTTP {resp.status_code}: {resp.text[:200]}"
+            if resp.status_code < 500 and resp.status_code != 429:
+                break
+        except httpx.HTTPError as e:
+            last = f"{type(e).__name__}: {e}"
+        time.sleep(2 ** (attempt + 1))
+    return _dump({"error": f"explainer failed: {last}"})
+
+
 def airspace_status(airport: str) -> str:
     """Live FAA airspace status for a US airport (ground delay programs, ground stops, closures)."""
     try:
@@ -184,6 +233,6 @@ def _traced(fn):
     return wrap
 
 
-list_bases, make_spec, solve_plan, plan_details, stress_test, airspace_status, aviation_weather = (
-    _traced(f) for f in (list_bases, make_spec, solve_plan, plan_details, stress_test, airspace_status, aviation_weather))
-TOOLS = [list_bases, make_spec, solve_plan, plan_details, stress_test, airspace_status, aviation_weather]
+list_bases, make_spec, solve_plan, plan_details, stress_test, explain_plan, airspace_status, aviation_weather = (
+    _traced(f) for f in (list_bases, make_spec, solve_plan, plan_details, stress_test, explain_plan, airspace_status, aviation_weather))
+TOOLS = [list_bases, make_spec, solve_plan, plan_details, stress_test, explain_plan, airspace_status, aviation_weather]

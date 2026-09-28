@@ -71,12 +71,16 @@ async def chat_completions(request: Request):
     if getattr(r, "response", None):
         content = r.response[-1].get("content") or ""
     tcs = getattr(r, "tool_calls", None) or []
-    # IORails signals a block by dropping tool_calls and returning its fixed refusal /
-    # internal-error text (nemoguardrails.guardrails.iorails._blocked_message).
+    # Which rail stopped the turn: IORails' generation log names it (type input / output / tool_output, stop=True).
+    # Fallback when no log: the fixed refusal text means a block (iorails._blocked_message).
     from nemoguardrails.guardrails import iorails as _io
     blocked = []
-    if content and content in {getattr(_io, "REFUSAL_MESSAGE", None), getattr(_io, "INTERNAL_ERROR_MESSAGE", None)}:
-        blocked.append("tool call validation" if not tcs else "unknown")
+    log = getattr(r, "log", None)
+    for ar in (getattr(log, "activated_rails", None) or []):
+        if getattr(ar, "stop", False):
+            blocked.append(f"{getattr(ar, 'type', '?')}: {getattr(ar, 'name', '?')}")
+    if not blocked and content and content in {getattr(_io, "REFUSAL_MESSAGE", None), getattr(_io, "INTERNAL_ERROR_MESSAGE", None)}:
+        blocked.append("unknown rail (refusal text)")
     msg = {"role": "assistant", "content": content or None}
     if tcs:
         msg["tool_calls"] = [{"id": tc.get("id") or f"call_{uuid.uuid4().hex[:12]}", "type": "function",
