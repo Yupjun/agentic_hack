@@ -2,6 +2,7 @@
 import { get, usd, pct, days } from "@/lib/api";
 import { Panel, Badge } from "@/components/ui";
 import { Timeline } from "@/components/Timeline";
+import RouteGlobe from "@/components/globe/RouteGlobeClient";
 
 export const dynamic = "force-dynamic";
 type Plan = { cost_usd: number; metrics: { min_slack_days: number; latest_arrival: string; units_left_over: number }; mc: { p_all_on_time: number; cost_mean_usd: number; cost_p95_usd: number; p_shelf_ok: number; p_no_excursion: number }; shipments: any[] };
@@ -47,6 +48,9 @@ export default async function Page({ params, searchParams }: { params: Promise<{
             })}
           </tbody>
         </table>
+      </Panel>
+      <Panel title={`${sel.replace("_", " ")} — 지구본: 어디서 언제 어떻게 가나`} kicker="press Play to run the timeline · Now = current status · click a route or a shipment to focus">
+        <RouteGlobe ships={p.shipments} nodes={d.spec?.nodes ?? {}} dues={dues(d.spec)} />
       </Panel>
       <Panel title={`${sel.replace("_", " ")} — 언제 무엇이 움직이나`} kicker={`${p.shipments.length} shipments · shelf life ok ${pct(p.mc.p_shelf_ok)} · no excursion ${pct(p.mc.p_no_excursion)}`}
         right={<Badge tone="cobalt">{usd(p.cost_usd)} USD</Badge>}>

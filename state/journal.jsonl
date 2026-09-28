@@ -330,3 +330,45 @@
 {"ts": "2026-09-28T12:26:50Z", "event": "tool_call", "tool": "make_spec", "args": ["nope", "{}"], "kwargs": {}, "seconds": 0.0, "result_chars": 65, "error": "unknown base 'nope'", "session": ""}
 {"ts": "2026-09-28T12:26:50Z", "event": "tool_call", "tool": "solve_plan", "args": ["does-not-exist"], "kwargs": {}, "seconds": 0.0, "result_chars": 64, "error": "no spec 'does-not-exist'; create one with make_spec", "session": ""}
 {"ts": "2026-09-28T12:26:50Z", "event": "tool_call", "tool": "plan_details", "args": ["does-not-exist", "balanced"], "kwargs": {}, "seconds": 0.0, "result_chars": 36, "error": "no run 'does-not-exist'", "session": ""}
+{"ts": "2026-09-28T13:18:43Z", "event": "tool_call", "tool": "make_spec", "args": ["s1_base", "{not json"], "kwargs": {}, "seconds": 0.0, "result_chars": 113, "error": "params_json is not JSON: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)", "session": ""}
+{"ts": "2026-09-28T13:18:43Z", "event": "agent_make_spec", "spec_id": "test-impossible", "base": "s1_base", "params": {"due_days": 1}, "problems": ["reach: demand B-C-100 due day 1.0 but earliest possible arrival is day 2.7"]}
+{"ts": "2026-09-28T13:18:43Z", "event": "tool_call", "tool": "make_spec", "args": ["s1_base", "{\"due_days\": 1}", "test-impossible"], "kwargs": {}, "seconds": 0.001, "result_chars": 416, "error": null, "session": ""}
+{"ts": "2026-09-28T13:18:43Z", "event": "tool_call", "tool": "make_spec", "args": ["nope", "{}"], "kwargs": {}, "seconds": 0.0, "result_chars": 65, "error": "unknown base 'nope'", "session": ""}
+{"ts": "2026-09-28T13:18:43Z", "event": "tool_call", "tool": "solve_plan", "args": ["does-not-exist"], "kwargs": {}, "seconds": 0.0, "result_chars": 64, "error": "no spec 'does-not-exist'; create one with make_spec", "session": ""}
+{"ts": "2026-09-28T13:18:43Z", "event": "tool_call", "tool": "plan_details", "args": ["does-not-exist", "balanced"], "kwargs": {}, "seconds": 0.0, "result_chars": 36, "error": "no run 'does-not-exist'", "session": ""}
+{"ts": "2026-09-28T13:19:37Z", "event": "tool_call", "tool": "airspace_status", "args": ["JFK"], "kwargs": {}, "seconds": 1.127, "result_chars": 148, "error": null, "session": ""}
+{"ts": "2026-09-28T13:19:37Z", "event": "tool_call", "tool": "airspace_status", "args": ["LAX"], "kwargs": {}, "seconds": 1.144, "result_chars": 407, "error": null, "session": ""}
+{"ts": "2026-09-28T13:19:37Z", "event": "tool_call", "tool": "airspace_status", "args": ["MDB"], "kwargs": {}, "seconds": 1.172, "result_chars": 148, "error": null, "session": ""}
+{"ts": "2026-09-28T13:19:37Z", "event": "tool_call", "tool": "airspace_status", "args": ["KSI"], "kwargs": {}, "seconds": 1.174, "result_chars": 148, "error": null, "session": ""}
+{"ts": "2026-09-28T13:19:37Z", "event": "tool_call", "tool": "airspace_status", "args": ["DDF"], "kwargs": {}, "seconds": 1.176, "result_chars": 148, "error": null, "session": ""}
+{"ts": "2026-09-28T13:19:37Z", "event": "tool_call", "tool": "airspace_status", "args": ["ORD"], "kwargs": {}, "seconds": 1.289, "result_chars": 148, "error": null, "session": ""}
+{"ts": "2026-09-28T13:19:40Z", "event": "tool_call", "tool": "aviation_weather", "args": ["KLAX"], "kwargs": {}, "seconds": 3.137, "result_chars": 508, "error": null, "session": ""}
+{"ts": "2026-09-28T13:19:40Z", "event": "tool_call", "tool": "aviation_weather", "args": ["KJFK"], "kwargs": {}, "seconds": 3.164, "result_chars": 574, "error": null, "session": ""}
+{"ts": "2026-09-28T13:19:40Z", "event": "tool_call", "tool": "aviation_weather", "args": ["RKSI"], "kwargs": {}, "seconds": 3.122, "result_chars": 446, "error": null, "session": ""}
+{"ts": "2026-09-28T13:19:40Z", "event": "tool_call", "tool": "aviation_weather", "args": ["OMDB"], "kwargs": {}, "seconds": 3.139, "result_chars": 404, "error": null, "session": ""}
+{"ts": "2026-09-28T13:19:40Z", "event": "tool_call", "tool": "aviation_weather", "args": ["KORD"], "kwargs": {}, "seconds": 3.048, "result_chars": 525, "error": null, "session": ""}
+{"ts": "2026-09-28T13:19:41Z", "event": "tool_call", "tool": "aviation_weather", "args": ["EDDF"], "kwargs": {}, "seconds": 4.901, "result_chars": 331, "error": null, "session": ""}
+{"ts": "2026-09-28T13:38:29Z", "event": "tool_call", "tool": "airspace_status", "args": ["ORD"], "kwargs": {}, "seconds": 1.035, "result_chars": 148, "error": null, "session": ""}
+{"ts": "2026-09-28T13:38:29Z", "event": "tool_call", "tool": "airspace_status", "args": ["LAX"], "kwargs": {}, "seconds": 1.065, "result_chars": 407, "error": null, "session": ""}
+{"ts": "2026-09-28T13:38:29Z", "event": "tool_call", "tool": "airspace_status", "args": ["KSI"], "kwargs": {}, "seconds": 1.068, "result_chars": 148, "error": null, "session": ""}
+{"ts": "2026-09-28T13:38:29Z", "event": "tool_call", "tool": "airspace_status", "args": ["MDB"], "kwargs": {}, "seconds": 1.072, "result_chars": 148, "error": null, "session": ""}
+{"ts": "2026-09-28T13:38:30Z", "event": "tool_call", "tool": "airspace_status", "args": ["JFK"], "kwargs": {}, "seconds": 1.129, "result_chars": 148, "error": null, "session": ""}
+{"ts": "2026-09-28T13:38:30Z", "event": "tool_call", "tool": "airspace_status", "args": ["DDF"], "kwargs": {}, "seconds": 1.145, "result_chars": 148, "error": null, "session": ""}
+{"ts": "2026-09-28T13:38:33Z", "event": "tool_call", "tool": "aviation_weather", "args": ["OMDB"], "kwargs": {}, "seconds": 3.096, "result_chars": 403, "error": null, "session": ""}
+{"ts": "2026-09-28T13:38:33Z", "event": "tool_call", "tool": "aviation_weather", "args": ["RKSI"], "kwargs": {}, "seconds": 3.197, "result_chars": 446, "error": null, "session": ""}
+{"ts": "2026-09-28T13:38:33Z", "event": "tool_call", "tool": "aviation_weather", "args": ["KJFK"], "kwargs": {}, "seconds": 3.139, "result_chars": 574, "error": null, "session": ""}
+{"ts": "2026-09-28T13:38:33Z", "event": "tool_call", "tool": "aviation_weather", "args": ["KLAX"], "kwargs": {}, "seconds": 3.225, "result_chars": 508, "error": null, "session": ""}
+{"ts": "2026-09-28T13:38:33Z", "event": "tool_call", "tool": "aviation_weather", "args": ["EDDF"], "kwargs": {}, "seconds": 3.193, "result_chars": 331, "error": null, "session": ""}
+{"ts": "2026-09-28T13:38:35Z", "event": "tool_call", "tool": "aviation_weather", "args": ["KORD"], "kwargs": {}, "seconds": 5.8, "result_chars": 525, "error": null, "session": ""}
+{"ts": "2026-09-28T13:38:53Z", "event": "tool_call", "tool": "airspace_status", "args": ["JFK"], "kwargs": {}, "seconds": 0.0, "result_chars": 148, "error": null, "session": ""}
+{"ts": "2026-09-28T13:38:53Z", "event": "tool_call", "tool": "airspace_status", "args": ["ORD"], "kwargs": {}, "seconds": 0.0, "result_chars": 148, "error": null, "session": ""}
+{"ts": "2026-09-28T13:38:53Z", "event": "tool_call", "tool": "airspace_status", "args": ["LAX"], "kwargs": {}, "seconds": 0.0, "result_chars": 407, "error": null, "session": ""}
+{"ts": "2026-09-28T13:38:53Z", "event": "tool_call", "tool": "aviation_weather", "args": ["KJFK"], "kwargs": {}, "seconds": 0.0, "result_chars": 574, "error": null, "session": ""}
+{"ts": "2026-09-28T13:38:53Z", "event": "tool_call", "tool": "airspace_status", "args": ["DDF"], "kwargs": {}, "seconds": 0.0, "result_chars": 148, "error": null, "session": ""}
+{"ts": "2026-09-28T13:38:53Z", "event": "tool_call", "tool": "airspace_status", "args": ["KSI"], "kwargs": {}, "seconds": 0.0, "result_chars": 148, "error": null, "session": ""}
+{"ts": "2026-09-28T13:38:53Z", "event": "tool_call", "tool": "aviation_weather", "args": ["KORD"], "kwargs": {}, "seconds": 0.0, "result_chars": 525, "error": null, "session": ""}
+{"ts": "2026-09-28T13:38:53Z", "event": "tool_call", "tool": "aviation_weather", "args": ["KLAX"], "kwargs": {}, "seconds": 0.0, "result_chars": 508, "error": null, "session": ""}
+{"ts": "2026-09-28T13:38:53Z", "event": "tool_call", "tool": "aviation_weather", "args": ["EDDF"], "kwargs": {}, "seconds": 0.0, "result_chars": 331, "error": null, "session": ""}
+{"ts": "2026-09-28T13:38:53Z", "event": "tool_call", "tool": "airspace_status", "args": ["MDB"], "kwargs": {}, "seconds": 0.0, "result_chars": 148, "error": null, "session": ""}
+{"ts": "2026-09-28T13:38:53Z", "event": "tool_call", "tool": "aviation_weather", "args": ["RKSI"], "kwargs": {}, "seconds": 0.0, "result_chars": 446, "error": null, "session": ""}
+{"ts": "2026-09-28T13:38:53Z", "event": "tool_call", "tool": "aviation_weather", "args": ["OMDB"], "kwargs": {}, "seconds": 0.0, "result_chars": 403, "error": null, "session": ""}

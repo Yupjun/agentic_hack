@@ -3,12 +3,20 @@ import { get, usd, pct } from "@/lib/api";
 import type { Overview, ScenarioRow } from "@/lib/types";
 import { BigStat, Panel, Row, Badge } from "@/components/ui";
 import { CostRiskChart } from "@/components/CostRiskChart";
+import RouteGlobe from "@/components/globe/RouteGlobeClient";
+import type { Session } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
 
 export default async function Page() {
   const [o, sc] = await Promise.all([get<Overview>("/api/overview"), get<ScenarioRow[]>("/api/scenarios")]);
   const base = await get<{ result: { rows: import("@/lib/types").PlanRow[] } | null }>("/api/scenarios/s1-base");
+  // current status: the latest agent session that ended on a verified plan, shown on the globe at "now"
+  const sessions = await get<Session[]>("/api/sessions");
+  const latest = sessions.find((x) => x.status === "verified" && x.run_id && x.plan);
+  const live = latest ? await get<{ run: { plans: Record<string, { shipments: any[] }> }; spec: any }>(`/api/runs/${latest.run_id}`).catch(() => null) : null;
+  const liveDues = live?.spec?.production_plan ? live.spec.production_plan.batches.map((b: any) => ({ id: b.id, due: b.start }))
+    : (live?.spec?.demand ?? []).map((d: any) => ({ id: d.id, due: d.due }));
   const co = base.result?.rows.find((r) => r.plan === "cost_optimal");
   const ra = base.result?.rows.find((r) => r.plan === "risk_adjusted");
   return (
@@ -23,6 +31,13 @@ export default async function Page() {
         <BigStat label="agent eval: params right" value={`${o.agent_eval.params_ok}/${o.agent_eval.n}`} sub={`${o.agent_eval.verified}/${o.agent_eval.n} ended on a verified plan`} />
         <BigStat label="guardrail blocks" value={`${o.guardrail_blocks}`} sub="undeclared tool calls stopped" tone="tomato" />
       </div>
+      {latest && live && (
+        <Panel kicker={`latest verified agent plan · ${latest.plan} · ${Math.round(latest.cost_usd ?? 0).toLocaleString()} USD`} title="지금 각 발주는 어디에 있나?"
+          right={<a className="text-body text-cobalt" href={`/runs/${latest.run_id}?plan=${latest.plan}`}>open the plan →</a>}>
+          <p className="mb-3 text-body text-muted">{latest.goal}</p>
+          <RouteGlobe ships={live.run.plans[latest.plan!].shipments} nodes={live.spec?.nodes ?? {}} dues={liveDues} />
+        </Panel>
+      )}
       <Panel kicker="scenario s1-base · 10,000 Monte Carlo samples" title="가장 싼 안은 제때 도착하는가?">
         <p className="mb-4 max-w-3xl text-lead">
           비용 최적안({usd(co?.cost_usd)} USD, {co?.routes.join("+")})은 정시 확률 {pct(co?.p_all_on_time)}, 지연 벌금 포함 기대비용 {usd(co?.cost_mean_usd)} USD.
