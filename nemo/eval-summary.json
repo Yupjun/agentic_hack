@@ -1,0 +1,18 @@
+{
+ "qwen38": {
+  "scored": 281,
+  "answered": 281,
+  "correct": 281
+ },
+ "super": {
+  "scored": 40,
+  "answered": 29,
+  "correct": 28
+ },
+ "same_problems": {
+  "n": 29,
+  "qwen38_correct": 29,
+  "super_correct": 28
+ },
+ "finding": "templated synthetic requests saturate the benchmark (qwen38 answers all); a paraphrased hard split is needed before a LoRA comparison means anything"
+}

@@ -24,7 +24,7 @@
 - 가드레일: 모델이 없는 예약 도구를 지어낸 2회 모두 차단.
 - 재현: 새 셸에서 run-all --replay 1분 49초, 36개 안 차이 0.
 - 화면: 14장 콘솔 0, 12px 미만 0, 표 열 밀림 0.
-- NeMo Evaluator(목표→스펙): docs/submission-draft 4절과 eval 로그 참고(API 한도로 느림).
+- NeMo Evaluator(목표→스펙): qwen38 281/281, Nemotron 3 Super 28/29(API 한도로 40문항에서 중단, 11개 무응답). **벤치마크가 포화됐다**(템플릿 문장) — LoRA 비교 전에 어려운 분할이 필요.
 
 ## 건너뛴 것과 이유
 - NeMo AutoModel LoRA: 사용자 결정으로 보류(데이터·벤치마크 준비됨).
@@ -38,6 +38,7 @@ validate 도달성 필터 누락 · 가장 이른 연결편 가정 · 미수렴 
 표 열 밀림 · 차트 라벨 겹침 · Evaluator 템플릿 치환 실패(0/40) · 실행기 파이프 점유
 
 ## 다음 단계 (사용자 결정 필요)
+- Evaluator 어려운 분할(자유 서술 바꿔 쓰기) 만들기 — LoRA 효과를 보이려면 먼저 필요.
 - LoRA 학습 시점과 장소(해커톤 박스?).
 - 주최 측에 "NeMo Framework 활용" 인정 범위 확인(Curator·Evaluator 실사용, Agent Toolkit·Guardrails는 에이전트 층).
 - 해커톤 박스에서: cuOpt 동등성 테스트, OpenShell 샌드박스.
