@@ -32,6 +32,8 @@ BROKEN = [
     ("S1 with production", S1, lambda s: s.update(production=copy.deepcopy(S2["production"][:1])), "family: S1 must not"),
     ("alternate supplier for a material", S2, lambda s: s["production"].append(dict(copy.deepcopy(s["production"][0]), site="A2")), "no alternate suppliers"),
     ("BOM material without source", S2, lambda s: s["production_plan"]["bom"].append({"material": "AA", "qty_per_unit": 1}), "no approved production source"),
+    ("route exceeds max_legs", S2, lambda s: s["constraints"].update(max_legs=3), "reach: no usable lane path to AA for demand B1:b"),
+    ("route exceeds exposure", S2, lambda s: s["constraints"].update(max_exposure_hours=3.0), "reach: no usable lane path to AA for demand B1:b"),
     ("all lanes unqualified", S1, lambda s: [l.update(qualified=False) for l in s["lanes"]], "reach: no usable lane path"),
 ]
 

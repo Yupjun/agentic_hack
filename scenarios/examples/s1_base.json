@@ -307,7 +307,7 @@
    "air",
    "ocean"
   ],
-  "max_legs": 3
+  "max_legs": 4
  },
  "uncertainty": {
   "n_samples": 10000,

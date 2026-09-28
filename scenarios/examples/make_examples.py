@@ -43,7 +43,7 @@ s1 = {
     ],
     "stock": [{"item": "C", "node": "A", "qty": 100, "available_from": "2026-10-02T00:00:00Z", "mfg_date": "2026-09-10T00:00:00Z"}],
     "demand": [{"id": "B-C-100", "item": "C", "node": "B", "qty": 100, "due": "2026-11-10T18:00:00Z"}],
-    "constraints": {"qualified_lanes_only": True, "max_exposure_hours": 4, "allowed_modes": ["truck", "parcel", "air", "ocean"], "max_legs": 3},
+    "constraints": {"qualified_lanes_only": True, "max_exposure_hours": 4, "allowed_modes": ["truck", "parcel", "air", "ocean"], "max_legs": 4},
     "uncertainty": {"n_samples": 10000, "seed": 7,
                     "delay": {"truck": {"mean_days": 0.05, "sd_days": 0.2}, "parcel": {"mean_days": 0.3, "sd_days": 0.8},
                               "air": {"mean_days": 0.3, "sd_days": 0.7}, "ocean": {"mean_days": 3.0, "sd_days": 4.0}},
@@ -83,8 +83,8 @@ s2 = {
         {"id": "T-A1-RTM", "mode": "truck", "from": "A1", "to": "RTM", "transit_days": 1.0, "cost_fixed_usd": 900, "cost_per_unit_usd": 3, "capacity_units": 200, "temp_bands": ["15-25C", "2-8C"], "exposure_hours": 0.5, "schedule": sched("2026-10-01T06:00:00Z", 1, 150)},
         {"id": "OCN-RTM-PUS", "mode": "ocean", "from": "RTM", "to": "PUS", "transit_days": 36, "cost_fixed_usd": 5500, "cost_per_unit_usd": 4, "capacity_units": 300, "temp_bands": ["15-25C", "2-8C"], "exposure_hours": 1.0, "schedule": sched("2026-10-03T00:00:00Z", 7, 20)},
         {"id": "T-A2-DUB", "mode": "truck", "from": "A2", "to": "DUB", "transit_days": 0.2, "cost_fixed_usd": 250, "cost_per_unit_usd": 2, "capacity_units": 100, "temp_bands": MAT, "exposure_hours": 0.5, "schedule": sched("2026-10-01T06:00:00Z", 1, 150)},
-        {"id": "AIR-DUB-FRA", "mode": "air", "from": "DUB", "to": "FRA", "transit_days": 0.2, "cost_fixed_usd": 700, "cost_per_unit_usd": 25, "capacity_units": 40, "temp_bands": ["2-8C", "15-25C"], "exposure_hours": 1.5, "schedule": sched("2026-10-01T15:00:00Z", 1, 150)},
-        {"id": "AIR-FRA-ICN", "mode": "air", "from": "FRA", "to": "ICN", "transit_days": 0.6, "cost_fixed_usd": 1800, "cost_per_unit_usd": 70, "capacity_units": 40, "temp_bands": MAT, "exposure_hours": 2.0, "schedule": sched("2026-10-02T13:00:00Z", 1, 150)},
+        {"id": "AIR-DUB-FRA", "mode": "air", "from": "DUB", "to": "FRA", "carrier": "active container", "transit_days": 0.2, "cost_fixed_usd": 700, "cost_per_unit_usd": 25, "capacity_units": 40, "temp_bands": ["2-8C", "15-25C"], "exposure_hours": 1.0, "schedule": sched("2026-10-01T15:00:00Z", 1, 150)},
+        {"id": "AIR-FRA-ICN", "mode": "air", "from": "FRA", "to": "ICN", "carrier": "active container", "transit_days": 0.6, "cost_fixed_usd": 1800, "cost_per_unit_usd": 70, "capacity_units": 40, "temp_bands": MAT, "exposure_hours": 1.5, "schedule": sched("2026-10-02T13:00:00Z", 1, 150)},
         {"id": "T-A3-SIN", "mode": "truck", "from": "A3", "to": "SIN", "transit_days": 0.1, "cost_fixed_usd": 200, "cost_per_unit_usd": 1, "capacity_units": 100, "temp_bands": MAT, "exposure_hours": 0.5, "schedule": sched("2026-10-01T06:00:00Z", 1, 150)},
         {"id": "AIR-SIN-ICN", "mode": "air", "from": "SIN", "to": "ICN", "transit_days": 0.3, "cost_fixed_usd": 1200, "cost_per_unit_usd": 45, "capacity_units": 40, "temp_bands": MAT, "exposure_hours": 1.5, "schedule": sched("2026-10-01T23:00:00Z", 1, 150)},
         {"id": "T-A3-SGP", "mode": "truck", "from": "A3", "to": "SGP", "transit_days": 0.2, "cost_fixed_usd": 300, "cost_per_unit_usd": 1, "capacity_units": 200, "temp_bands": ["15-25C", "2-8C"], "exposure_hours": 0.5, "schedule": sched("2026-10-01T06:00:00Z", 1, 150)},
@@ -104,15 +104,15 @@ s2 = {
     ],
     "production_plan": {
         "site": "AA", "product": "AA",
-        "batches": [{"id": "B1", "start": "2026-11-20T00:00:00Z", "qty": 1}, {"id": "B2", "start": "2026-12-18T00:00:00Z", "qty": 1}, {"id": "B3", "start": "2027-01-15T00:00:00Z", "qty": 1}],
+        "batches": [{"id": "B1", "start": "2026-11-03T00:00:00Z", "qty": 1}, {"id": "B2", "start": "2026-12-01T00:00:00Z", "qty": 1}, {"id": "B3", "start": "2026-12-29T00:00:00Z", "qty": 1}],
         "bom": [{"material": "a", "qty_per_unit": 5}, {"material": "b", "qty_per_unit": 10}, {"material": "c", "qty_per_unit": 2}, {"material": "d", "qty_per_unit": 5}],
         "mos_months": 1, "monthly_usage": {"a": 5, "c": 2},
     },
-    "constraints": {"qualified_lanes_only": True, "max_exposure_hours": 4, "allowed_modes": ["truck", "air", "ocean"], "max_legs": 3},
+    "constraints": {"qualified_lanes_only": True, "max_exposure_hours": 4, "allowed_modes": ["truck", "air", "ocean"], "max_legs": 4, "alt_connections": 1},
     "uncertainty": {"n_samples": 10000, "seed": 7,
                     "delay": {"truck": {"mean_days": 0.05, "sd_days": 0.2}, "air": {"mean_days": 0.3, "sd_days": 0.7}, "ocean": {"mean_days": 3.0, "sd_days": 4.0}},
                     "excursion_prob_per_leg": {"truck": 0.002, "air": 0.01, "ocean": 0.004}, "late_penalty_usd_per_unit_day": 500},
-    "hypothesis": "Material b (40-day shelf life, 50% remaining at receipt) cannot be bought once for three batches; it needs one order per batch. MOQ 8 on a forces overbuy on the first order.",
+    "hypothesis": "Material b (40-day shelf life, 50% remaining at use) needs one order per batch. Material c (28-day standard lead time) can only reach B1 on 2026-11-03 with a few days of slack; more slack needs the expedite option (+30%).",
 }
 
 for name, spec in (("s1_base.json", s1), ("s2_base.json", s2)):

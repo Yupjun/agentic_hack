@@ -243,6 +243,7 @@
    "mode": "air",
    "from": "DUB",
    "to": "FRA",
+   "carrier": "active container",
    "transit_days": 0.2,
    "cost_fixed_usd": 700,
    "cost_per_unit_usd": 25,
@@ -251,7 +252,7 @@
     "2-8C",
     "15-25C"
    ],
-   "exposure_hours": 1.5,
+   "exposure_hours": 1.0,
    "schedule": {
     "first": "2026-10-01T15:00:00Z",
     "every_days": 1,
@@ -263,6 +264,7 @@
    "mode": "air",
    "from": "FRA",
    "to": "ICN",
+   "carrier": "active container",
    "transit_days": 0.6,
    "cost_fixed_usd": 1800,
    "cost_per_unit_usd": 70,
@@ -272,7 +274,7 @@
     "15-25C",
     "frozen"
    ],
-   "exposure_hours": 2.0,
+   "exposure_hours": 1.5,
    "schedule": {
     "first": "2026-10-02T13:00:00Z",
     "every_days": 1,
@@ -495,17 +497,17 @@
   "batches": [
    {
     "id": "B1",
-    "start": "2026-11-20T00:00:00Z",
+    "start": "2026-11-03T00:00:00Z",
     "qty": 1
    },
    {
     "id": "B2",
-    "start": "2026-12-18T00:00:00Z",
+    "start": "2026-12-01T00:00:00Z",
     "qty": 1
    },
    {
     "id": "B3",
-    "start": "2027-01-15T00:00:00Z",
+    "start": "2026-12-29T00:00:00Z",
     "qty": 1
    }
   ],
@@ -541,7 +543,8 @@
    "air",
    "ocean"
   ],
-  "max_legs": 3
+  "max_legs": 4,
+  "alt_connections": 1
  },
  "uncertainty": {
   "n_samples": 10000,
@@ -567,5 +570,5 @@
   },
   "late_penalty_usd_per_unit_day": 500
  },
- "hypothesis": "Material b (40-day shelf life, 50% remaining at receipt) cannot be bought once for three batches; it needs one order per batch. MOQ 8 on a forces overbuy on the first order."
+ "hypothesis": "Material b (40-day shelf life, 50% remaining at use) needs one order per batch. Material c (28-day standard lead time) can only reach B1 on 2026-11-03 with a few days of slack; more slack needs the expedite option (+30%)."
 }

@@ -9,12 +9,16 @@
 
 ## 끝낸 것
 - 단계 1: 계획 문법 plan/v1 (planner/grammar.py), 검증기(validate.py), 구조 해시(structure.py), 저널(engine/journal.py), CLI.
+- 단계 2: 엔진 engine/ (options → lp(MILP, HiGHS/cuOpt) → verify(독립 재계산) → mc(torch) → pareto → run CLI).
+  실행: `.venv/bin/python -m engine.run solve scenarios/examples/s1_base.json`
 
 ## 측정값
+- S1(C 100개 A→B, 40일, 예산 60,000): 해상 8,900 USD(정시 30.6 %, 기대비용 53,706) / sea-air 21,400(99.9 %) / 항공 25,100(100 %). 31초.
+- S2(A1·A2·A3→AA, 배치 3개): 200,131(정시 80.5 %) → 200,331(99.8 %) → 209,731 → 222,101(급행). 84초.
 - 파손 스펙 12종 전부 거부, 기본 스펙 2종(S1·S2) 통과. `.venv/bin/python -m unittest tests.test_grammar -v` → 3/3 OK.
 
 ## 건너뛴 것과 이유
-- 없음.
+- HiGHS↔cuOpt 목적값 일치 검사: 이 서버 GPU 금지 + libnccl 없음. 테스트는 CARGO_ALLOW_GPU=1에서만 돈다.
 
 ## 다음 단계
-- 단계 2: 엔진(옵션 열거 → MILP(HiGHS/cuOpt) → 몬테카를로 → 파레토 → verify).
+- 단계 3: 시나리오 뱅크(S1·S2 각 4변형 사전등록) + 합성 생성기 + 기준선 2개.

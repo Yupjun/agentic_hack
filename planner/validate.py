@@ -47,22 +47,31 @@ def demands_of(s: PlanSpec) -> list[dict]:
     return rows
 
 
-def _min_transit(s: PlanSpec, src: str) -> dict[str, float]:
-    """Dijkstra on transit_days (+ connect time) over usable lanes, ignoring schedules."""
-    usable = [l for l in s.lanes if l.mode in s.constraints.allowed_modes and (l.qualified or not s.constraints.qualified_lanes_only)]
-    dist = {src: 0.0}
-    pq = [(0.0, src)]
-    while pq:
-        d, n = heapq.heappop(pq)
-        if d > dist.get(n, 1e18):
-            continue
+def _min_transit(s: PlanSpec, src: str, band: str | None = None) -> dict[str, float]:
+    """Shortest transit (days, + connect time) from src to every node over routes the
+    engine would accept: allowed mode, qualified if required, carries the band,
+    at most max_legs lanes, total exposure <= max_exposure_hours. Ignores schedules.
+    (First version ignored legs/exposure and passed a spec whose material had no
+    usable route — found by engine/options.py on 2026-09-28.)"""
+    c = s.constraints
+    usable = [l for l in s.lanes if l.mode in c.allowed_modes and (l.qualified or not c.qualified_lanes_only)
+              and (band is None or band in l.temp_bands)]
+    best: dict[str, float] = {src: 0.0}
+
+    def walk(node, t, legs, expo, seen):
         for l in usable:
-            if l.frm == n:
-                nd = d + l.transit_days + (s.nodes[n].min_connect_days if n != src else 0)
-                if nd < dist.get(l.to, 1e18):
-                    dist[l.to] = nd
-                    heapq.heappush(pq, (nd, l.to))
-    return dist
+            if l.frm != node or l.to in seen:
+                continue
+            e = expo + l.exposure_hours
+            if legs + 1 > c.max_legs or e > c.max_exposure_hours + 1e-9:
+                continue
+            nt = t + l.transit_days + (s.nodes[node].min_connect_days if legs > 0 else 0)
+            if nt < best.get(l.to, 1e18):
+                best[l.to] = nt
+            walk(l.to, nt, legs + 1, e, seen | {l.to})
+
+    walk(src, 0.0, 0, 0.0, {src})
+    return best
 
 
 def validate(spec: dict) -> list[str]:
@@ -158,7 +167,7 @@ def validate(spec: dict) -> list[str]:
             for x in s.stock:
                 if x.item != d["item"]:
                     continue
-                dist = _min_transit(s, x.node)
+                dist = _min_transit(s, x.node, it.temp_band)
                 if d["node"] in dist:
                     eta = tu.to_day(x.available_from, s.t0) + dist[d["node"]]
                     best = eta if best is None else min(best, eta)
@@ -166,7 +175,7 @@ def validate(spec: dict) -> list[str]:
             for x in s.production:
                 if x.item != d["item"]:
                     continue
-                dist = _min_transit(s, x.site)
+                dist = _min_transit(s, x.site, it.temp_band)
                 if d["node"] in dist:
                     eta = max(0.0, tu.to_day(x.order_from, s.t0)) + min(o.lead_time_days for o in x.options) + dist[d["node"]]
                     best = eta if best is None else min(best, eta)

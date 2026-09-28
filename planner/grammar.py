@@ -97,6 +97,7 @@ class Production(Strict):
     order_from: str
     order_to: str
     order_every_days: float = Field(gt=0, default=7)
+    max_wait_days: float = Field(ge=0, default=7)   # goods may wait at the site at most this long after ready
 
 
 class Demand(Strict):
@@ -133,6 +134,7 @@ class Constraints(Strict):
     max_exposure_hours: float = Field(ge=0, default=24.0)
     allowed_modes: list[Literal["truck", "parcel", "air", "ocean", "rail"]] = list(MODES)
     max_legs: int = Field(ge=1, le=4, default=3)
+    alt_connections: int = Field(ge=1, le=4, default=2)   # onward departures tried per later leg (1 = earliest only)
 
 
 class ModeDelay(Strict):
