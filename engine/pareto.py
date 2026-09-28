@@ -85,6 +85,9 @@ def named(points: list[dict]) -> dict:
         t = 0.0 if smax == smin else (smax - p["metrics"]["min_slack_days"]) / (smax - smin)
         return math.hypot(c, t)
 
-    balanced = min(ok, key=lambda p: (dist(p), p["cost_usd"]))
+    # ties (e.g. only two non-dominated points, both at distance 1) go to the lower expected
+    # cost; before 2026-09-28 they went to the lower plan cost and "balanced" became a plan
+    # that was on time 0.1-30 % of the time (s1-v4, s2-v2).
+    balanced = min(ok, key=lambda p: (round(dist(p), 9), p["mc"]["cost_mean_usd"], p["cost_usd"]))
     risk = min(ok, key=lambda p: (p["mc"]["cost_mean_usd"], p["cost_usd"]))
     return {"cost_optimal": cost_opt, "time_optimal": time_opt, "balanced": balanced, "risk_adjusted": risk}

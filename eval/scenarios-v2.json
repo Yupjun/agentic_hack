@@ -1,0 +1,1500 @@
+[
+ {
+  "id": "s1-base",
+  "family": "S1",
+  "status": "ok",
+  "seconds": 31.5,
+  "n_candidates": 400,
+  "problems": null,
+  "rows": [
+   {
+    "plan": "cost_optimal",
+    "cost_usd": 8900.0,
+    "min_slack_days": 1.7,
+    "verify_ok": true,
+    "p_all_on_time": 0.3064,
+    "cost_mean_usd": 53706.26,
+    "left_over": 0.0,
+    "routes": [
+     "ocean"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "risk_adjusted",
+    "cost_usd": 21400.0,
+    "min_slack_days": 15.2,
+    "verify_ok": true,
+    "p_all_on_time": 0.9989,
+    "cost_mean_usd": 21410.63,
+    "left_over": 0.0,
+    "routes": [
+     "sea-air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "balanced",
+    "cost_usd": 21400.0,
+    "min_slack_days": 15.2,
+    "verify_ok": true,
+    "p_all_on_time": 0.9989,
+    "cost_mean_usd": 21410.63,
+    "left_over": 0.0,
+    "routes": [
+     "sea-air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "time_optimal",
+    "cost_usd": 25100.0,
+    "min_slack_days": 33.2,
+    "verify_ok": true,
+    "p_all_on_time": 1.0,
+    "cost_mean_usd": 25100.0,
+    "left_over": 0.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "rule_cheapest",
+    "cost_usd": 8900.0,
+    "min_slack_days": 1.7,
+    "verify_ok": true,
+    "verify_problems": [],
+    "p_all_on_time": 0.3064,
+    "cost_mean_usd": 53706.26,
+    "left_over": 0.0,
+    "routes": [
+     "ocean"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "rule_fastest",
+    "cost_usd": 28700.0,
+    "min_slack_days": 36.7,
+    "verify_ok": true,
+    "verify_problems": [],
+    "p_all_on_time": 1.0,
+    "cost_mean_usd": 28700.0,
+    "left_over": 0.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": []
+   }
+  ],
+  "judge": {
+   "id": "s1-base",
+   "verdict": "supported",
+   "prediction_registered": "after_observation",
+   "passed": 5,
+   "total": 5,
+   "checks": [
+    {
+     "metric": "status",
+     "op": "==",
+     "value": "ok",
+     "got": "ok",
+     "ok": true
+    },
+    {
+     "metric": "derived.cost_optimal.route_classes",
+     "op": "==",
+     "value": [
+      "ocean"
+     ],
+     "got": [
+      "ocean"
+     ],
+     "ok": true
+    },
+    {
+     "metric": "plans.cost_optimal.mc.p_all_on_time",
+     "op": "<",
+     "value": 0.5,
+     "got": 0.3064,
+     "ok": true
+    },
+    {
+     "metric": "derived.risk_adjusted.route_classes",
+     "op": "==",
+     "value": [
+      "sea-air"
+     ],
+     "got": [
+      "sea-air"
+     ],
+     "ok": true
+    },
+    {
+     "metric": "derived.time_optimal.route_classes",
+     "op": "==",
+     "value": [
+      "air"
+     ],
+     "got": [
+      "air"
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "time_limited": []
+ },
+ {
+  "id": "s1-v1-tight-deadline",
+  "family": "S1",
+  "status": "ok",
+  "seconds": 1.8,
+  "n_candidates": 50,
+  "problems": null,
+  "rows": [
+   {
+    "plan": "cost_optimal",
+    "cost_usd": 25100.0,
+    "min_slack_days": 4.95,
+    "verify_ok": true,
+    "p_all_on_time": 1.0,
+    "cost_mean_usd": 25100.0,
+    "left_over": 0.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "risk_adjusted",
+    "cost_usd": 25100.0,
+    "min_slack_days": 4.95,
+    "verify_ok": true,
+    "p_all_on_time": 1.0,
+    "cost_mean_usd": 25100.0,
+    "left_over": 0.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "balanced",
+    "cost_usd": 27000.0,
+    "min_slack_days": 5.45,
+    "verify_ok": true,
+    "p_all_on_time": 1.0,
+    "cost_mean_usd": 27000.0,
+    "left_over": 0.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "time_optimal",
+    "cost_usd": 28400.0,
+    "min_slack_days": 6.95,
+    "verify_ok": true,
+    "p_all_on_time": 1.0,
+    "cost_mean_usd": 28400.0,
+    "left_over": 0.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "rule_cheapest",
+    "cost_usd": 25100.0,
+    "min_slack_days": 4.95,
+    "verify_ok": true,
+    "verify_problems": [],
+    "p_all_on_time": 1.0,
+    "cost_mean_usd": 25100.0,
+    "left_over": 0.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "rule_fastest",
+    "cost_usd": 28700.0,
+    "min_slack_days": 6.95,
+    "verify_ok": true,
+    "verify_problems": [],
+    "p_all_on_time": 1.0,
+    "cost_mean_usd": 28700.0,
+    "left_over": 0.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": []
+   }
+  ],
+  "judge": {
+   "id": "s1-v1-tight-deadline",
+   "verdict": "supported",
+   "prediction_registered": "before_run",
+   "passed": 4,
+   "total": 4,
+   "checks": [
+    {
+     "metric": "status",
+     "op": "==",
+     "value": "ok",
+     "got": "ok",
+     "ok": true
+    },
+    {
+     "metric": "derived.cost_optimal.route_classes",
+     "op": "==",
+     "value": [
+      "air"
+     ],
+     "got": [
+      "air"
+     ],
+     "ok": true
+    },
+    {
+     "metric": "plans.cost_optimal.cost_usd",
+     "op": "between",
+     "value": [
+      22000,
+      32000
+     ],
+     "got": 25100.0,
+     "ok": true
+    },
+    {
+     "metric": "plans.cost_optimal.mc.p_all_on_time",
+     "op": ">",
+     "value": 0.9,
+     "got": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "time_limited": []
+ },
+ {
+  "id": "s1-v2-tight-budget",
+  "family": "S1",
+  "status": "ok",
+  "seconds": 0.7,
+  "n_candidates": 400,
+  "problems": null,
+  "rows": [
+   {
+    "plan": "cost_optimal",
+    "cost_usd": 8900.0,
+    "min_slack_days": 1.7,
+    "verify_ok": true,
+    "p_all_on_time": 0.3064,
+    "cost_mean_usd": 53706.26,
+    "left_over": 0.0,
+    "routes": [
+     "ocean"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "risk_adjusted",
+    "cost_usd": 8900.0,
+    "min_slack_days": 1.7,
+    "verify_ok": true,
+    "p_all_on_time": 0.3064,
+    "cost_mean_usd": 53706.26,
+    "left_over": 0.0,
+    "routes": [
+     "ocean"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "balanced",
+    "cost_usd": 8900.0,
+    "min_slack_days": 1.7,
+    "verify_ok": true,
+    "p_all_on_time": 0.3064,
+    "cost_mean_usd": 53706.26,
+    "left_over": 0.0,
+    "routes": [
+     "ocean"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "time_optimal",
+    "cost_usd": 8900.0,
+    "min_slack_days": 1.7,
+    "verify_ok": true,
+    "p_all_on_time": 0.3064,
+    "cost_mean_usd": 53706.26,
+    "left_over": 0.0,
+    "routes": [
+     "ocean"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "rule_cheapest",
+    "cost_usd": 8900.0,
+    "min_slack_days": 1.7,
+    "verify_ok": true,
+    "verify_problems": [],
+    "p_all_on_time": 0.3064,
+    "cost_mean_usd": 53706.26,
+    "left_over": 0.0,
+    "routes": [
+     "ocean"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "rule_fastest",
+    "cost_usd": 28700.0,
+    "min_slack_days": 36.7,
+    "verify_ok": false,
+    "verify_problems": [
+     "budget: cost 28700 > budget 15000"
+    ],
+    "p_all_on_time": 1.0,
+    "cost_mean_usd": 28700.0,
+    "left_over": 0.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": []
+   }
+  ],
+  "judge": {
+   "id": "s1-v2-tight-budget",
+   "verdict": "supported",
+   "prediction_registered": "before_run",
+   "passed": 4,
+   "total": 4,
+   "checks": [
+    {
+     "metric": "status",
+     "op": "==",
+     "value": "ok",
+     "got": "ok",
+     "ok": true
+    },
+    {
+     "metric": "derived.time_optimal.route_classes",
+     "op": "==",
+     "value": [
+      "ocean"
+     ],
+     "got": [
+      "ocean"
+     ],
+     "ok": true
+    },
+    {
+     "metric": "plans.time_optimal.cost_usd",
+     "op": "<=",
+     "value": 15000,
+     "got": 8900.0,
+     "ok": true
+    },
+    {
+     "metric": "plans.time_optimal.mc.p_all_on_time",
+     "op": "<",
+     "value": 0.5,
+     "got": 0.3064,
+     "ok": true
+    }
+   ]
+  },
+  "time_limited": []
+ },
+ {
+  "id": "s1-v3-short-shelf-life",
+  "family": "S1",
+  "status": "ok",
+  "seconds": 30.0,
+  "n_candidates": 400,
+  "problems": null,
+  "rows": [
+   {
+    "plan": "cost_optimal",
+    "cost_usd": 21400.0,
+    "min_slack_days": 15.7,
+    "verify_ok": true,
+    "p_all_on_time": 0.9989,
+    "cost_mean_usd": 21410.63,
+    "left_over": 0.0,
+    "routes": [
+     "sea-air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "risk_adjusted",
+    "cost_usd": 21400.0,
+    "min_slack_days": 15.7,
+    "verify_ok": true,
+    "p_all_on_time": 0.9989,
+    "cost_mean_usd": 21410.63,
+    "left_over": 0.0,
+    "routes": [
+     "sea-air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "balanced",
+    "cost_usd": 21400.0,
+    "min_slack_days": 15.7,
+    "verify_ok": true,
+    "p_all_on_time": 0.9989,
+    "cost_mean_usd": 21410.63,
+    "left_over": 0.0,
+    "routes": [
+     "sea-air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "time_optimal",
+    "cost_usd": 25100.0,
+    "min_slack_days": 33.2,
+    "verify_ok": true,
+    "p_all_on_time": 1.0,
+    "cost_mean_usd": 25100.0,
+    "left_over": 0.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "rule_cheapest",
+    "cost_usd": 21400.0,
+    "min_slack_days": 15.7,
+    "verify_ok": true,
+    "verify_problems": [],
+    "p_all_on_time": 0.9989,
+    "cost_mean_usd": 21410.63,
+    "left_over": 0.0,
+    "routes": [
+     "sea-air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "rule_fastest",
+    "cost_usd": 28700.0,
+    "min_slack_days": 36.7,
+    "verify_ok": true,
+    "verify_problems": [],
+    "p_all_on_time": 1.0,
+    "cost_mean_usd": 28700.0,
+    "left_over": 0.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": []
+   }
+  ],
+  "judge": {
+   "id": "s1-v3-short-shelf-life",
+   "verdict": "supported",
+   "prediction_registered": "before_run",
+   "passed": 3,
+   "total": 3,
+   "checks": [
+    {
+     "metric": "status",
+     "op": "==",
+     "value": "ok",
+     "got": "ok",
+     "ok": true
+    },
+    {
+     "metric": "derived.cost_optimal.route_classes",
+     "op": "==",
+     "value": [
+      "sea-air"
+     ],
+     "got": [
+      "sea-air"
+     ],
+     "ok": true
+    },
+    {
+     "metric": "plans.cost_optimal.cost_usd",
+     "op": "between",
+     "value": [
+      20000,
+      23000
+     ],
+     "got": 21400.0,
+     "ok": true
+    }
+   ]
+  },
+  "time_limited": []
+ },
+ {
+  "id": "s1-v4-low-exposure",
+  "family": "S1",
+  "status": "ok",
+  "seconds": 9.5,
+  "n_candidates": 146,
+  "problems": null,
+  "rows": [
+   {
+    "plan": "cost_optimal",
+    "cost_usd": 8900.0,
+    "min_slack_days": 1.7,
+    "verify_ok": true,
+    "p_all_on_time": 0.3064,
+    "cost_mean_usd": 53706.26,
+    "left_over": 0.0,
+    "routes": [
+     "ocean"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "risk_adjusted",
+    "cost_usd": 32900.0,
+    "min_slack_days": 33.2,
+    "verify_ok": true,
+    "p_all_on_time": 1.0,
+    "cost_mean_usd": 32900.0,
+    "left_over": 0.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "balanced",
+    "cost_usd": 32900.0,
+    "min_slack_days": 33.2,
+    "verify_ok": true,
+    "p_all_on_time": 1.0,
+    "cost_mean_usd": 32900.0,
+    "left_over": 0.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "time_optimal",
+    "cost_usd": 32900.0,
+    "min_slack_days": 33.2,
+    "verify_ok": true,
+    "p_all_on_time": 1.0,
+    "cost_mean_usd": 32900.0,
+    "left_over": 0.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "rule_cheapest",
+    "cost_usd": 8900.0,
+    "min_slack_days": 1.7,
+    "verify_ok": true,
+    "verify_problems": [],
+    "p_all_on_time": 0.3064,
+    "cost_mean_usd": 53706.26,
+    "left_over": 0.0,
+    "routes": [
+     "ocean"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "rule_fastest",
+    "cost_usd": 32900.0,
+    "min_slack_days": 35.2,
+    "verify_ok": true,
+    "verify_problems": [],
+    "p_all_on_time": 1.0,
+    "cost_mean_usd": 32900.0,
+    "left_over": 0.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": []
+   }
+  ],
+  "judge": {
+   "id": "s1-v4-low-exposure",
+   "verdict": "supported",
+   "prediction_registered": "before_run",
+   "passed": 5,
+   "total": 5,
+   "checks": [
+    {
+     "metric": "status",
+     "op": "==",
+     "value": "ok",
+     "got": "ok",
+     "ok": true
+    },
+    {
+     "metric": "derived.cost_optimal.route_classes",
+     "op": "==",
+     "value": [
+      "ocean"
+     ],
+     "got": [
+      "ocean"
+     ],
+     "ok": true
+    },
+    {
+     "metric": "derived.time_optimal.route_classes",
+     "op": "==",
+     "value": [
+      "air"
+     ],
+     "got": [
+      "air"
+     ],
+     "ok": true
+    },
+    {
+     "metric": "plans.time_optimal.cost_usd",
+     "op": ">=",
+     "value": 30000,
+     "got": 32900.0,
+     "ok": true
+    },
+    {
+     "metric": "derived.risk_adjusted.route_classes",
+     "op": "==",
+     "value": [
+      "air"
+     ],
+     "got": [
+      "air"
+     ],
+     "ok": true
+    }
+   ]
+  },
+  "time_limited": []
+ },
+ {
+  "id": "s1-v5-ocean-delay-2026",
+  "family": "S1",
+  "status": "ok",
+  "seconds": 31.3,
+  "n_candidates": 400,
+  "problems": null,
+  "rows": [
+   {
+    "plan": "cost_optimal",
+    "cost_usd": 8900.0,
+    "min_slack_days": 1.7,
+    "verify_ok": true,
+    "p_all_on_time": 0.1042,
+    "cost_mean_usd": 89896.45,
+    "left_over": 0.0,
+    "routes": [
+     "ocean"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "risk_adjusted",
+    "cost_usd": 21400.0,
+    "min_slack_days": 15.2,
+    "verify_ok": true,
+    "p_all_on_time": 0.9901,
+    "cost_mean_usd": 21504.1,
+    "left_over": 0.0,
+    "routes": [
+     "sea-air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "balanced",
+    "cost_usd": 21400.0,
+    "min_slack_days": 15.2,
+    "verify_ok": true,
+    "p_all_on_time": 0.9901,
+    "cost_mean_usd": 21504.1,
+    "left_over": 0.0,
+    "routes": [
+     "sea-air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "time_optimal",
+    "cost_usd": 25100.0,
+    "min_slack_days": 33.2,
+    "verify_ok": true,
+    "p_all_on_time": 1.0,
+    "cost_mean_usd": 25100.0,
+    "left_over": 0.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "rule_cheapest",
+    "cost_usd": 8900.0,
+    "min_slack_days": 1.7,
+    "verify_ok": true,
+    "verify_problems": [],
+    "p_all_on_time": 0.1042,
+    "cost_mean_usd": 89896.45,
+    "left_over": 0.0,
+    "routes": [
+     "ocean"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "rule_fastest",
+    "cost_usd": 28700.0,
+    "min_slack_days": 36.7,
+    "verify_ok": true,
+    "verify_problems": [],
+    "p_all_on_time": 1.0,
+    "cost_mean_usd": 28700.0,
+    "left_over": 0.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": []
+   }
+  ],
+  "judge": {
+   "id": "s1-v5-ocean-delay-2026",
+   "verdict": "supported",
+   "prediction_registered": "before_run",
+   "passed": 3,
+   "total": 3,
+   "checks": [
+    {
+     "metric": "status",
+     "op": "==",
+     "value": "ok",
+     "got": "ok",
+     "ok": true
+    },
+    {
+     "metric": "derived.cost_optimal.route_classes",
+     "op": "==",
+     "value": [
+      "ocean"
+     ],
+     "got": [
+      "ocean"
+     ],
+     "ok": true
+    },
+    {
+     "metric": "plans.cost_optimal.mc.p_all_on_time",
+     "op": "<",
+     "value": 0.2,
+     "got": 0.1042,
+     "ok": true
+    }
+   ]
+  },
+  "time_limited": []
+ },
+ {
+  "id": "s2-base",
+  "family": "S2",
+  "status": "ok",
+  "seconds": 84.9,
+  "n_candidates": 752,
+  "problems": null,
+  "rows": [
+   {
+    "plan": "cost_optimal",
+    "cost_usd": 200131.0,
+    "min_slack_days": 2.05,
+    "verify_ok": true,
+    "p_all_on_time": 0.8045,
+    "cost_mean_usd": 200549.76,
+    "left_over": 0.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "risk_adjusted",
+    "cost_usd": 200331.0,
+    "min_slack_days": 3.05,
+    "verify_ok": true,
+    "p_all_on_time": 0.9977,
+    "cost_mean_usd": 200332.0,
+    "left_over": 0.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "balanced",
+    "cost_usd": 209731.0,
+    "min_slack_days": 8.05,
+    "verify_ok": true,
+    "p_all_on_time": 1.0,
+    "cost_mean_usd": 209731.0,
+    "left_over": 0.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": [
+     "c"
+    ]
+   },
+   {
+    "plan": "time_optimal",
+    "cost_usd": 222101.0,
+    "min_slack_days": 15.05,
+    "verify_ok": true,
+    "p_all_on_time": 1.0,
+    "cost_mean_usd": 222101.0,
+    "left_over": 0.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": [
+     "a",
+     "c",
+     "d"
+    ]
+   },
+   {
+    "plan": "rule_cheapest",
+    "cost_usd": 203478.0,
+    "min_slack_days": 3.05,
+    "verify_ok": true,
+    "verify_problems": [],
+    "p_all_on_time": 0.9981,
+    "cost_mean_usd": 203478.63,
+    "left_over": 1.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "rule_fastest",
+    "cost_usd": 240838.0,
+    "min_slack_days": 15.05,
+    "verify_ok": true,
+    "verify_problems": [],
+    "p_all_on_time": 1.0,
+    "cost_mean_usd": 240838.0,
+    "left_over": 1.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": [
+     "a",
+     "c",
+     "d"
+    ]
+   }
+  ],
+  "judge": {
+   "id": "s2-base",
+   "verdict": "supported",
+   "prediction_registered": "after_observation",
+   "passed": 4,
+   "total": 4,
+   "checks": [
+    {
+     "metric": "status",
+     "op": "==",
+     "value": "ok",
+     "got": "ok",
+     "ok": true
+    },
+    {
+     "metric": "derived.cost_optimal.expedite_items",
+     "op": "==",
+     "value": [],
+     "got": [],
+     "ok": true
+    },
+    {
+     "metric": "derived.time_optimal.expedite_items",
+     "op": "!=",
+     "value": [],
+     "got": [
+      "a",
+      "c",
+      "d"
+     ],
+     "ok": true
+    },
+    {
+     "metric": "derived.cost_optimal.orders_by_item.b",
+     "op": "==",
+     "value": 3,
+     "got": 3,
+     "ok": true
+    }
+   ]
+  },
+  "time_limited": []
+ },
+ {
+  "id": "s2-v1-site-delay",
+  "family": "S2",
+  "status": "ok",
+  "seconds": 59.0,
+  "n_candidates": 692,
+  "problems": null,
+  "rows": [
+   {
+    "plan": "cost_optimal",
+    "cost_usd": 209731.0,
+    "min_slack_days": 0.05,
+    "verify_ok": true,
+    "p_all_on_time": 0.0008,
+    "cost_mean_usd": 220143.02,
+    "left_over": 0.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": [
+     "c"
+    ]
+   },
+   {
+    "plan": "risk_adjusted",
+    "cost_usd": 216241.0,
+    "min_slack_days": 6.05,
+    "verify_ok": true,
+    "p_all_on_time": 1.0,
+    "cost_mean_usd": 216241.0,
+    "left_over": 0.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": [
+     "c",
+     "d"
+    ]
+   },
+   {
+    "plan": "balanced",
+    "cost_usd": 216241.0,
+    "min_slack_days": 6.05,
+    "verify_ok": true,
+    "p_all_on_time": 1.0,
+    "cost_mean_usd": 216241.0,
+    "left_over": 0.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": [
+     "c",
+     "d"
+    ]
+   },
+   {
+    "plan": "time_optimal",
+    "cost_usd": 216441.0,
+    "min_slack_days": 7.05,
+    "verify_ok": true,
+    "p_all_on_time": 1.0,
+    "cost_mean_usd": 216441.0,
+    "left_over": 0.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": [
+     "c",
+     "d"
+    ]
+   },
+   {
+    "plan": "rule_cheapest",
+    "cost_usd": 229513.0,
+    "min_slack_days": 0.05,
+    "verify_ok": true,
+    "verify_problems": [],
+    "p_all_on_time": 0.2186,
+    "cost_mean_usd": 230976.67,
+    "left_over": 6.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": [
+     "c"
+    ]
+   },
+   {
+    "plan": "rule_fastest",
+    "cost_usd": 234328.0,
+    "min_slack_days": 7.05,
+    "verify_ok": true,
+    "verify_problems": [],
+    "p_all_on_time": 1.0,
+    "cost_mean_usd": 234328.0,
+    "left_over": 1.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": [
+     "a",
+     "c",
+     "d"
+    ]
+   }
+  ],
+  "judge": {
+   "id": "s2-v1-site-delay",
+   "verdict": "supported",
+   "prediction_registered": "before_run",
+   "passed": 3,
+   "total": 3,
+   "checks": [
+    {
+     "metric": "status",
+     "op": "==",
+     "value": "ok",
+     "got": "ok",
+     "ok": true
+    },
+    {
+     "metric": "derived.cost_optimal.expedite_items",
+     "op": "contains",
+     "value": "c",
+     "got": [
+      "c"
+     ],
+     "ok": true
+    },
+    {
+     "metric": "plans.cost_optimal.cost_usd",
+     "op": "between",
+     "value": [
+      202000,
+      215000
+     ],
+     "got": 209731.0,
+     "ok": true
+    }
+   ]
+  },
+  "time_limited": []
+ },
+ {
+  "id": "s2-v2-moq-above-need",
+  "family": "S2",
+  "status": "ok",
+  "seconds": 124.4,
+  "n_candidates": 752,
+  "problems": null,
+  "rows": [
+   {
+    "plan": "cost_optimal",
+    "cost_usd": 240601.0,
+    "min_slack_days": 0.05,
+    "verify_ok": true,
+    "p_all_on_time": 0.0008,
+    "cost_mean_usd": 251173.87,
+    "left_over": 15.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "risk_adjusted",
+    "cost_usd": 240801.0,
+    "min_slack_days": 3.05,
+    "verify_ok": true,
+    "p_all_on_time": 0.9968,
+    "cost_mean_usd": 240803.14,
+    "left_over": 15.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "balanced",
+    "cost_usd": 240801.0,
+    "min_slack_days": 3.05,
+    "verify_ok": true,
+    "p_all_on_time": 0.9968,
+    "cost_mean_usd": 240803.14,
+    "left_over": 15.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "time_optimal",
+    "cost_usd": 240801.0,
+    "min_slack_days": 3.05,
+    "verify_ok": true,
+    "p_all_on_time": 0.9968,
+    "cost_mean_usd": 240803.14,
+    "left_over": 15.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "rule_cheapest",
+    "cost_usd": 243948.0,
+    "min_slack_days": 3.05,
+    "verify_ok": true,
+    "verify_problems": [],
+    "p_all_on_time": 0.9981,
+    "cost_mean_usd": 243948.63,
+    "left_over": 16.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "rule_fastest",
+    "cost_usd": 281308.0,
+    "min_slack_days": 15.05,
+    "verify_ok": false,
+    "verify_problems": [
+     "budget: cost 281308 > budget 250000"
+    ],
+    "p_all_on_time": 1.0,
+    "cost_mean_usd": 281308.0,
+    "left_over": 16.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": [
+     "a",
+     "c",
+     "d"
+    ]
+   }
+  ],
+  "judge": {
+   "id": "s2-v2-moq-above-need",
+   "verdict": "supported",
+   "prediction_registered": "before_run",
+   "passed": 3,
+   "total": 3,
+   "checks": [
+    {
+     "metric": "status",
+     "op": "==",
+     "value": "ok",
+     "got": "ok",
+     "ok": true
+    },
+    {
+     "metric": "plans.cost_optimal.metrics.units_left_over",
+     "op": ">=",
+     "value": 15,
+     "got": 15.0,
+     "ok": true
+    },
+    {
+     "metric": "plans.cost_optimal.cost_usd",
+     "op": "between",
+     "value": [
+      239000,
+      250000
+     ],
+     "got": 240601.0,
+     "ok": true
+    }
+   ]
+  },
+  "time_limited": []
+ },
+ {
+  "id": "s2-v3-short-shelf-d",
+  "family": "S2",
+  "status": "ok",
+  "seconds": 124.8,
+  "n_candidates": 752,
+  "problems": null,
+  "rows": [
+   {
+    "plan": "cost_optimal",
+    "cost_usd": 210972.0,
+    "min_slack_days": 0.05,
+    "verify_ok": true,
+    "p_all_on_time": 0.0016,
+    "cost_mean_usd": 219533.95,
+    "left_over": 3.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "risk_adjusted",
+    "cost_usd": 211172.0,
+    "min_slack_days": 3.05,
+    "verify_ok": true,
+    "p_all_on_time": 0.9799,
+    "cost_mean_usd": 211208.29,
+    "left_over": 3.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "balanced",
+    "cost_usd": 220572.0,
+    "min_slack_days": 8.05,
+    "verify_ok": true,
+    "p_all_on_time": 1.0,
+    "cost_mean_usd": 220572.0,
+    "left_over": 3.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": [
+     "c"
+    ]
+   },
+   {
+    "plan": "time_optimal",
+    "cost_usd": 232942.0,
+    "min_slack_days": 15.05,
+    "verify_ok": true,
+    "p_all_on_time": 1.0,
+    "cost_mean_usd": 232942.0,
+    "left_over": 3.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": [
+     "a",
+     "c",
+     "d"
+    ]
+   },
+   {
+    "plan": "rule_cheapest",
+    "cost_usd": 211172.0,
+    "min_slack_days": 3.05,
+    "verify_ok": true,
+    "verify_problems": [],
+    "p_all_on_time": 0.9981,
+    "cost_mean_usd": 211172.63,
+    "left_over": 3.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "rule_fastest",
+    "cost_usd": 250902.0,
+    "min_slack_days": 15.05,
+    "verify_ok": false,
+    "verify_problems": [
+     "budget: cost 250902 > budget 250000"
+    ],
+    "p_all_on_time": 1.0,
+    "cost_mean_usd": 250902.0,
+    "left_over": 3.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": [
+     "a",
+     "c",
+     "d"
+    ]
+   }
+  ],
+  "judge": {
+   "id": "s2-v3-short-shelf-d",
+   "verdict": "supported",
+   "prediction_registered": "before_run",
+   "passed": 3,
+   "total": 3,
+   "checks": [
+    {
+     "metric": "status",
+     "op": "==",
+     "value": "ok",
+     "got": "ok",
+     "ok": true
+    },
+    {
+     "metric": "derived.cost_optimal.orders_by_item.d",
+     "op": ">=",
+     "value": 3,
+     "got": 3,
+     "ok": true
+    },
+    {
+     "metric": "plans.cost_optimal.metrics.units_left_over",
+     "op": ">=",
+     "value": 3,
+     "got": 3.0,
+     "ok": true
+    }
+   ]
+  },
+  "time_limited": []
+ },
+ {
+  "id": "s2-v4-budget-cut",
+  "family": "S2",
+  "status": "ok",
+  "seconds": 15.1,
+  "n_candidates": 752,
+  "problems": null,
+  "rows": [
+   {
+    "plan": "cost_optimal",
+    "cost_usd": 200131.0,
+    "min_slack_days": 2.05,
+    "verify_ok": true,
+    "p_all_on_time": 0.8184,
+    "cost_mean_usd": 200515.08,
+    "left_over": 0.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "risk_adjusted",
+    "cost_usd": 200331.0,
+    "min_slack_days": 3.05,
+    "verify_ok": true,
+    "p_all_on_time": 0.9977,
+    "cost_mean_usd": 200332.0,
+    "left_over": 0.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "balanced",
+    "cost_usd": 200331.0,
+    "min_slack_days": 3.05,
+    "verify_ok": true,
+    "p_all_on_time": 0.9977,
+    "cost_mean_usd": 200332.0,
+    "left_over": 0.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "time_optimal",
+    "cost_usd": 200331.0,
+    "min_slack_days": 3.05,
+    "verify_ok": true,
+    "p_all_on_time": 0.9977,
+    "cost_mean_usd": 200332.0,
+    "left_over": 0.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "rule_cheapest",
+    "cost_usd": 203478.0,
+    "min_slack_days": 3.05,
+    "verify_ok": true,
+    "verify_problems": [],
+    "p_all_on_time": 0.9981,
+    "cost_mean_usd": 203478.63,
+    "left_over": 1.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": []
+   },
+   {
+    "plan": "rule_fastest",
+    "cost_usd": 240838.0,
+    "min_slack_days": 15.05,
+    "verify_ok": false,
+    "verify_problems": [
+     "budget: cost 240838 > budget 205000"
+    ],
+    "p_all_on_time": 1.0,
+    "cost_mean_usd": 240838.0,
+    "left_over": 1.0,
+    "routes": [
+     "air"
+    ],
+    "expedite": [
+     "a",
+     "c",
+     "d"
+    ]
+   }
+  ],
+  "judge": {
+   "id": "s2-v4-budget-cut",
+   "verdict": "supported",
+   "prediction_registered": "before_run",
+   "passed": 4,
+   "total": 4,
+   "checks": [
+    {
+     "metric": "status",
+     "op": "==",
+     "value": "ok",
+     "got": "ok",
+     "ok": true
+    },
+    {
+     "metric": "plans.time_optimal.cost_usd",
+     "op": "<=",
+     "value": 205000,
+     "got": 200331.0,
+     "ok": true
+    },
+    {
+     "metric": "plans.time_optimal.metrics.min_slack_days",
+     "op": "<=",
+     "value": 8,
+     "got": 3.05,
+     "ok": true
+    },
+    {
+     "metric": "plans.risk_adjusted.mc.p_all_on_time",
+     "op": ">",
+     "value": 0.99,
+     "got": 0.9977,
+     "ok": true
+    }
+   ]
+  },
+  "time_limited": []
+ }
+]
