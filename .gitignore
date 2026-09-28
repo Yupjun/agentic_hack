@@ -2,3 +2,7 @@ logs/*.jsonl
 __pycache__/
 .env
 .venv
+logs/nat/
+logs/*.out
+dev/logs/
+agent/nat_planner/*.egg-info/

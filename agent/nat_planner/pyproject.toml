@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cargo-nat"
+version = "0.1.0"
+description = "NeMo Agent Toolkit functions for the order-and-transport planner (cargo-recovery-agent v2)"
+requires-python = ">=3.11"
+dependencies = ["nvidia-nat"]
+
+[project.entry-points."nat.components"]
+cargo_nat = "cargo_nat.register"
+
+[tool.setuptools]
+packages = ["cargo_nat"]

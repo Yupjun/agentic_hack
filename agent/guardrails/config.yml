@@ -1,0 +1,17 @@
+# NeMo Guardrails (IORails engine) in front of the planner model.
+# Policy (mechanism lives in the rails, not in the prompt):
+#   - the model may only call tools the agent declared in the request (allowlist + JSON-schema check)
+#   - there is no booking / ordering / sending tool; a call to one is blocked here even if the model invents it
+models:
+  - type: main
+    engine: nim
+    model: nvidia/nemotron-3-super-120b-a12b
+    parameters:
+      base_url: https://integrate.api.nvidia.com/v1
+      max_tokens: 8000
+      temperature: 0.2
+passthrough: true
+rails:
+  tool_output:
+    flows:
+      - tool call validation
