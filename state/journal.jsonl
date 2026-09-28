@@ -312,3 +312,15 @@
 {"ts": "2026-09-28T12:03:14Z", "event": "scenario_run", "id": "s2-v2-moq-above-need", "verdict": "supported", "passed": 3, "total": 3, "seconds": 124.2, "status": "ok"}
 {"ts": "2026-09-28T12:05:20Z", "event": "scenario_run", "id": "s2-v3-short-shelf-d", "verdict": "supported", "passed": 3, "total": 3, "seconds": 126.4, "status": "ok"}
 {"ts": "2026-09-28T12:05:36Z", "event": "scenario_run", "id": "s2-v4-budget-cut", "verdict": "supported", "passed": 4, "total": 4, "seconds": 15.3, "status": "ok"}
+{"ts": "2026-09-28T12:08:34Z", "event": "scenario_run", "id": "s1-base", "verdict": "supported", "passed": 5, "total": 5, "seconds": 32.0, "status": "ok"}
+{"ts": "2026-09-28T12:08:36Z", "event": "scenario_run", "id": "s1-v1-tight-deadline", "verdict": "supported", "passed": 4, "total": 4, "seconds": 1.9, "status": "ok"}
+{"ts": "2026-09-28T12:08:37Z", "event": "scenario_run", "id": "s1-v2-tight-budget", "verdict": "supported", "passed": 4, "total": 4, "seconds": 0.8, "status": "ok"}
+{"ts": "2026-09-28T12:09:07Z", "event": "scenario_run", "id": "s1-v3-short-shelf-life", "verdict": "supported", "passed": 3, "total": 3, "seconds": 30.5, "status": "ok"}
+{"ts": "2026-09-28T12:09:17Z", "event": "scenario_run", "id": "s1-v4-low-exposure", "verdict": "supported", "passed": 5, "total": 5, "seconds": 9.7, "status": "ok"}
+{"ts": "2026-09-28T12:09:48Z", "event": "scenario_run", "id": "s1-v5-ocean-delay-2026", "verdict": "supported", "passed": 3, "total": 3, "seconds": 31.5, "status": "ok"}
+{"ts": "2026-09-28T12:19:37Z", "event": "scenario_run", "id": "s1-base", "verdict": "supported", "passed": 5, "total": 5, "seconds": 31.7, "status": "ok"}
+{"ts": "2026-09-28T12:19:39Z", "event": "scenario_run", "id": "s1-v1-tight-deadline", "verdict": "supported", "passed": 4, "total": 4, "seconds": 1.9, "status": "ok"}
+{"ts": "2026-09-28T12:19:40Z", "event": "scenario_run", "id": "s1-v2-tight-budget", "verdict": "supported", "passed": 4, "total": 4, "seconds": 0.7, "status": "ok"}
+{"ts": "2026-09-28T12:20:10Z", "event": "scenario_run", "id": "s1-v3-short-shelf-life", "verdict": "supported", "passed": 3, "total": 3, "seconds": 30.2, "status": "ok"}
+{"ts": "2026-09-28T12:20:19Z", "event": "scenario_run", "id": "s1-v4-low-exposure", "verdict": "supported", "passed": 5, "total": 5, "seconds": 9.6, "status": "ok"}
+{"ts": "2026-09-28T12:20:51Z", "event": "scenario_run", "id": "s1-v5-ocean-delay-2026", "verdict": "supported", "passed": 3, "total": 3, "seconds": 31.4, "status": "ok"}
