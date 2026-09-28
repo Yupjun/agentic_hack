@@ -5,6 +5,7 @@ export const metadata = { title: "Cargo Planner — order & transport planning a
 
 const NAV = [
   ["/", "Overview"],
+  ["/builder", "Plan Builder"],
   ["/scenarios", "Scenarios"],
   ["/agent", "Agent"],
   ["/runs", "Plans"],
